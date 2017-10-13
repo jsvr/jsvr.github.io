@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script>
+        //concat() 将两个或多个字符串组合起来,返回一个新的字符串.
+        var str1 = "hello";
+        var str2 = str1.concat(" ","Wo  rld","!");
+        console.log(str2);//hello Wo  rld!
+
+
+        //charAt() 返回指定位置的字符;
+        var str1 = "Hello charAt()";
+        var str2 = str1.charAt(1);
+        var str3 = str1.charAt(5);
+        console.log(str2);//e
+        console.log(str3);// 空格
+
+
+        //charCodeAt()  返回指定位置的字符的 Unicode 编码.
+        var str1 = "Hello charCodeAt()";
+        var str2 = str1.charCodeAt(6);
+        console.log(str2);//99
+
+        //indexOf()  从字符串前面开始寻找第一个符合元素的位置索引。有多个返回值为第一个。如果没匹配到,返回-1;
+        //有两个参数,第一个是字符,第二个是找到第几个相同字符的索引返回;
+        var str1 = "Hello indexOf()";
+        console.log(str1.indexOf("e"));//1
+        console.log(str1.indexOf("e",2));//9
+
+        //lastIndexOf(val,index) 从字符串最后面开往前始寻找第一个符合字符,返回其从前往后数 的索引;
+        //如果在str中索引index之前存在val或不存在,存在则返回从前完后书的该字符索引,不存在返回-1;
+        //有参数index 在找寻的时侯index 表示index以前包括index指向的val本身;
+        var str1 = "Hello lastIndexOf()";
+        console.log(str1.lastIndexOf("l"));//3
+        console.log(str1.lastIndexOf("l",1));//-1
+        console.log(str1.lastIndexOf("l",2));//2
+        console.log(str1.lastIndexOf("l",3));//3
+
+        //substring(start,end) 返回一个新的字符串,包前不包后,length为end - start
+        //substring是以两个参数中较小的一个作为起始位置,较大的为结束位置;
+        // 如果是一个参数,测从那个参数截取到末尾(包括当前索引的参数);如果是负数,则会默认的先转换为0;包前不包后
+        var str1 = "Hello substring(start,end)";
+        console.log(str1.substring(2,4));//ll
+        console.log(str1.substring(2,4));//ll
+        console.log(str1.substring(2));//llo substring(start,end)
+        console.log(str1.substring(-2,-4));//空字符串
+        console.log(str1.substring(-4));//Hello substring(start,end)
+        console.log(str1.substring(-1,7));//Hello s 不报括索引为7 的字符
+
+
+        //substr(start,[length]) 返回一个新的字符串,从起始索引字符截取到 长度为length的字符串,包括第length个;
+        //如果只有一个参数,从start开始截取到末尾;
+        //当接收的参数是负数时,start为负数表示从后面开始截取,不包括第start个;
+        //当length为负数时,返回空字符串;
+        var str1 = "Hello subtr(start,[length])";
+        console.log(str1.substr(2));//llo subtr(start,[length])
+        console.log(str1.substr(-2));//h])
+        console.log(str1.substr(2,10));//llo subtr
+        console.log(str1.substr(-2,3));//Hel
+        console.log(str1.substr(2,-1));//空 从索引2 截取-1 个长度没有
+        console.log(str1.substr(-5,-5));//空字符串
+
+
+        //slice(star,end)
+        //一个参数,(正数)从索引为参数的字符顺着截取到最后.包括该索引字符;
+        //一个参数,(负数)从索引为参数的字符倒着截取到最后.不包括该索引字符;
+        //两个参数,(正数)从索引为参数1的字符截取到索引为参数2的字符;(参数2必须大于参数1 不然返回空字符串);
+        //两个参数,(一个负数)把字符串的长度和负参数相加得到一个新参数赋值;
+        // 如果前面是负数 截取时包前不包后;如果后面是负数包前又包后;
+        //两个参数,(两个负数)空字符串;
+        var str1 = "Hello slice";10
+        console.log(str1.slice(2));//llo slice
+        console.log(str1.slice(2,8));//llo sl
+        console.log(str1.slice(-7));//o slice
+        console.log(str1.slice(2,-2));//llo sli  //相当于slice(2,8);或者正数从前面截取负数从后面截取.
+        console.log(str1.slice(-2,-3));//空字符串
+        console.log(str1.slice(-2,10));//c
+        console.log(str1.slice(2,1));//空字符串
+
+        //toLowerCase()  将整个字符串转化成小写字母;
+        //toUpperCase()  将整个字符串转化成大写字母;
+        var str1 = "I LOVE YOU";
+        var str2 = "i love you";
+        console.log(str1.toLowerCase());//i love you
+        console.log(str2.toUpperCase());//I LOVE YOU
+
+
+        /*------------支持正则表达式的 String 对象方法-----------*/
+        /*------- split,match,replace,seach----------------*/
+
+        //str.split(separator,howmany),返回一个字符串数组，该数组是按separator分离器指定的边界将字符串分割成子串，返回的字符串不包括separator；
+        var str1 = "I love you Dear!";
+        console.log(str1.split(" "));//["I", "love", "you", "Dear!"]
+        console.log(str1.split(" ").length);//4
+        console.log(str1.split(""));//["I", " ", "l", "o", "v", "e", " ", "y", "o", "u", " ", "D", "e", "a", "r", "!"]
+        console.log(str1.split("").length);//16
+        console.log(str1.split("", 3));//3代表前三个 ；["I", " ", "l"]
+        console.log(str1.split("o"));//["I l", "ve y", "u Dear!"];以o为边界把字符串分开,分开后没有o;
+        console.log(str1.split("you"));//["I love ", " Dear!"]
+        console.log(str1.split(","));//["I", " love", " you", " Dear!"]
+        console.log(str1.split());//["I love you Dear!"]
+        console.log(str1.split()[0]);//I love you Dear!
+
+
+        //replace() 用于在字符串中用一些字符替换另一些字符;或替换一个与正则表达式匹配的子串;
+        var str1 = "Hello replace()";
+        console.log(str1.substr(1));//ello replace() 从索引1截取到最后
+        console.log(str1.replace(str1.substr(1),"ot"));//Hot
+        console.log(str1.replace(str1.substr(1),""));//H,把匹配到的替换成空
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

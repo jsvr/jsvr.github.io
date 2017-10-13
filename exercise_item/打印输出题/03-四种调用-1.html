@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		// 1, 将声明提到前面, 如果有重名的顺序不允许修改
+		// 2, 依次执行代码( 画图 )
+		function Foo(){
+			getName = function(){ alert(1); };
+			return this;  // 如果是以函数的形式调用 this 是全局对象
+		}
+		var getName;
+		function getName(){ alert(5); }
+		
+		Foo.getName = function(){ alert(2); };
+		Foo.prototype.getName = function(){ alert(3); };
+		getName = function(){ alert(4); };
+		
+
+		Foo.getName();             // ?		2
+		getName();                 // ?		4
+		Foo().getName();           // ?		1
+		getName();                 // ?		1
+		new Foo.getName();         // ?		2
+		(new Foo()).getName();     // ?		new Foo() 返回 Foo 的对象 3
+		new new Foo().getName();   // ? 	3
+		// 解释
+		// new ((new Foo()).getName())
+		// (new (new Foo())).getName()
+		
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

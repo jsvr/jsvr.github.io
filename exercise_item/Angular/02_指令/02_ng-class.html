@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>angular demo</title>
+    <script src="../../dist/angular/angular.js"></script>
+</head>
+<body>
+<div id="App1" ng-app="shoppingCart" ng-controller="ShoppingCartController">
+    <h1>Your demo</h1>
+    <!-- demo 1 -->
+    <div ng-show='menuState.show'>another another another</div>
+    <button ng-click="test2()">切换</button>
+
+    <hr><!-- demo 2 -->
+    <style type="text/css">
+        .menu-disabled-true{
+            opacity:1;
+            color: red;
+            -webkit-transition:all 1000ms linear;
+            -moz-transition:all 1000ms linear;
+            -o-transition:all 1000ms linear;
+        }
+        .menu-disabled-false{
+            opacity: 0;
+            -webkit-transition:all 1000ms linear;
+            -moz-transition:all 1000ms linear;
+            -o-transition:all 1000ms linear;
+        }
+    </style>
+    <div class="menu-disabled-{{isDisabled}}">adfadfadasda</div>
+    <button ng-click="test()">隐藏</button>
+    <button ng-click="test1()">显示</button>
+    <button ng-click="test11()">切换</button>
+
+    <hr><!-- demo 3 -->
+    <style type="text/css">
+        .error {
+            background-color: red;
+        }
+        .warning {
+            background-color: yellow;
+        }
+        .active {
+            background-color: pink;
+        }
+    </style>
+    <!--isError 为true时显示 '.error' 类名,false 时不显示-->
+    <!--isWarning 为true时显示 '.isWarning' 类名,false 时不显示-->
+    <div ng-class='{error:isError, warning:isWarning}'>{{messageText}}</div>
+    <button ng-click="showError()">error</button>
+    <button ng-click="showWarning()">warning</button>
+
+    <hr><!-- demo 4 -->
+    <style type="text/css">
+        .selected{
+            background-color: lightgreen;
+        }
+    </style>
+    <!--将 items对象 的属性值拷贝给 item,然后循环输出-->
+    <!--当 $index == selectedRow 时,添加 '.selected'类名-->
+    <!--如果要给第一个里设置默认样式且在点击的时候去掉第一个li的样式,可以再作用域里先调用一次$scope.selectedWhich(0);-->
+    <!--如果要给第一个里设置默认样式且在点击的时候不去掉第一个li的样式,可以在ng-class里添加 || $first -->
+    <!--<div ng-repeat="item in items" ng-class='{selected:$index==selectedRow}' ng-click='selectedWhich($index)' repeat-finish="demo()">-->
+        <!--<span>{{item.product_name}}</span>-->
+        <!--&lt;!&ndash;过滤器 显示美元'$'符号&ndash;&gt;-->
+        <!--<span>{{item.price | currency}}</span>-->
+    <!--</div>-->
+    <tab init="items" active="2"></tab>
+    <div>=================================</div>
+    <div tab="items" init="2"></div>
+</div>
+
+<script>
+    var shoppingCartModule = angular.module("shoppingCart", [])
+    shoppingCartModule.controller("ShoppingCartController",
+            function ($scope) {
+                // demo 1
+                $scope.menuState = {'show':true};
+                $scope.test2 = function () {
+                    $scope.menuState.show = !$scope.menuState.show;
+                };
+
+                $scope.demo = function(){
+                    console.log('finished');
+                };
+                // demo 2
+                $scope.isDisabled = true;
+                $scope.test = function () {
+                    $scope.isDisabled = 'false';
+                };
+                $scope.test1 = function () {
+                    $scope.isDisabled = 'true';
+                };
+                $scope.test11 = function () {
+                    $scope.isDisabled = !$scope.isDisabled;
+                };
+
+                // demo 3
+                $scope.isError = false;
+                $scope.isWarning = false;
+                $scope.messageText = 'default, default';
+                $scope.showError = function () {
+                    $scope.messageText = 'This is an error';
+                    $scope.isError = true;
+                    $scope.isWarning = false;
+                };
+                $scope.showWarning = function () {
+                    $scope.messageText = 'Just a warning, donot warry';
+                    $scope.isWarning = true;
+                    $scope.isError = false;
+                };
+
+                // demo 4
+                $scope.items = [
+                    { product_name: "Product 1", price: 50 },
+                    { product_name: "Product 2", price: 20 },
+                    { product_name: "Product 3", price: 180 }
+                ];
+                $scope.selectedWhich = function (row) {
+                    $scope.selectedRow = row;
+                }
+                //首次先执行一次,传参数为0,让第一个li有默认样式
+    //                $scope.selectedWhich(0);
+            }
+    );
+
+        shoppingCartModule.directive('ngRepeat', function(){
+        return function(scope, element, attrs){
+            console.log(scope);
+            element.addClass('text');
+            console.log(attrs.repeatFinish);
+        };
+    }).directive('repeatFinish', ['$parse', '$timeout', function($parse, $timeout){
+        return function(scope, element, attrs){
+            if(scope.$last){
+                $timeout(function(){
+                    $parse(attrs.repeatFinish)(scope);
+                });
+            }
+        };
+    }]).directive('tab', function(){
+        return {
+            restrict: 'E',
+//            replace: true,
+            scope: {
+                init: '='
+            },
+            link: function(scope, element, attrs){
+                scope.activeIndex = attrs.active || 0;
+                element.on('click', function(event){
+                    element.children().removeClass('active');
+                    if(event.target.nodeName === 'DIV'){
+                        event.target.className = 'active';
+                    }
+                });
+            },
+            template:
+                '<div ng-repeat="item in init" ng-class="{active: $index==activeIndex}">' +
+                    '<span>{{item.product_name}}</span>' +
+                    '<span>{{item.price}}</span>' +
+                '</div>'
+        };
+    }).directive('tab', ['$parse', function($parse){
+            return {
+                restrict: 'A',
+                link: function(scope, element, attrs){
+                    scope.activeIndex = attrs.init || 0;
+                    scope.init = $parse(attrs.tab)(scope);
+                    scope.activeTo = function(index){
+                        scope.activeIndex = index;
+                    };
+                },
+                template: '<div ng-repeat="item in init" ng-class="{active: $index==activeIndex}" ng-click="activeTo($index)">' +
+                '<span>{{item.product_name}}</span>' +
+                '<span>{{item.price}}</span>' +
+                '</div>'
+            };
+        }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自适应nav</title>
+    <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/default_nav.css">
+    <script type="text/javascript" src="../../../dist/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#target-menu">
+            <span class="sr-only">qieh</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">hello</a>
+    </div>
+    <div class="collapse navbar-collapse" id="target-menu">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">网站首页</a></li>
+            <li><a href="#">JS开发</a></li>
+            <li><a href="#">html</a></li>
+            <li><a href="#">jquery</a></li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">前端学习 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">html+css学习</a></li>
+                    <li><a href="#">javascript学习</a></li>
+                    <li><a href="#">jquery学习</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">bootstrap学习</a></li>
+                    <li><a href="#">less/sass学习</a></li>
+                    <li><a href="#">angularJS学习</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="conrainer">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    </div>
+
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row">
+        <!--超小屏幕 手机 (<768px) 分别显示6份,第三个盒子顺移到下一行-->
+        <!--中等屏幕 桌面显示器 (≥992px)(<=1200) 分别显示4份-->
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4 1</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4 2</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4 3</div>
+    </div>
+
+    <!-- Columns are always 50% wide, on mobile and desktop -->
+    <div class="row">
+        <div class="col-xs-6">.col-xs-6</div>
+        <div class="col-xs-6">.col-xs-6</div>
+    </div>
+    <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star"></span> Star
+    </button>
+
+</div>
+</body>
+<script>
+    console.log($('.navbar-nav > li').index());
+    $('.navbar-nav li').hover(function () {
+        $(this).addClass('active');
+    }, function () {
+        var _this = $(this).index();
+        if(_this != 0){
+            $(this).removeClass('active');
+        }
+    });
+
+</script>
+
+</html>

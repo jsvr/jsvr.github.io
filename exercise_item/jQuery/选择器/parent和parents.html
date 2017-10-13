@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../jquery-1.12.1.js"></script>
+</head>
+<body>
+<ul class="level-1">
+    <li class="item-i">I</li>
+    <li class="item-ii">II
+        <ul class="level-2">
+            <li class="item-a">A</li>
+            <li class="item-b">B
+                <ul class="level-3">
+                    <li class="item-1">1</li>
+                    <li class="item-2">2</li>
+                    <li class="item-3">3</li>
+                </ul>
+            </li>
+            <li class="item-c">C</li>
+        </ul>
+    </li>
+    <li class="item-iii">III</li>
+</ul>
+
+<script>
+    $(function () {
+        //$('li .item-a').parents().css('background-color', 'red');//所有父亲一直到body,dom树顶端都设置为红色;
+        //$('li .item-a').parent().css('background-color', 'red');//第一个父亲设置为红色背景;
+        $('li .item-a').parents('ul:eq(1)').css('background-color', 'red');//从里往外的索引号为1的父亲设置为红色背景;
+    });
+</script>
+</body>
+</html>

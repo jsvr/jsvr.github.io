@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-过滤器</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <span>{{ num | number: 2 }}</span>
+        <br>
+        <span>{{ num | number: 0 }}</span>
+        <br>
+        <!--number : 0 取消不了 小数点后面的两位小数????-->
+        <span>{{ num | number: 0 | currency}}</span>
+        <br>
+        <span>{{ num | currency}}</span>
+        <br>
+        <span>{{day | date}}</span>
+        <br>
+        <span>{{ word | uppercase}}</span>
+    </div>
+</body>
+<script>
+    /*
+    1> 过滤器基本使用方法--过滤器用来对数据进行格式的转换,数据格式的转化与逻辑无关,因此,我们使用过滤器来进行这些操作:
+        1.{{expression | filter1:,参数1,参数2... | filter2: 参数1,参数2... }}
+        01.expression : 表达式,也就是还没有经过过滤的变量值,相当于普通的 {{}}里面的内容
+        02.filter1 : 过滤器的名字,可以是angular内置的过滤器,也可以自定义过滤器
+        03.参数1,参数2,... : 需要被传递给过滤器函数的参数,可以有多个
+    */
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.word  = 'code_bunny';
+        $scope.day  = 1302375948026;
+        $scope.num  = 12.956;
+    });
+    /*
+     1.{{num | currency }}
+
+     currency: 把数字过滤成美元,四舍五入格式化成小数点后两位.
+
+     2. {{num | number:0 }}
+
+     number: 格式化数字,后面的参数表示格式化时保留小数点后面的个数,0就是不保留小数,1就是取一位,四舍五入
+
+     3. {{num | number:0 | currency }}
+
+     number | currency : 先格式化数字,再格式化成美元
+
+     4. {{word | uppercase}}
+
+     uppercase :  将单词的小写转为大写
+     */
+</script>
+</html>

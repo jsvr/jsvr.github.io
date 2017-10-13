@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular -- $routeParams API翻译</title>
+</head>
+<body>
+<script>
+    /*
+     原api出处:
+
+     https://docs.angularjs.org/api/ngRoute/service/$routeParams
+
+     $routeParams 可以获取当前路径参数.
+
+     需要ngroute模块被安装。
+
+     路径参数是$location.search()和$location.path()的组合. 当$route被匹配的时候,路径参数就会被获取.
+
+     在参数名称冲突的情况下，路径参数优先于搜索参数。
+
+     $routeParams服务保证当路由发生变化时,$routeParams对象的id不会变化(但是它的属性很可能会变化)
+
+     请注意，$routeparams只有当路由完全改变成功后才会更新。这意味着在route的resolve函数里,你不能通过$routeparams获取正确的路径参数。但是，你可以使用$route.current.params访问新路径的参数。
+
+
+
+     Example
+     // URL: http://server.com/index.html#/Chapter/1/Section/2?search=moby
+     // 路由规则: /Chapter/:chapterId/Section/:sectionId
+     //
+     // 结果
+     $routeParams ==> {chapterId:'1', sectionId:'2', search:'moby'}
+     */
+</script>
+</body>
+</html>

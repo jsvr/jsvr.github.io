@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call_play_综合案例</title>
+</head>
+<body>
+<script>
+    // call 和 apply 的区别
+    // apply和call的区别：从目的上来说，它们是一样的，
+    // apply 的参数, 第一个参数表示指定的 this 对象, 第二个参数要求是数组
+    // apply 直接将这些参数放到一个数组中再传递, 最后借用方法的参数列表是一样的.
+    // call方法参数将依次传递给借用的方法作参数,
+
+    // 唯一不同的地方传递参数的形式不同，apply是数组，而call跟我们平时写函数一样，
+
+    var obj = {
+        name :'objName',
+        getName : function (name) {
+            var showName = name + '-----' + this.name;
+            console.log(showName);
+            return showName;
+        }
+    }
+
+    var obj1 = {
+        name : "objName1"
+    }
+    //通过call 让 obj1 继承 obj的 getName
+    obj.getName.call(obj1, "name");// 打印 name-----objName1;
+</script>
+</body>
+</html>

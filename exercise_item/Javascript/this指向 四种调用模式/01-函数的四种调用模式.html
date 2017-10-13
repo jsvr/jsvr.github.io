@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			// 函数的四种调用模式
+			// 1> 函数模式
+			// 2> 方法模式
+			// 3> 构造器模式
+			// 4> 上下文模式
+			
+			// 这里不同的东西就是 this
+			
+			// 凡是函数有一个默认的参数, 就是 this
+			
+			// 定义:
+			// 定义一个函数, 如果单独的将其调用, 不将其与任何东西关联, 那么就是函数调用模式
+			function foo1() {}
+			foo1();
+			// 定义一个函数, 如果将函数赋值给一个对象的成员, 那么利用对象调用它就是方法模式
+			function foo2() {}
+			var o = {};
+			o.f = foo2;		// o[ 'f' ] = foo2; 
+							// o[ 0 ] = foo2;
+			o.f();
+			// o[0]()
+			
+			// 定义一个函数, 使用 new 来调用创建对象就是构造器( constructor )模式
+			function foo3() {}
+			new foo3();
+			foo3();
+
+			
+			
+			// 区别:
+			// 函数模式 this 就是全局对象( window )
+			// 方法模式 this 就是当前调用方法的对象
+			/*
+			Function.prototype.inherit = function() {
+				this
+			};
+			function foo() {}
+			foo.inherit();
+			Object.inherit
+			*/
+			// 构造器模式 this 就是 new 出来的新的对象
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

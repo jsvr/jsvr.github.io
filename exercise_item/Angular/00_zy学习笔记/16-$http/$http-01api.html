@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$http-api</title>
+</head>
+<body>
+<script>
+
+    /*
+     {
+
+     method:字符串 ,
+
+     url:字符串,
+
+     params:json对象,
+
+     data:请求数据,
+
+     headers:请求头,
+
+     transformRequest:函数,转换post请求的数据的格式,
+
+     transformResponse:函数,转换响应到的数据的格式,
+
+     cache:布尔值,
+
+     timeout:数值,从发出请求开始计算,等待的毫秒数,超过这个数还没有响应,则返回错误
+
+     withCredentials:布尔值
+
+     }
+
+     1.method: (必填)
+
+     请求的方法,字符串格式,'post','get','head','delete','put','jsonp'
+
+     (其中head方法和get请求方式一致,但是head方法没有响应体,只有响应状态码,用于检测该url是否可以获得get请求)
+
+     2.url: (必填)
+
+     请求的路径,字符串格式
+
+     3.params:
+
+     请求带有的参数,json对象:
+
+     {key1:'value1',key2:'value2'}
+
+     //转换成
+
+     url?key1=value1&key2=value2
+     4.data:
+
+     post请求所提交的数据,字符串或者json对象
+
+     5.headers:
+
+     请求头,json对象,可以自定义配置http请求头的参数
+
+     6.transformRequest:
+
+     函数,转换post请求的数据的格式
+
+     7.transformResponse:
+
+     函数,转换响应到的数据的格式
+
+     8.cache:
+
+     布尔值,是否启用缓存(暂时不懂,需要请教老公)
+
+     9.timeout:
+
+     数值,从发出请求开始计算,等待的毫秒数,超过这个数还没有响应,则返回错误
+
+     10.withCredentials:
+
+     不懂
+
+
+     $http()返回一个对象,该对象有三个方法:
+
+     1. then([success],[error]):
+
+     .then()方法传入两个参数:
+
+     [success]: function(res){}
+
+     第一个参数是一个请求成功的回调函数,该函数接受1个参数res,res是一个json对象,它有四个属性值,分别是data,status,headers,congfig,这四个值就是http://www.cnblogs.com/liulangmao/p/3864954.html这里面的.success()方法传入的函数的四个参数
+
+     [error]: function(res){}
+
+     第二个参数是一个请求失败的回调函数,该函数接受1个参数res,res是一个json对象,它有四个属性值,分别是data,status,headers,congfig,这四个值就是http://www.cnblogs.com/liulangmao/p/3864954.html这里面的.error()方法传入的函数的四个参数
+
+     2. success(function(){})
+
+     .success方法传入一个参数,是请求成功的回调.该函数接受4个参数,分别就是data,status,headers,congfig,和http://www.cnblogs.com/liulangmao/p/3864954.html里面的.success()方法传入的函数的四个参数是一样的.
+
+     3. error(function(){})
+
+     .error方法传入一个参数,是请求失败的回调.该函数接受4个参数,分别就是data,status,headers,congfig,和http://www.cnblogs.com/liulangmao/p/3864954.html里面的.error()方法传入的函数的四个参数是一样的.
+
+     注意: 其中,.success和.error两个方法都返回调用自己的这个对象,所以这个对象还是具有了.then(),.success(),.error()方法,所以可以链式调用:
+
+     复制代码
+     var obj1 = $http({
+     method:'GET',
+     url:'/name'
+     });
+
+     var obj2 = obj1.success(function(res){data,status,headers,config});
+
+     var obj3 = obj2.error(function(res){data,status,headers,config});
+
+     console.log(obj1 === obj2);    //true
+     console.log(obj1 === obj3);    //true
+     复制代码
+     但是.then方法不是返回调用.then的对象... 它返回的是一个promise对象... 所以它只有.then方法,二不再有.success和.error方法:
+
+     var obj = $http({
+     method:'GET',
+     url:'/name'
+     });
+
+     obj.then(function(res){return res.data+'2'},function(res){return '失败'}).then(function(data){console.log(data)},function(data){alert(data)});
+     关于promise的.then()方法,详见: http://www.cnblogs.com/liulangmao/p/3907571.html
+
+     在这里无论请求是成功还是失败,第二次调用.then都会调用成功回调(因为它对promise发送的通知是成功通知),回调函数中的data就是上一个.then()的回调的返回值,如果是成功回调.也就是res.data+'2',如果是失败回调,那就是'失败'
+     */
+</script>
+</body>
+</html>

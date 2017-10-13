@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-$watch</title>
+    <style>
+        *{
+            font-family:'MICROSOFT YAHEI';
+            font-size:12px
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <input type="text" ng-model="number"/>
+        <span>{{result}}</span>
+    </div>
+</body>
+<script>
+    // $watch 概念
+    // $watch是所有控制器$scope中内置的方法
+    // $scope.$watch(watchObj,watchCallback,ifDeep);
+
+
+    // 1> watchObj 需要被监测的对象 可以使以下任意一种;
+    // 1. 某个数据,监测这个数据的值是否变化;
+    // 2. 一条angular表达式,监测表达式的结果是否发生变化;
+    // 3. 函数(),监测函数的返回值是否发生变化;
+    // ******以上三种,无论是哪种,都应该是字符串格式,并且都是在$scope作用域下执行的******
+    // 4. 函数,非字符串格式,而是直接传入一个函数,可以直接写一个匿名函数,也可以传入一个函数,
+    // 注意,它不是在$scope作用域下的,所以,如果传入的是当前作用域下的函数,还是需要写:$scope.fun
+    // 2> watchCallback : 接受一个函数或者表达式,当watchObj发生变化是会被调用或执行.
+
+
+    // 如果是函数形式,它会收到三个参数: watchCallback (newValue,oldValue,scope)
+    // 1. newValue: watchObj的新的值
+    // 2. oldValue: watchObj的旧的值
+    // 3. scope: 就是当前控制器的$scope
+    // *******注意:函数或者表达式不是在$scope作用域下执行的,所以,如果是需要调用当前作用域下的某个函数,应该$scope.watchCallback*********
+
+
+    // 3> ifDeep: 一个布尔值
+    // 如果 watchObj 的类型是对象或者数组的时候, ifDeep值设置为true, 那么angular会检测被监控对象的每个属性是否发生了变化,而不只是检测一个简单的值.
+    // 最后,$(watch)会返回一个函数,这个函数可以用来销毁该控制器,只需要被调用一次即可:
+    /*
+     var destroy = $scope.$watch(...);
+     destroy()
+     */
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.number = 0;
+        $scope.count = function(newValue,oldValue,scope){
+            $scope.result = $scope.number*3;
+            console.log(newValue);
+            console.log(oldValue);
+            console.log(scope);
+            return $scope.result
+        };
+        $scope.$watch('number',$scope.count,false)
+    });
+    // 我们监测了number这个数据,当number发生变化时,即调用count这个函数,改变result的值.
+    // 其中,count中的三个参数分别接受了number的新值,旧值,以及当前控制器的$scope:
+
+    // 问题**********************
+    //input 中输入数字时, 初始值0 为什么一直存在??????
+
+</script>
+</html>

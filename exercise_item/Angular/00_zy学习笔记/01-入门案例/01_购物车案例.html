@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_购物车案例</title>
+    <style>
+        .red {
+            color:#cc0000
+        }
+        * {
+            font-family:'MICROSOFT YAHEI'
+        }
+        td {
+            font-size:12px; color:#999;
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="myCtrl">
+        <h1>my first shopping cart</h1>
+        <table>
+            <tr ng-repeat="item in items">
+                <td>{{ item.title }}</td>
+                <td><input type="text" ng-model="item.quantity"> </td>
+                <td>{{ item.price | currency }}</td>
+                <td class="red">{{ item.price * item.quantity | currency }}</td>
+                <td><button ng-click="remove($index)">remove</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('myCtrl', function ($scope) {
+            $scope.items = [
+                {'title': '衣服', 'quantity': '1', 'price': '100'},
+                {'title': '裤子', 'quantity': '1', 'price': '200'},
+                {'title': '鞋', 'quantity': '1', 'price': '300'},
+                {'title': '袜子', 'quantity': '1', 'price': '50'},
+            ];
+            $scope.remove = function (index) {
+                $scope.items.splice(index,1);
+            };
+        });
+    </script>
+</body>
+</html>

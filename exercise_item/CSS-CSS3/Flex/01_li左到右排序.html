@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../dist/angular/angular.js"></script>
+</head>
+<body>
+<style>
+    .box1{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        border: 1px solid green;
+        height: 200px;
+        width: 50%;
+    }
+    .items{
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid #000000;
+        background-color: pink;
+        margin: 5px 5px 5px 0;
+    }
+
+</style>
+<div class="box1">
+    <div class="items" ng-repeat="li in [1,2,3,4,5,6,7,8,9,10]">
+        {{$index}}
+    </div>
+</div>
+</body>
+</html>

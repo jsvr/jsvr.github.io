@@ -1,0 +1,13 @@
+
+
+
+
+
+
+
+<div ng-show="tipMessageData.show" class="alert"
+     ng-class="{'alert-success':checkData.passwordCheck,'alert-danger':checkData.passwordCheck == 'f'}">
+    {{ tipMessageData.pwText }}
+    <span class="glyphicon form-control-feedback"
+          ng-class="{'glyphicon-ok':checkData.passwordCheck,'glyphicon-remove':checkData.passwordCheck == 'f'}"></span>
+</div>

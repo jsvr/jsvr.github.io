@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 6, 8, 5, 6, 1, 2,];
+    //var  array = {'1':4,2:3}
+//    console.log(array['a']===array.a);
+    //console.log(array.1);
+//    console.log(array.a);
+//    console.log(array['a']);
+
+    var der = function (arr) {
+        var newArr = [], i;
+        for (i = 0; i < arr.length; i++) {
+            if (der[arr[i]] == undefined) {
+                der[arr[i]] = 2;
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+    console.log(der(arr));
+
+    var arr2 = [1,2,3,4,2,3,55,3,21,1,2]
+
+    var deRepeat = function (arr) {
+        var newArray = [],
+                i = 0,
+                al = arr.length;
+        for(; i < al; i++){
+            if(deRepeat[arr[i]] == undefined){
+                deRepeat[arr[i]]= 1;
+                newArray.push(arr[i]);
+            }
+        }
+        return newArray;
+    }
+    alert(deRepeat(arr2));
+</script>
+</body>
+</html>

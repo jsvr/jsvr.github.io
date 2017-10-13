@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,  div,  p { margin: 0; padding: 0;}
+        ul { list-style: none;}
+        html { overflow: hidden;}
+        body { width: 100%;  *cursor: default;
+            overflow: hidden; font: 16px/1.5 "Microsoft YaHei", Helvetica, STHeiti STXihei, Microsoft JhengHei, Arial;}
+        #pageContain { overflow: hidden;}
+        .page { display: none; width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; left: 0;}
+        .contain { width: 100%; height: 100%; display: none; position: relative; z-index: 0;}
+        .current .contain, .slide .contain { display: block;}
+        .current { display: block; z-index: 1;}
+        .slide { display: block; z-index: 2;}
+        .swipe { display: block; z-index: 3; transition-duration: 0ms !important; -webkit-transition-duration: 0ms !important;}
+        .page1 { background: #37c1e3;}
+        .page2 { background: #009922;}
+        .page3 { background: #992211;}
+        .page4 { background: #ff00ff;}
+        .page5 { background: #00ff00;}
+        .page6 { background: #22ffff;}
+        #navBar { z-index: 3; position: absolute; top: 30%; right: 3%;}
+        #navBar .active { background: #ccc;}
+        #navBar li { cursor: pointer; margin-bottom: 10px; transition: all .7s ease; border-radius: 50%; line-height: 40px; text-align: center; width: 40px; height: 40px;}
+
+        .txt { margin-top: 20%; font-size: 50px; color: #fff; text-align: center;}
+        .img_box{
+            width: 10rem;
+            height: 4rem;
+            margin:0 auto;
+            background-color: #fff;
+            float: left;
+        }
+        .img1{
+            background-color: red;
+            width: 5rem;
+            height: 2rem;
+            float: left;
+        }
+        .img2{
+            background-color: deeppink;
+            width: 3rem;
+            height: 2rem;
+            float: left;
+        }
+        .img3{
+            background-color: black;
+            width: 2rem;
+            height: 2rem;
+            float: left;
+        }
+        .nav{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            height: 80px;
+            background-color: #fff;
+        }
+    </style>
+    <script src="http://cdn.dowebok.com/143/js/fullPage.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+</head>
+<body>
+<div class="nav">导航栏</div>
+<div id="pageContain">
+    <div class="page page1 current">
+        <div class="contain">
+            <p class="txt">第一屏</p>
+            <div class="img_box">
+                <div class="img1">图片1</div>
+                <div class="img2">图片2</div>
+                <div class="img3">图片3</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page page2">
+        <div class="contain">
+            <p class="txt">第二屏</p>
+        </div>
+    </div>
+
+    <div class="page page3">
+        <div class="contain">
+            <p class="txt">第三屏</p>
+        </div>
+    </div>
+
+    <div class="page page4">
+        <div class="contain">
+            <p class="txt">第四屏</p>
+        </div>
+    </div>
+
+    <div class="page page5">
+        <div class="contain">
+            <p class="txt">第五屏</p>
+        </div>
+    </div>
+</div>
+<ul id="navBar">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+<script>
+    $(function () {
+        var html = document.getElementsByTagName('html')[0];
+        console.log(html);
+        if(html){
+            var w = window.innerWidth;
+            var fontSize = (w>1960?1960:w)/1960*100;
+            html.style.fontSize = fontSize + 'px';
+
+        }
+
+        window.onresize = function(){
+            var w = window.innerWidth;
+            var fontSize = (w>1960?1960:w)/1960*100;
+            html.style.fontSize = fontSize + 'px';
+        }
+    });
+</script>
+<script>
+
+    var runPage;
+    runPage = new FullPage({
+        id: 'pageContain',
+        slideTime: 800,
+        effect: {
+            transform: {
+                translate: 'Y',
+                scale: [1, 1],
+                rotate: [0, 0]
+            },
+            opacity: [0, 1]
+        },
+        mode: 'wheel,touch,nav:navBar',
+        easing: 'ease'
+    });
+</script>
+</html>

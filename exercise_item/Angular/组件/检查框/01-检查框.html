@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-检查框</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="ngShowcaseApp">
+    <div ng-controller="ctrl.input.checkbox">
+        <h4>传统风格</h4>
+        <label><input type="checkbox" ng-model="vm.checked"/>&nbsp;复选框</label>
+        <div>
+            {{vm.checked}}
+        </div>
+
+
+        <h4>按钮风格</h4>
+        <label ng-class="{active:vm.checked}" class="btn btn-primary">
+            <!--复选框文字是用来撑开label标签的-->
+            <input type="checkbox" class="hidden" ng-model="vm.checked"/>&nbsp;复选框</label>
+        <div>
+            {{vm.checked}}
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module("ngShowcaseApp",[]);
+        app.controller("ctrl.input.checkbox", function ($scope) {
+            var vm = $scope.vm = {};
+        });
+//        angular.module('ngShowcaseApp').controller('ctrl.input.checkbox', function ($scope) {
+//            var vm = $scope.vm = {};
+//        });
+    </script>
+</body>
+</html>

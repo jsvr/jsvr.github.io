@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hightLight</title>
+    <script src="jquery-1.12.1.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin:0 auto;
+        }
+        .box, .box1, .box2, .box3{
+            width: 200px;
+            height: 200px;
+            color: #fff;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+<div class="box">高亮插件</div>
+<div class="box1">高亮插件1</div>
+<div class="box2">高亮插件2</div>
+<div class="box3">高亮插件3</div>
+<script>
+    //<1>第一种调用,普通调用闭包限定命名空间
+    (function ($) {
+        $.fn.extend({
+            "highLight": function (options) {
+                var opts = $.extend({},defaluts,options);
+                this.each(function () {
+                    //这里的this 就是 jquery 对象
+                    //遍历所有的高亮的dom,当调用 hightLight()插件的是一个集合的时候.
+                    var $this = $(this);
+                    //获取当前dom 的 jquery对象,这里的this是当前循环的dom
+                    //根据参数来设置 dom的样式
+                    $this.css({
+                        backgroundColor: opts.background,
+                        color: opts.foreground
+                    });
+                });
+            }
+        });
+        //默认参数
+        var defaluts = {
+            foreground: 'red',
+            background: 'yellow'
+        };
+    })(window.jQuery);
+    //调用插件
+    $('.box').highLight();;//调用插件
+    //$('.box').highLight().css({margintop:'50px'});//不能链式编程,这样调用会报错
+    //上述方法只能调用,但是不能链式调用.比如使用$('.box').hightLight().css({marginTop:'100px});
+    //将会报找不到css方法，原因在与我的自定义插件在完成功能后，没有将 jQuery对象给返回出来。
+
+    //<2>第二种调用,可以链式编程
+    (function ($) {
+        //1. 使用jQuery.fn.extend(object)扩展jquery 方法，制作插件
+        $.fn.extend({
+            //1. 定义要添加的插件名 即 方法
+            "highLight1": function (options) {
+                //1. 使用jquery的extend 方法覆盖jquery的默认插件参数
+                //extend里三个参数,1>空对象;2>自定参数对象;3>方法传递的对象
+                var opts = $.extend({},defaluts,options);
+                return this.each(function () {
+                    //这里的this 就是 jquery 对象
+                    //遍历所有要高亮的dom, 当调用 heigLight()插件的时候是一个集合的时候.
+                    var $this = $(this);
+                    //给遍历出来的 对象 统一设置css 样式
+                    $this.css({
+                        backgroundColor:opts.background,
+                        color: opts.foreground
+                    });
+
+                });
+
+            }
+        });
+        //2. 设置自定义参数
+        var defaluts = {
+            foreground: 'red',//字体颜色参数
+            background: 'black'//背景颜色参数
+        }
+    })(window.jQuery);
+    $('.box1').highLight1().css({marginTop:'50px'});
+
+
+    //<3>第三种调用,暴露公共方法,格式化插件
+    //暴露公共方法来给别人扩展你的插件(如果有需要的话)
+    //比如高亮插件有一个format方法来格式化高亮文本,则我们可以写成公共的,暴露给插件使用者,不同的使用者根据自己
+    //的需求来重写format方法,从而使高亮文本可以呈现不同的格式.
+    (function ($) {
+        //1. 使用jQuery.fn.extend(object)扩展jquery 方法，制作插件
+        $.fn.extend({
+            //1. 定义要添加的插件名 即 方法
+            "highLight2": function (options) {
+                //1. 使用jquery的extend 方法覆盖jquery的默认插件参数
+                //extend里三个参数,1>空对象;2>自定参数对象;3>方法传递的对象
+                var opts = $.extend({},defaluts,options);
+                return this.each(function () {
+                    //这里的this 就是 jquery 对象
+                    //遍历所有要高亮的dom, 当调用 heigLight()插件的时候是一个集合的时候.
+                    var $this = $(this);
+                    //给遍历出来的 对象 统一设置css 样式
+                    $this.css({
+                        backgroundColor:opts.background,
+                        color: opts.foreground
+                    });
+                    //格式化高亮文本
+                    var markup = $this.html();
+                    markup = $.fn.highLight2.format(markup);
+                    $this.html(markup);
+                });
+
+            }
+        });
+        //2. 设置自定义参数
+        var defaluts = {
+            foreground: 'red',//字体颜色参数
+            background: 'black'//背景颜色参数
+        }
+        //3. 公共的格式化 方法. 默认是加粗，用户可以通过覆盖该方法达到不同的格式化效果。
+        $.fn.highLight2.format = function (str) {
+            return "<strong>" + str + "</strong>";
+        }
+        //格式化format 方法 默认加粗 改为正常
+        $.fn.highLight2.format = function (txt) {
+            return "<i>" + txt + "</i>"
+        }
+    })(window.jQuery)
+    $('.box2').highLight2().css({marginTop:'100px'});
+
+
+    //<4>第四种调用,添加私有方法,完整版本调用
+    (function ($) {
+        //1. 使用jQuery.fn.extend(object)扩展jquery 方法，制作插件
+        $.fn.extend({
+            //1. 定义要添加的插件名 即 方法
+            "highLight3": function (options) {
+                //检测用户传进来的参数是否合法
+                if (!isValid(options))
+                    return this;
+                //1. 使用jquery的extend 方法覆盖jquery的默认插件参数
+                //extend里三个参数,1>空对象;2>自定参数对象;3>方法传递的对象
+                var opts = $.extend({},defaluts,options);
+                return this.each(function () {
+                    //这里的this 就是 jquery 对象
+                    //遍历所有要高亮的dom, 当调用 heigLight()插件的时候是一个集合的时候.
+                    var $this = $(this);
+                    //给遍历出来的 对象 统一设置css 样式
+                    $this.css({
+                        backgroundColor:opts.background,
+                        color: opts.foreground
+                    });
+                    //格式化高亮文本
+                    var markup = $this.html();
+                    markup = $.fn.highLight3.format(markup);
+                    $this.html(markup);
+                });
+
+            }
+        });
+        //2. 设置自定义参数
+        var defaluts = {
+            foreground: 'red',//字体颜色参数
+            background: 'black'//背景颜色参数
+        }
+        //3. 公共的格式化 方法. 默认是加粗，用户可以通过覆盖该方法达到不同的格式化效果。
+        $.fn.highLight3.format = function (str) {
+            return "<strong>" + str + "</strong>";
+        }
+        //格式化format 方法 默认加粗 改为正常
+//        $.fn.highLight4.format = function (txt) {
+//            return "<i>" + txt + "</i>"
+//        }
+
+
+        //私有方法，检测参数是否合法
+        function isValid(options) {
+            return !options || (options && typeof options === "object") ? true : false;
+        }
+    })(window.jQuery)
+    $('.box3').highLight3({ foreground: 'orange', background: '#ccc' }).css({marginLeft:"70px"});
+</script>
+</body>
+</html>

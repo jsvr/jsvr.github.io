@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    /*
+    function zhangYang(){
+        console.log('接口调用成功!')
+    }
+    var plugin = window.$ || window.jQuery || window.Zepto;
+    if(plugin){
+        plugin.fn.extend({
+            zhangYang: function () {
+                return zhangYang();
+            }
+        })
+    }
+    window.jQuery().zhangYang();
+    $('.box').zhangYang();
+
+    function zhangYang() {
+        console.log('张洋说李晓婉是个锤子!')
+    }
+    var plugin = window.$ || window.jQuery || window.Zepto;
+    if (plugin) {
+        plugin.fn.extend({
+            zhangYang: function () {
+                return zhangYang();
+            }
+        })
+    }
+    window.jQuery().zhangYang();
+    $('.box').zhangYang();
+
+     (function($){
+
+     $.fn.changeStyle = function(option){
+     var defaultSetting = { colorStr:"green",fontSize:12};
+     var setting = $.extend(defaultSetting,option);
+     //将 option的属性值 赋值给 默认参数 defaultSetting,替换默认参数
+     this.css("color",setting.colorStr).css("fontSize",setting.fontSize+"px");
+     return this;
+     }
+     }(jQuery));
+    */
+
+
+    function liXiaoWan(){
+        console.log('李晓婉你是个锤子!')
+    }
+    //将接口的形式 windown.$,或 windown.jQuery 或 windown.Zepto赋值给参数变量;
+    var plugin = window.$ || window.jQuery || window.Zepto;
+    //判断如果有变量 就给变量的原型上extend 一个已经定义的方法
+    if(plugin){
+        plugin.fn.extend({
+            liXiaoWan: function () {
+                return liXiaoWan();
+            }
+        })
+    }
+    //两种调用方法
+    window.jQuery().liXiaoWan();
+    $('.box').liXiaoWan();
+
+</script>
+</body>
+</html>

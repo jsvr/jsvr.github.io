@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组方法</title>
+</head>
+<body>
+<script>
+        var stringArray = ["This", "is", "Baidu", "Campus"];
+        //alert(typeof(stringArray.join(" ")));
+
+
+        //1. 写一个方法将字符串转化为驼峰命名方法
+        var str = "get-element-by-id"
+        // 步骤 1. 用split把 - 先去掉
+
+        var fn = function (str) {
+            var arr = str.split("-");
+            console.log(arr);
+            for(var i = 1; i < arr.length; i++){
+                arr[i] = arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+            }
+
+            str = arr.join("");
+            return str;
+        }
+
+        console.log(fn(str));
+
+        // 2. 写一个方法将字符串转化为驼峰命名法
+        var str1 = "get-element-by-id";
+        var fn1 = function (str) {
+            //先将字符串里的"-"截取掉,并转化为一个数组;
+            var arr = str.split("-"),
+                    i = 1,
+                    arrl = arr.length;
+            for(; i < arrl; i++){
+                arr[i] = arr[i].charAt(0).toUpperCase() +
+                                arr[i].substr(1,arrl-1);
+                str = arr.join("");// 再把数组转化为字符串赋值给参数str,边界为空;join 默认不传参数是用逗号分割;
+                return str;// 返回str
+            }
+        }
+        console.log(fn(str1));
+</script>
+</body>
+</html>

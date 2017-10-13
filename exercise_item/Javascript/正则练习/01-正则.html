@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则</title>
+</head>
+<body>
+<script>
+    console.log(/\d/.test('1'));//数字
+    console.log(/\w/.test('a'));//字母或下划线
+    console.log(/\s/.test('a'));//看不见的 空格;
+    console.log(/\S/.test('*'));//符号
+
+    var str = '180-1673-4733';
+    var str1 = /\d{3}\S?\d{4}\S?\d{4}$/.test(str);
+    console.log(str1);
+    var str2 = "111.111.111/11";
+    var str3 = /\d{3}\.?\d{3}\.?\d{3}\/?\d{2}$/i.test(str2);
+    console.log(str3);
+</script>
+</body>
+</html>

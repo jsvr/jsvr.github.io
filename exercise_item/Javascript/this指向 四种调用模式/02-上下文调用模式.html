@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			// 上下文
+			// 在函数调用模式中 函数模式, 方法模式 与 构造器模式 this 
+			// 都是固定的, 在上下文调用模式中, this 由上下文决定
+			
+			function foo() {
+				console.log( this );
+			}
+
+
+			foo();							// 函数模式
+			var o = {fn:foo, name:'xp'};
+			o.fn();
+
+			// 方法模式
+			 function foo() {}
+			var o1 = new foo();						// 构造器模式
+			var o2 = new foo();						// 构造器模式
+
+			
+			// 上下文模式 表示可以在调用的时候指定 this 的值是多少
+			// 有两种调用方法
+			// 1> 函数名.apply( ... );
+			// 2> 函数名.call( ... );
+			
+			// 上下文模式由于可以指定 this 那么他可以模仿的调用有几种?
+//			foo.apply();
+//			foo.apply( null );
+//			// 函数调用
+//
+//
+			var o = { name: 'xpp' };
+			foo.apply( o );  // 传入什么就相当于用什么对象调用该方法. 借用方法调用
+			// apply 的参数, 第一个参数表示指定的 this 对象, 第二个参数要求是数组
+			// 表示函数的参数
+			
+			//  自己写一个函数, 带有参数与返回值, 利用上下文调用, 让多个对象调用该方法
+			// f.apply( o, [ ... ] );
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

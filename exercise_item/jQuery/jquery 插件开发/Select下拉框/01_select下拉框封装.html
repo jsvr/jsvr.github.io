@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select下拉框</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font: bold 14px/50px "Verdana" ;
+        }
+        body{
+            width: 100%;
+            height: 1000px;
+        }
+        ul li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .db{
+            display: block;
+        }
+        .dn{
+            display: none;
+        }
+        .clearfix:before, .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1; /*IE/7/6*/
+        }
+        /*样式 start*/
+        .select-app{
+            width: 300px;
+            margin:100px auto;
+        }
+        .select_box{
+            width: 300px;
+            height: 100%;
+            position: relative;
+            background-color: #89ffe9;
+        }
+        .selected{
+            width: 300px;
+            height: 50px;
+            border: 3px solid #0904fd;
+            text-align: center;
+            cursor: pointer;
+        }
+        .drop_down_list{
+            position: absolute;
+            width: 300px;
+            height: 170px;
+            /*background: rgba(251, 185, 132, .6);*/
+            background: #000;
+            padding: 10px;
+            top: 50px;
+            left: 0;
+        }
+        .drop_down_list li a{
+            display: block;
+            width: 280px;
+            height: 50px;
+            text-align: center;
+            color: #000;
+            border-bottom: 1px solid #2efaa8;
+            background: rgba(184,187,251, .5);
+        }
+        .drop_down_list li a:hover{
+            background: rgba(151, 139, 251, 0.91);
+        }
+        /*样式 end*/
+    </style>
+    <script src="../../../jquery-1.11.1.min.js"></script>
+</head>
+<body class="body_app">
+    <div class="select-app">
+        <div class="select_box">
+            <div class="selected">
+                selected 默认选中
+            </div>
+            <div class="drop_down_list dn">
+                <ul>
+                    <li>
+                        <a href="javascript:void (0);">first li</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void (0);">second li</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void (0);">third li</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function ($) {
+            $.fn.extend({
+                "selectPulgin": function (options) {
+                    //将option的属性值赋值给默认参数对象,覆盖掉默认参数;
+                    var opts = $.extend({},defaluts,options);
+
+                    return this.each(function () {
+                        var _this = $(this);
+                        //缓存后续常用变量(Cache variable)
+                        console.log(opts.bodyAppDom);
+                        var cv = {
+                            selectBoxDom: _this.find(opts.selectBoxDom),
+                            selectedDom: _this.find(opts.selectedDom),
+                            dropDownListDom: _this.find(opts.dropDownListDom),
+                            dropDownLiDom: _this.find(opts.dropDownLiDom),
+                            //bodyAppDom: _this.parent('body') ,
+                            replaceText: opts.replaceText,
+                            bodyClickHide: opts.bodyClickHide,
+                            hover: opts.hover,
+                            click: opts.click,
+                            animate:opts.animate,
+                            clickMark: true
+                        };
+                        //方法对象
+                        var action;
+                        if(!action && action!==0){
+                            action = {
+                                init: function () {
+                                    var self = this;
+                                    self.publickCss();
+                                    if(cv.hover == true){self.selectedHover()};
+                                    if(cv.click == true){self.selectedClick()};
+                                    cv.animate == true ? self.liClickHideAmt(): self.liClickHideClk();
+//                                    if(cv.animate == true){
+//                                        self.liClickHideAmt()
+//                                    }else{
+//                                        self.liClickClk();
+//                                    }
+                                    //if(cv.animate == true){self.liClickHideAmt()}
+                                    if(cv.replaceText == true){self.liClickReplaceText()};
+                                    if(cv.bodyClickHide == true){self.bodyClickHide()};
+                                },
+                                //加载后设置公共的css样式
+                                publickCss: function () {
+                                    cv.animate == true ? cv.dropDownListDom.css({top:'60px'}):cv.dropDownListDom.css({top:'50px'});
+//                                    if(cv.animate == true){
+//                                        cv.dropDownListDom.css({top:'60px'});
+//                                    }else {
+//                                        cv.dropDownListDom.css({top:'50px'});
+//                                    }
+                                },
+                                //点击selected 显示隐藏
+                                selectedClick: function () {
+                                    //var clickMark = true;
+                                    cv.selectedDom.click(function (e) {
+                                        if(cv.animate == true){
+                                            if(cv.clickMark){
+                                                cv.dropDownListDom.stop().animate({opacity:'show',top:'50px'},'slow');
+                                                e.stopPropagation();
+                                                cv.clickMark = false;
+                                            }else{
+                                                cv.dropDownListDom.stop().animate({opacity:'hide',top:'60px'},'slow');
+                                                e.stopPropagation();
+                                                cv.clickMark = true;
+                                            }
+                                        }else{
+                                            cv.dropDownListDom.stop().toggle();
+                                            e.stopPropagation();
+                                        }
+
+                                    });
+
+                                },
+                                //点击li 隐藏动画版本下拉框
+                                liClickHideAmt: function () {
+                                    //点击li 隐藏下拉框
+                                    cv.dropDownLiDom.click(function (e) {
+                                        cv.dropDownListDom.stop().animate({opacity:'hide',top:'60px'},'slow');
+                                        e.stopPropagation();
+                                        cv.clickMark = true;
+                                    });
+                                },
+                                //点击li 隐藏无动画版本下拉框
+                                liClickHideClk: function () {
+                                    //点击li 隐藏下拉框
+                                    cv.dropDownLiDom.click(function (e) {
+                                        cv.dropDownListDom.stop().toggle();
+                                        e.stopPropagation();
+                                    });
+                                },
+                                //点击body 隐藏下拉框
+                                bodyClickHide: function () {
+                                    console.log(cv.dropDownListDom);
+                                    $('.body_app').click(function (e) {
+                                        if(cv.animate == true){
+                                            cv.dropDownListDom.stop().animate({opacity:'hide',top:'60px'},'slow');
+                                            cv.clickMark = true;
+                                        }else{
+                                            cv.dropDownListDom.stop().hide();
+                                            e.stopPropagation();
+                                        }
+
+                                    });
+                                },
+                                //点击li 替换文本值
+                                liClickReplaceText: function () {
+                                    cv.dropDownLiDom.click(function () {
+                                        var liText = $(this).text().trim();
+                                        cv.selectedDom.text(liText);
+                                    });
+                                },
+                                //hover 显示隐藏
+                                selectedHover: function () {
+                                    cv.selectBoxDom.hover(function () {
+                                        cv.animate == true ?
+                                            cv.dropDownListDom.stop().animate({opacity:'show',top:'50px'},'slow'):cv.dropDownListDom.stop().show();
+//                                        if(cv.animate == true){
+//                                            cv.dropDownListDom.stop().animate({opacity:'show',top:'50px'},'slow');
+//                                        }else{
+//                                            cv.dropDownListDom.stop().show();
+//                                        }
+                                    }, function () {
+                                        cv.animate == true ?
+                                                cv.dropDownListDom.stop().animate({opacity:'hide',top:'60px'},'slow'): cv.dropDownListDom.stop().hide();
+//                                        if(cv.animate == true){
+//                                            cv.dropDownListDom.stop().animate({opacity:'hide',top:'60px'},'slow');
+//                                        }else {
+//                                            cv.dropDownListDom.stop().hide();
+//                                        }
+                                    });
+                                }
+                            }
+                        }
+                        action.init();
+                    });
+                }
+            });
+
+            var defaluts = {
+                selectBoxDom:    '.select_box',//下拉框最外面的容器
+                selectedDom:     '.selected',//默认选中的容器
+                dropDownListDom: '.drop_down_list',//下拉框容器
+                dropDownLiDom: '.drop_down_list ul li',//下拉框容器
+                bodyAppDom: '.body_app',
+                replaceText:true, //替换文本
+                bodyClickHide:true, //点击body 隐藏下拉框
+                hover: false,    //选择交互为 hover
+                click: true,     //选择交互为 click
+                animate:false,    //选择交互动画为 animater
+            }
+        })(window.jQuery)
+    </script>
+
+    <script>
+        $('.select-app').selectPulgin({
+            selectBoxDom:    '.select_box',//下拉框最外面的容器
+            selectedDom:     '.selected',//默认选中的容器
+            dropDownListDom: '.drop_down_list',//下拉框容器
+            bodyAppDom: '.body_app',
+            replaceText:true, //替换文本
+            bodyClickHide:true, //点击body 隐藏下拉框
+            hover: false,
+            click: true,
+            animate: false
+        });
+    </script>
+</body>
+</html>

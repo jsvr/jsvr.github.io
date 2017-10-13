@@ -1,0 +1,349 @@
+<head>
+    <link rel="icon" href="__ROOT__/static/Home/staticimages/favicon.png" type="images/png">
+</head>
+<div class="nav_blk">
+    <div class="nav_blkm">
+        <!--公司logo-->
+        <div class="company_logo fl">
+            <a href="/"> <img src="__ROOT__/static/platform/images/index/company_logo2.png" alt=""></a>
+        </div>
+        <!--社区下拉框-->
+        <!--<div class="community_box fl">-->
+        <!--<a href="javascript:void(0);" class="select">-->
+        <!--<span>COMMUNITY</span>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--国旗下拉框 语言切换-->
+        <div class="national_flag_box dn fl">
+            <a href="javascript:void(0);" class="select db">
+                <span>
+                    <img src="__ROOT__/static/platform/images/index/en_gqicon.png" alt="">
+                </span>
+                <img src="__ROOT__/static/platform/images/index/community_btn3.png" alt="" class="select_img">
+            </a>
+            <div class="comboBox dn">
+                <ul class="clearfix">
+                    <li>
+                        <a href="javascript:void(0);">
+                            <img src="__ROOT__/static/platform/images/index/en_gqicon.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <img src="__ROOT__/static/platform/images/index/en_gqicon.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--个人中心-->
+        <php>
+            if($usname!="")
+            {
+        </php>
+
+        <div class="personal_center fr">
+            <div class="select clearfix">
+                <div class="arrow"></div>
+            </div>
+            <div class="comboBox">
+                <div class="comboBox_top">
+                    <div class="comboBox_top_img fl">
+                        <div class="head_img">
+                            <php>
+                                if($avatar==""|| $avatar=="0"){
+                                echo '<img src="/Uploads/Images/header_img02.png" alt="'.$usname.' ">';
+                                }else{
+                                echo '<img src="/Uploads/avatar/s_'. $avatar.'" alt="'.$usname.' ">';
+                                }
+                            </php>
+                        </div>
+                        <p>{$usname}</p>
+                    </div>
+                    <div class="comboBox_top_content fr">
+                        <a href="{:U('Home/User/UserCenter')}" class="itema1">My&nbsp;profile</a>
+                        <a href="https://br-passport.xcloudgame.com/index.php?m=Index&a=logout&return_url=https%3A%2F%2Fwww.xcloudgame.com%2F"
+                           class="itema2">Log&nbsp;out</a>
+                    </div>
+                </div>
+                <div class="comboBox_btm">
+                    <div class="xcoins fl">
+                        <p>{$coin}</p>
+                        <span>xcoins</span>
+                    </div>
+                    <div class="recharge fr">
+                        <a href="{:U('Home/User/payCoin')}">Recharge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <php>
+            }
+            if($usname=="")
+            {
+        </php>
+        <!--登录注册-->
+        <div class="blk_login_box fr">
+            <ul>
+                <li class="login_item J_login fl">
+                    <a href="javascript:;">
+                        Please log in first
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <php>
+            }
+        </php>
+        <!--视频-->
+        <!--<div class="blk_video fr">-->
+        <!--<a href="javascript:void (0);">Video</a>-->
+        <!--</div>-->
+        <!--home-->
+        <div class="blk_home fr dn">
+            <a href="javascript:void (0);">Home</a>
+        </div>
+        <!--图标 旗-->
+        <php>
+            if($usname!="")
+            {
+        </php>
+        <div class="nav_blkr_flag fr">
+            <!--图标盒子-->
+            <div class="redr_icon_box fl">
+                <!--背景 旗子-->
+                <img src="__ROOT__/static/platform/images/index/blk_nav_flag01.png" alt="">
+                <!--number-->
+                <span><php>echo $nCount;</php></span>
+            </div>
+            <!--下拉框-->
+
+            <div class="redr_comboBox dn">
+                <!--标题-->
+                <a href="javascript:;" class="redr_comboBox_title db">
+                    Notice
+                </a>
+                <ul class="J_noticeUl" <php>if($nCount==0){echo " style=height:169px";} </php>>
+                <!--line-->
+                <li class="redr_comboBox_line">
+
+                </li>
+                <php>
+                    foreach ($ndata as $noItem){
+                </php>
+                <li class="redr_comboBox_itemli">
+
+                    <php>
+                        if($noItem["url"]==""){
+                        echo ' <a href="javascript:;">';
+                        }else{
+                        echo ' <a href="'.$noItem[" url"].'" target="_blank" onclick="hasview('.$noItem["id"].')">'
+                        ;
+                        }
+
+                    </php>
+
+
+                    <!--左边图片-->
+                    <div class="redr_comboBox_img fl"></div>
+                    <!--右边内容-->
+                    <div class="redr_comboBox_content fl">
+                        <p>
+                            <php>echo $noItem["content"];</php>
+                        </p>
+                        <span><php> echo date('d M,Y',$noItem["time1"]);</php></span>
+                    </div>
+                    </a>
+                </li>
+                <php>
+                    }
+                </php>
+                </ul>
+            </div>
+
+        </div>
+        <php>
+            }
+        </php>
+        <!--个人金币-->
+        <php>
+            if($usname!="")
+            {
+        </php>
+        <div class="ps_coin fr">
+            <a href="{:U('Home/User/payCoin')}" class="ps_icon_num">14586</a>
+        </div>
+        <php>
+            }
+        </php>
+        <!--个人头像信息-->
+        <php>
+            if($usname!="")
+            {
+        </php>
+        <a href="{:U('Home/User/UserCenter')}"  class="ps_headerimg_infor fr">
+            <div class="head_img fl">
+                <php>
+                    if($avatar==""|| $avatar=="0"){
+                    echo '<img src="/Uploads/Images/header_img02.png" alt="'.$usname.' ">';
+                    }else{
+                    echo '<img src="/Uploads/avatar/s_'. $avatar.'" alt="'.$usname.' ">';
+                    }
+                </php>
+            </div>
+            <span class="ps_icon_num fl">Mr_frank Bluceed</span>
+        </a>
+        <php>
+            }
+        </php>
+    </div>
+</div>
+<div class="nav_red_box">
+    <div class="nav_red clearfix">
+        <div class="nav_red_left fl">
+
+        </div>
+        <div class="nav_red_right fl"></div>
+    </div>
+</div>
+
+
+<!--登录弹框 start-->
+<div class="login_mask_box dn" id="tab2">
+    <div class="login_mask_boxt">
+        <div class="login_box">
+            <!--左边内容-->
+            <div class="login_boxl">
+                <!--关闭按钮-->
+                <div class="login_box_closebtn">
+                    <span>×</span>
+                </div>
+                <!--弹框 title-->
+                <div class="login_title">
+                    <img src="__ROOT__/static/platform/images/index/company_logo2.png" alt="">
+                </div>
+                <!--用户名-->
+                <div class="userNameBox clearfix">
+                    <label for="userNamer" class="fl">
+                        Email:
+                    </label>
+                    <input type="text" name="email" placeholder="Your Email" id="userNamer" class="user_name email fr">
+                </div>
+                <span class="msg-email">&nbsp;</span>
+                <!--密码-->
+                <div class="userPwdBox clearfix">
+                    <label for="passWordr">
+                        Password:
+                    </label>
+                    <input type="password" name="pwd" placeholder="Your Password" id="passWordr" class="pass_word pwd fr">
+                </div>
+
+                <span class="msg-pwd">&nbsp;</span>
+                <!--阅读同意 忘记密码-->
+                <div class="stage3_box">
+                    <ul>
+                        <li class="fl">
+                            <label for="checkBoxr">
+                                <!--                                    <input type="checkbox" checked="checked" placeholder="Your password" id="checkBoxr" class="check_box">
+                                                                    <span class="check_box_agree">Keep me logged in</span>-->
+                            </label>
+                        </li>
+                        <li class="fr">
+                            <a href="https://br-passport.xcloudgame.com/index.php?m=Index&a=forget&return_url=http%3A%2F%2Fbr.u.xcloudgame.com%2F"
+                               class="forgot_pwd">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--登录按钮-->
+                <label for="dologin">
+                    <input type="submit" value="LOGIN" id="dologin">
+                </label>
+                <!--去注册-->
+                <a href="https://br-passport-dev.xcloudgame.com:50443/index.php?m=Index&a=registrar&return_url=https%3A%2F%2Fwww.xcloudgame.com%2F"
+                   class="db go_register" id="signUpBtn">
+                    REGISTER
+                </a>
+                <!--facebook 分享-->
+                <div class="stage5_box">
+                    <p>Login with any of these accounts:</p>
+                    <a href="https://br-passport.xcloudgame.com/index.php?m=Social&a=facebook&f=register&gid=10001&sid=100001&channel=website&ad=&return_url=https%3A%2F%2Fwww.xcloudgame.com%2F"
+                       class="share_facebk db">
+                        <img src="__ROOT__/static/platform/images/login/share_fb_btn.png" alt="">
+                    </a>
+                </div>
+                <!--提示密码错误-->
+                <div class="login_up_mistake">
+                    <img src="__ROOT__/static/platform/images/login/up_mistake.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--登录弹框 end-->
+<!--注册弹框 start-->
+<div class="register_mask_box dn" id="tab3">
+    <div class="register_mask_boxt">
+        <div class="register_box">
+            <!--左边内容-->
+            <div class="register_boxl">
+                <!--关闭按钮-->
+                <div class="register_box_closebtn">
+                    <span>×</span>
+                </div>
+                <!--弹框 title-->
+                <div class="register_title">
+                    <img src="__ROOT__/static/platform/images/index/company_logo2.png" alt="">
+                </div>
+                <!--用户名-->
+                <label for="userName">
+                    <input type="text" name="email" placeholder="Email :" id="userName" class="user_name email db">
+                </label>
+                <span class="msg-email">&nbsp;</span>
+                <!--密码-->
+                <label for="passWord">
+                    <input type="password" name="pwd" placeholder="Password :" id="passWord"
+                           class="pass_word pwd J_pass_word db">
+                </label>
+                <span class="msg-pwd">&nbsp;</span>
+                <div class="stage3_box">
+                    <ul>
+                        <li class="fl">
+                            <label for="checkBox">
+                                <input type="checkbox" name="pwd" placeholder="Your password" id="checkBox"
+                                       class="check_box">
+                                <span class="check_box_agree">I accept Terms of Service and Privacy Policy</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <!--登录按钮-->
+                <label for="doreg">
+                    <input type="submit" value="Register" id="doreg">
+                </label>
+                <!--去登录-->
+                <div class="go_register" id="loginNowBtnr">
+                    LOGIN IN
+                </div>
+                <!--facebook 分享-->
+                <div class="stage5_box">
+                    <p>Login with any of these accounts:</p>
+                    <a href="javascript:;" class="share_facebk db">
+                        <img src="__ROOT__/static/platform/images/login/share_fb_btn.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--注册弹框 end-->
+<script>
+    function hasview(vid) {
+        if (parseInt(vid) != vid) {
+            return;
+        }
+        htmlobj = $.ajax({url: "/index.php?m=Index&a=notice&vid=" + vid});
+
+    }
+</script>

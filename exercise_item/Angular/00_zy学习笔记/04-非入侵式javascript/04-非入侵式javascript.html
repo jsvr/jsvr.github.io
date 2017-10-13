@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-非入侵式javascript</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+<!--在传统的前端开发中,把js写在html中,称为入侵式的javascript:-->
+<div id="activeStatus" onclick= "console.log('入侵式javascript!')">状态添加</div>
+<div class="box1" ng-controller="myCtrl1" ng-click="tipFoo1()">非入侵式javascript 1</div>
+<div class="box2" ng-controller="myCtrl2" ng-click="tipFoo2()">非入侵式javascript 2</div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl1', function ($scope) {
+        $scope.tipFoo1 = function () {
+            alert("非入侵式javascript 1");
+        }
+    });
+    app.controller('myCtrl2', function ($scope) {
+        $scope.tipFoo2 = function () {
+            alert('非入侵式javascript 2');
+        }
+    })
+</script>
+</html>

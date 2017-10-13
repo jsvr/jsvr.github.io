@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令作用域</title>
+</head>
+<body ng-controller="mainController">
+    {{ sayHello() }}
+    <div demo-hello="hello" at="this is @" and="sayHello()" equal="name" expr="sayHello()"></div>
+</body>
+<script src="../../../dist/angular/angular.js"></script>
+<script>
+    var app = angular.module('app',['demo.directives']);
+    app.controller('mainController', function ($scope) {
+        $scope.name = 'main controller';
+        $scope.sayHello = function () {
+            return "hello world"
+        }
+    });
+
+    var directivesFun = angular.module('demo.directives',[]);
+    //独立作用域
+    directivesFun.directive('demoHello', function () {
+        return {
+            restrict: 'EA',
+            template:`
+            <div>
+                <div>at:{{ at }}</div>
+                <div>and:{{ and() }}</div>
+                <div>expr:{{ expr }}</div>
+                <div>equal:{{ equal }}</div>
+                <div>demo-hello:{{ demoHello }}</div>
+            </div>
+
+            `,
+            transclude: true,
+            replace: true,
+            scope:{
+                "at": "@", // 绑定一个字符串
+                "and": "&", // 单项绑定一个表达式,获得一个函数可以取得到的值
+                "expr": "<", // 单项绑定一个表达式, 直接得到值
+                "equal": "=", // 和指定的字段进行双向绑定
+                "demoHello":"@"
+            }
+        }
+    });
+</script>
+</html>

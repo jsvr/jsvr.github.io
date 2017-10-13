@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>tab栏-jquery版本-02-copy01</title>
+    <script src="../../../../dist/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="angular.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .clearfix:before, .clearfix:after {
+            content: "";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        .zy_nav_list{
+            width: 100px;
+            height: 60px;
+            float: left;
+            background-color: deepskyblue;
+            font:13px/25px "Verdana";
+            color: black;
+            text-align: center;
+            margin:0 15px;
+            cursor: pointer;
+        }
+        .zy_nav .navActive{
+            background-color: deeppink;
+            color: #fff;
+        }
+        .zy_content_list{
+            width: 360px;
+            height: 200px;
+            background-color: deeppink;
+            font:13px/13px "Verdana";
+            color: black;
+            text-align: center;
+            margin:15px 15px;
+            display: none;
+        }
+        .zy_content .cotentActive{
+            display: block;
+        }
+    </style>
+</head>
+<body ng-controller="myCtrl">
+    <div class="layout">
+        <tab-template2 tab-id="tab1" tab-data="data"></tab-template2>
+    </div>
+</body>
+<script>
+    //动态调用模板切换tab栏
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.data = {
+            dataNav:[
+                {'title':'nav1', 'detail':'这是按钮1'},
+                {'title':'nav2', 'detail':'这是按钮2'},
+                {'title':'nav3', 'detail':'这是按钮3'}
+            ],
+            dataContent: [
+                {'title':'content1', 'detail':'这是内容1'},
+                {'title':'content2', 'detail':'这是内容2'},
+                {'title':'content3', 'detail':'这是内容3'},
+            ]
+        }
+    });
+    app.directive('tabTemplate2', function () {
+        return{
+            restrict: 'E',
+            templateUrl: 'template/tem02.html',
+            replace: true,//把当前自定义的指令标签替换成引入的标签
+            scope : { //作用域隔离 ： 每个作用域执行的是自己的功能
+                tabId : '@', //拿所有grId的字符串
+                tabData : '=' //拿所有grData属性的变量名
+            },
+            link: function (scope,element,attr) {
+                //dom 操作 获取动态加载的dom的选择器(必须配合jquery使用);
+                element.delegate('.zy_nav_list','click', function () {
+                    var _index = $(this).index();
+                    $(this).addClass('navActive').siblings('.zy_nav_list').removeClass('navActive');
+                    $(this).parents('.zy_nav').siblings('.zy_content').find('.zy_content_list')
+                            .eq(_index).addClass('cotentActive').siblings().removeClass('cotentActive');
+                });
+            }
+        }
+    });
+</script>
+</html>

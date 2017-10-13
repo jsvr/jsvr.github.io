@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="d">
+    	
+    	<span>这是页面中存在的span</span>
+
+    </div>
+    <input type="button" name="" value="按钮" id="btn">
+    <script type="text/javascript">
+    var d = document.getElementById("d");
+	d.onclick = function(e) {
+	    console.log(e);
+		var tar = e.target;
+
+		if(tar.nodeName !== "SPAN") {
+			return;
+		}
+
+		alert(tar.innerHTML);
+	};
+
+    //阻止事件冒泡
+	/*var spans = d.getElementsByTagName("span");
+	for(var i = 0; i < spans.length; i++) {
+		spans[i].onclick = function() {
+			alert(this.innerHTML);
+		};
+	}*/
+
+
+
+    var btn = document.getElementById('btn')
+    btn.onclick = function() {
+        // 动态创建div元素
+        var span = document.createElement("span");
+        span.innerHTML = "动态创建的元素";
+
+        d.appendChild(span);
+    };
+    </script>
+</body>
+
+</html>

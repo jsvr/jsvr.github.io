@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input阶梯输入</title>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            margin:50px auto;
+        }
+        .box input{
+            float: left;
+            width: 80px;
+            height: 45px;
+            margin-left: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="g-recaptcha" data-sitekey="6LcgPisUAAAAABI6qYoQZUuo3MteK_y0wSmkBESv"></div>
+    <div class="box">
+        <input type="text" class="input1">
+        <input type="text" class="input2">
+        <input type="text" class="input3">
+        <input type="text" class="input4">
+    </div>
+</body>
+<script>
+    $(function () {
+        $('.input1').bind('input propertychange',function () {
+            var iptVal1 = $(".input1").val();
+            var iptValLenth1 = $(".input1").val().length;
+            console.log(iptValLenth1);
+            if(iptValLenth1 == 3){
+                $('.input2').focus();
+            }
+        });
+        $('.input2').bind('input propertychange',function () {
+            var iptVal2 = $(".input2").val();
+            var iptValLenth2 = $(".input2").val().length;
+            console.log(iptValLenth2);
+            if(iptValLenth2 == 3){
+                $('.input3').focus();
+            }
+        });
+        $('.input3').bind('input propertychange',function () {
+            var iptVal3 = $(".input3").val();
+            var iptValLenth3 = $(".input3").val().length;
+            console.log(iptValLenth3);
+            if(iptValLenth3 == 3){
+                $('.input4').focus();
+            }
+        });
+        $('.input4').bind('input propertychange',function () {
+            var iptVal4 = $(".input4").val();
+            var iptValLenth4 = $(".input4").val().length;
+            console.log(iptValLenth4);
+            if(iptValLenth4 == 2){
+                alert("点击提交");
+            }
+        });
+    });
+
+</script>
+</html>

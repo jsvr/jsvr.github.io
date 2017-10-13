@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>引用类型</title>
+</head>
+<body>
+<script>
+    //29、看代码给答案。
+
+
+
+
+    var a = new Object();
+    a.value = 1;
+    b = a;
+    b.value = 2;
+    alert(a.value);//2
+
+    var str1 = 'haha';
+    var str2 = str1;
+    console.log(str1);//haha
+    console.log(str2);//haha
+    var str1 = 'hehe';
+    console.log(str1);//hehe
+    console.log(str2);//haha
+    //值类型是拷贝;引用类型是指向;先判断变量是值还是引用;
+
+    var str3 = {name:'ZY',age:20};
+    var str4 = str3;
+    console.log(str3.name);//ZY
+    console.log(str4.name);//ZY
+    str4.name = 'LXW';// 或者  str3.name = 'LXW';
+    console.log(str3.name);//LXW
+    console.log(str4.name);//LXW
+
+
+
+    var o1 = { name: 'jim', age: 19 };
+    var car = { name: 'BMW' };
+    var o2 = o1;  // 赋值的引用
+    o2.car = car; // 动态特性添加属性
+    console.log(o2.car);//Object {name: "BMW"}
+    console.log(o1.car);//Object {name: "BMW"}
+
+</script>
+</body>
+</html>

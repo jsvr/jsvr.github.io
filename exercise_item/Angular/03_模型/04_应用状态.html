@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>应用状态</title>
+    <script src="../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <!--ng-model 指令可以为应用数据提供状态值(invalid,dirty,touched,erro)-->
+        <form name="myForm" ng-init="myText = 'test@Gagaye.com'">
+            Email:
+            <input type="email" name="myAddress" ng-model="myText" required>
+            <!--required 验证不能为空-->
+            <p>编辑邮箱地址,查看状态的改变.</p>
+            <p>Valid: {{ myForm.myAddress.$valid }} (如果输入的值是合法的则为 true)</p>
+            <p>Dirty: {{ myForm.myAddress.$dirty }} (如果值改变了则为true)</p>
+            <!--开始输入时,input 值发生改变,dirty 变为true-->
+            <p>Touched: {{ myForm.myAddress.$touched }} (如果通过触屏点击则为ture)</p>
+            <!--输入完点击以后 touched 变为true-->
+        </form>
+    </div>
+    <script>
+        var app = angular.module('myApp',[]);
+    </script>
+</body>
+</html>

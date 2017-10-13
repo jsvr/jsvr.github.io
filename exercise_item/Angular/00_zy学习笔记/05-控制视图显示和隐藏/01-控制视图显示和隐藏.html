@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-控制视图显示和隐藏</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: deepskyblue;
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app='app' ng-controller="showHide">
+    <button ng-click="toggleShow();">{{ text }}</button>
+    <div class="box" ng-show="ifShow"></div>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('showHide', function ($scope) {
+        $scope.text = '点击显示框';
+        $scope.ifShow = false;
+        $scope.toggleShow = function () {
+            $scope.ifShow = !$scope.ifShow;
+            $scope.text = $scope.text == '点击显示框' ? '点击隐藏框' : '点击显示框';
+        }
+    });
+</script>
+</html>

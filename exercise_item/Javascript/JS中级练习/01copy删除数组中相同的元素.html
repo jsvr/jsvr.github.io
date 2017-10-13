@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script>
+        /*
+        var arr = [1,2,3,4,5,6,7,7,4,5,5];
+        function deRepeat(arr){
+            var obj = { };
+            var index = 0;
+            var newArray = [];
+            var l = arr.length;
+            for(var i = 0; i < l; i ++){
+                if(obj[arr[i]] ===undefined){
+                    obj[arr[i]] = 2;
+                    newArray[index++] = arr[i];
+                }else if(obj[arr[i]] = 2){
+                    continue;
+                }
+            }
+            return newArray;
+        }
+
+
+        var arr = [1,4,5,6,3,2,3,5,6];
+        var deRepeat = function (arr) {
+            var obj = {},
+                    index = 0,
+                    obj = {},
+                    newArr = [],
+                    i,
+                    l = arr.length;
+            for(i = 0; i < l; i ++){
+                if(obj[arr[i]] === undefined){
+                    obj[arr[i]] = 1;
+                    newArr[index++] = arr[i];
+                    //newArr.push(arr[i]);
+                }else if(obj[arr[i]] === 1){
+                    continue;
+                }
+            }
+            return newArr;
+        }
+
+        var arrRepeat1 = deRepeat(arr);
+        console.log(arrRepeat1);
+        */
+        var arr = [1,2,3,4,5,6,43,2,3,4,7,99];
+
+        var deRepeat = function(arr){
+            var i = 0,
+                    newArr = [],
+                    l = arr.length;
+            for(; i < l; i++){
+                if(deRepeat[arr[i]] === undefined){
+                    deRepeat[arr[i]] = 5;
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+
+        var arr1 = deRepeat(arr);
+        console.log(arr1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

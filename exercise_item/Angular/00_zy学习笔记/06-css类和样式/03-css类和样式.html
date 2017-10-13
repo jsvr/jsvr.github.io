@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-类和样式</title>
+    <style>
+        li.cur {
+            background:#C0DCC0
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <ul>
+            <li ng-repeat= "item in items" ng-class="{cur:$index==selRow}" ng-click="choose($index)">
+                <span>{{ item.name }}</span>
+                <span>{{ item.food }}</span>
+                <span>{{ item.price }}</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.selRow = null;
+        $scope.items = [
+            {name:'hanMeiMei',food:'西瓜',price:'￥15'},
+            {name:'liLei',food:'香蕉',price:'￥20'},
+            {name:'Lucy',food:'木瓜',price:'￥25'}
+        ];
+        $scope.choose = function (i) {
+            $scope.selRow = i;
+        }
+    });
+</script>
+</html>

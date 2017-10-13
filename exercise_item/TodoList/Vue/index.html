@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>vue2.0</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style type="text/css">
+        .completed{
+            color: green;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container" id="app">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">welcome Vue 2.0</div>
+                    <div class="panel-body">
+                        <input type="text" name="" v-model="message" class="form-control">
+                        <h1>{{message}} ({{todoCount}})</h1>
+                        <ul class="list-group">
+                            <li class="list-group-item" v-for="(todo,index) in todos" v-bind:class="{'completed' : todo.completed}">
+                                {{todo.title}}
+                                <button class="btn btn-warning btn-xs pull-right" v-on:click="deleteTodo(index)">Delete</button>
+                                <button class="btn btn-xs pull-right" v-on:click="toggleCompletion(todo)" v-bind:class="[todo.completed ? 'btn-success' : 'btn-danger']">{{todo.completed ? 'completed' : 'working'}}</button>
+                            </li>
+                        </ul>
+                        <form v-on:submit.prevent="addTodo(newTodo)">
+                            <div class="form-group">
+                                <input type="text" name="" class="form-gcontrol" placeholder="add a new todo" v-model="newTodo.title">
+                            </div>
+                            <div class="from-group">
+                                <button class="btn btn-success" type="submit">add todo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            data:{
+                message:'hello world',
+                todos:[
+                    {id:1,title:"learn vuejs",completed:false},
+                ],
+                newTodo:{id:null,title:"",completed:false}//定义一个obj
+            },
+            computed:{
+                todoCount(){
+                    return this.todos.length;
+                }
+            },
+            methods:{
+                addTodo(newTodo){//es6
+                    this.todos.push(newTodo);//把新的obj添加在数组中，
+                    this.newTodo = {id:null,title:"",completed:false}//初始化newTodo
+                },
+                deleteTodo(index){
+                    this.todos.splice(index,1);//删除下标为index的元素
+                },
+                toggleCompletion(todo){
+                    todo.completed = !todo.completed;
+                }
+            }
+        });
+    </script>
+    </div>
+</body>
+</html>

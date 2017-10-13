@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增删改查</title>
+    <script src="../../jquery-1.12.1.js"></script>
+</head>
+<body>
+    <div id='box1'>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <input type="text" value='value'>
+        </ul>
+    </div>
+    <div id="box2">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div class="box3">
+        <ul>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+</body>
+<script>
+    //创建一个p标签
+    $('div:eq(0)>ul').append('<p>我是创建的一个p标签</p>');
+    // 让ul的内容为空
+    $('div:eq(1)>ul').empty();
+    //添加类名
+    $('div:eq(0)>ul>li').addClass('iocn').css({'width':'500px','height':'100px','backgroundColor':'deeppink'});
+    //删除类名
+    $('div:eq(0)>ul>li:eq(1)').removeClass('iocn').html("<a href=''>删除</a>");
+    $('div:eq(0)>ul>li:eq(2)').removeClass('iocn').text("<a href=''>删除</a>");
+    $('div:eq(0)>ul>input').val("123");
+
+
+    //循环添加a标签
+    var lisDom = $('.box3>ul li');
+    var j = 0;
+    for(var i = 0;i < lisDom.length; i++){
+        lisDom[i].innerHTML = '';
+        var aDom = document.createElement('a');
+        aDom.href = 'http://www.baidu.com';
+        aDom.innerHTML = j;
+        lisDom[i].appendChild(aDom);
+        j++;
+    }
+</script>
+</html>

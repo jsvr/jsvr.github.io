@@ -1,0 +1,215 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../../../../dist/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/form-demo1.css">
+    <script src="../../../../../dist/angular/angular.js"></script>
+</head>
+<body>
+<div ng-app="myApp" style="margin-top:50px;" ng-controller="myCtrl">
+    <script>
+        /*
+         1. requered 必填项 ----- myForm.username.$error.required
+         2. 用正则直接验证用户名的最大最小长度(在不需要最大最小长度单独验证的时候)
+         3. minlength myForm.username.$error.minlength
+         4. maxlength myForm.username.$error.maxlength
+         */
+
+    </script>
+    <form name="myForm" action="" class="container form-horizontal" id="animate">
+        <div class="form-group" ng-class="{'has-error':checkData.nameCheck=='f'}">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-5">
+                <input type="text" autocomplete="off" name="username" ng-change="provingUserName();"
+                       ng-model="data.userName" class="form-control" placeholder="用户名">
+
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <tip-message></tip-message>
+                <div ng-show="checkData.nameCheck=='f'"
+                     class="alert alert-danger">
+                    用户名不符合要求
+                    <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                </div>
+                <div ng-show="checkData.nameCheck=='m'"
+                     class="alert alert-success">
+                    用户名合法
+                    <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <a href="javascript:void (0)" ng-show=" checkData.nameCheck=='m' "
+                   class="btn btn-success">点击验证用户名是否存在</a>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':checkData.passwordCheck=='f'}">
+            <label class="col-sm-2 control-label" >密码</label>
+            <div class="col-sm-5">
+                <input type="password" autocomplete="off" name="password" ng-required="true" ng-blur="provingPassword();" ng-change="provingPassword();"
+                       ng-model="password" class="form-control" placeholder="密码"/>
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <tip-message></tip-message>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':checkData.confirmPasswordCheck=='f'}">
+            <label class="col-sm-2 control-label" >确定密码</label>
+            <div class="col-sm-5">
+                <input type="password" autocomplete="off" name="conFirmPassword" ng-required="true" ng-change="provingConFirmPassword();"
+                       ng-model="conFirmPassword" class="form-control" placeholder="确认密码"/>
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <div ng-show="checkData.confirmPasswordCheck=='f'"
+                     class="alert alert-danger">
+                    两次输入密码不一致
+                    <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                </div>
+                <div ng-show="checkData.confirmPasswordCheck=='m'"
+                     class="alert alert-success">
+                    两次输入密码一致
+                    <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':checkData.emailCheck=='f'}">
+            <label class="col-sm-2 control-label" >邮箱</label>
+            <div class="col-sm-5">
+                <input type="text" autocomplete="off" ng-required="true" ng-change="provingEmail();"
+                       ng-model="email" class="form-control" placeholder="邮箱"/>
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <div ng-show="checkData.emailCheck == 'f'" class="alert alert-danger">
+                    邮箱格式不正确
+                    <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                </div>
+                <div ng-show="checkData.emailCheck == 'm'" class="alert alert-success">
+                    邮箱格式正确
+                    <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group  text-center">
+            <div class="btn btn-primary btn-lg" ng-click="httpTest1()">
+                提交
+            </div>
+        </div>
+    </form>
+    <div>{{ data.code }}</div>
+</div>
+
+<script src="js/form-demo1-01.js"></script>
+</body>
+=======
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../../../../dist/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/form-demo1.css">
+    <script src="../../../../../dist/angular/angular.js"></script>
+
+</head>
+<body>
+<div ng-app="myApp" style="margin-top:50px;" ng-controller="myCtrl">
+    <script>
+        /*
+         1. requered 必填项 ----- myForm.username.$error.required
+         2. 用正则直接验证用户名的最大最小长度(在不需要最大最小长度单独验证的时候)
+         3. minlength myForm.username.$error.minlength
+         4. maxlength myForm.username.$error.maxlength
+         */
+
+    </script>
+    <form name="myForm" action="" class="container form-horizontal" id="animate">
+        <div class="form-group" ng-class="{'has-error':checkData.nameCheck=='f'}">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-5">
+                <input type="text" autocomplete="off" name="username" ng-required="true" ng-blur="provingUserName();" ng-change="provingUserName();"
+                       ng-model="username" class="form-control" placeholder="用户名">
+
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <tip-message></tip-message>
+                <div ng-show="checkData.nameCheck=='f'"
+                     class="alert alert-danger">
+                    用户名不符合要求
+                    <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                </div>
+                <div ng-show="checkData.nameCheck=='m'"
+                     class="alert alert-success">
+                    用户名合法
+                    <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <a href="javascript:void (0)" ng-show=" checkData.nameCheck=='m' "
+                   class="btn btn-success">点击验证用户名是否存在</a>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':checkData.passwordCheck=='f'}">
+            <label class="col-sm-2 control-label" >密码</label>
+            <div class="col-sm-5">
+                <input type="password" autocomplete="off" name="password" ng-required="true" ng-blur="provingPassword();" ng-change="provingPassword();"
+                       ng-model="password" class="form-control" placeholder="密码"/>
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <tip-message></tip-message>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error':checkData.confirmPasswordCheck=='f'}">
+            <label class="col-sm-2 control-label" >确定密码</label>
+            <div class="col-sm-5">
+                <input type="password" autocomplete="off" name="conFirmPassword" ng-required="true" ng-change="provingConFirmPassword();"
+                       ng-model="conFirmPassword" class="form-control" placeholder="确认密码"/>
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <div ng-show="checkData.confirmPasswordCheck=='f'"
+                     class="alert alert-danger">
+                    两次输入密码不一致
+                    <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                </div>
+                <div ng-show="checkData.confirmPasswordCheck=='m'"
+                     class="alert alert-success">
+                    两次输入密码一致
+                    <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error':checkData.emailCheck=='f'}">
+            <label class="col-sm-2 control-label" >邮箱</label>
+            <div class="col-sm-5">
+                <input type="text" autocomplete="off" ng-required="true" ng-change="provingEmail();"
+                       ng-model="email" class="form-control" placeholder="邮箱"/>
+            </div>
+            <div class="col-sm-3 has-feedback">
+                <div ng-show="checkData.emailCheck == 'f'" class="alert alert-danger">
+                    邮箱格式不正确
+                    <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                </div>
+                <div ng-show="checkData.emailCheck == 'm'" class="alert alert-success">
+                    邮箱格式正确
+                    <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group  text-center">
+            <div class="btn btn-primary btn-lg" ng-click="httpTest1()">
+                提交
+            </div>
+        </div>
+    </form>
+    <div>{{ data.code }}</div>
+</div>
+
+<script src="js/form-demo1-01.js"></script>
+</body>
+>>>>>>> e32005a09f7cac47af26209009dd5456b66ff27c
+</html>

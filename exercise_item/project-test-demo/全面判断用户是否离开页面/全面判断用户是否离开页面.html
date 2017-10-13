@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>this is id onbeforunload event test</title>
+</head>
+<script type="text/javascript" language="javascript">
+    function bindunbeforunload()
+    {
+        window.onbeforeunload=perforresult;
+    }
+    function unbindunbeforunload()
+    {
+        window.onbeforeunload=null;
+    }
+    function perforresult()
+    {
+        return"当前操作未保存，如果你此时离开，所做操作信息将全部丢失，是否离开?";
+    }
+</script>
+<body onload="javascript:return bindunbeforunload();">
+<h1>test is start</h1>
+<input type="button" value="绑定事件" id="btnBind" onclick="return bindunbeforunload();"/>
+<input type="button" value="删除绑定事件" id="btnUnBind" onclick="unbindunbeforunload();"/>
+</body>
+</html>

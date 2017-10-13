@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分组匹配</title>
+</head>
+<body>
+<script>
+//    1. g 全局匹配
+    var str = "HOME,GAMES,VIDEO,USER SENTER,SUPPORT,FORUMS";
+    var substr = str.match(/(HOME)|(GAMES)|(VIDEO)|(USER SENTER)|(SUPPORT)|(FORUMS)/g);
+    console.log(substr[1]);
+    console.log(substr);
+//    2. i 不区分大小写匹配
+    var str1 = "/Google+Redesign/Accessories/Bags/zhou";
+    var substr1 = str1.match(/Google\+Redesign\/([^\/]*)\/([^\/]*)\/([^\/]*)/i);
+    console.log(substr1);
+    // 3. 贪婪模式与非贪婪模式
+    try{
+        str="<p>abcdefg</p><p>abcdefghijkl</p>";
+
+        re1=str.match(/<p>[\W\w]+?<\/p>/ig);
+        alert("非贪婪模式:\r\n\r\n１："+re1[0]+"\r\n２："+re1[1]);
+
+        re1=str.match(/<p>[\W\w]+<\/p>/ig);
+        alert("贪婪模式:\r\n\r\n"+re1);
+
+        re1=str.match(/<p>(.+?)<\/p>/i);
+        alert("非贪婪模式，且不要标记:\r\n\r\n１："+re1[1]);
+
+        re1=str.match(/<p>(.+)<\/p>/i);
+        alert("贪婪模式，且不要标记:\r\n\r\n"+re1[1]);
+    }catch(e){alert(e.description)}
+</script>
+</body>
+</html>

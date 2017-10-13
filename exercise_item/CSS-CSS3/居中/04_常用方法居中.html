@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用方法居中</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box1, .box2, .box3, .box4, .box5, .box6{
+            width: 400px;
+            height: 400px;
+            background-color: #ccc;
+            margin:5px auto;
+        }
+        .box1{
+            border: 2px solid red;
+        }
+        .img1{
+            width: 224px;
+            height: 224px;
+            display: block;
+            margin:0 auto;
+        }
+        .box2{
+            border: 2px solid orangered;
+        }
+        .box2_box{
+            width: 400px;
+            height: 400px;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .img2{
+            width: 224px;
+            height: 224px;
+            /*display: block;*/
+            vertical-align: middle;
+        }
+        .box3{
+            border: 2px solid yellow;
+            position: relative;
+        }
+        .img3{
+            width: 224px;
+            height: 224px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -112px;
+            margin-left: -112px;
+        }
+        .box4{
+            border: 2px solid green;
+            position: relative;
+        }
+        .img4{
+            width: 224px;
+            height: 224px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin:auto;
+        }
+        .box5{
+            border: 2px solid cyan;
+            position: relative;
+        }
+        .img5{
+            width: 224px;
+            height: 224px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .box6{
+            border: 2px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img6{
+            width: 224px;
+            height: 224px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img src="mimi.jpg" alt="" class='img1'>
+    </div>
+    <div class="box2">
+        <div class="box2_box">
+            <img src="mimi.jpg" alt="" class='img2'>
+        </div>
+    </div>
+    <div class="box3">
+        <img src="mimi.jpg" alt="" class='img3'>
+    </div>
+    <div class="box4">
+        <img src="mimi.jpg" alt="" class='img4'>
+    </div>
+    <div class="box5">
+        <img src="mimi.jpg" alt="" class='img5'>
+    </div>
+    <div class="box6">
+        <img src="mimi.jpg" alt="" class='img6'>
+    </div>
+</body>
+</html>

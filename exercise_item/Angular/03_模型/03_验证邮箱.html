@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证邮箱</title>
+    <script src="../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <form ng-app="" name="myForm">
+        Email: <input type="email" name="myAddress" ng-model="text">
+            <span ng-show="myForm.myAddress.$error.email">
+                输入的邮箱不合法
+            </span>
+    </form>
+    <!--ng-app 命名成myApp 会报错-->
+</body>
+</html>

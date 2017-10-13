@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function a(){
+        var num = 0;
+        function b(){
+            num++;
+            console.log(num);
+        }
+        b();
+        b();
+    }
+
+    a();
+
+    function b(num){
+        var num = 18;
+        function c(){
+            console.log(num);
+        }
+        c();
+    }
+    b(15);
+</script>
+</body>
+</html>

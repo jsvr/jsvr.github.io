@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量名提升</title>
+</head>
+<body>
+<script>
+     var foo = 1;
+     function fn(){
+         console.log(foo);
+         var foo = 2;
+         console.log(foo);
+     }
+    fn();
+</script>
+</body>
+</html>

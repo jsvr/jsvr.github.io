@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ab = {
+        'a':1,
+        'b':2,
+        'c':3,
+        abc: function () {
+            var that = this;
+            console.log('abc');// abc
+            var aaa = function () {
+                console.log(that.a);// 1
+                console.log(this);// window  怎么是window???
+            }
+            aaa();
+        }
+    };
+    console.log('---------------')
+    ab.abc();
+</script>
+</body>
+</html>

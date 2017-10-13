@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON</title>
+	<!--[if lte IE 7]>
+		
+	<![endif]-->
+</head>
+<body>
+	<script>
+		var obj = {"name": "itcast","age": 10};
+
+		// console.log(obj);
+
+		// var stars = {
+		// 	name: '刘德华',
+		// 	age : 53
+		// }
+
+		// stars.name;
+
+		// 打比方是从PHP传递过来的json
+		// var obj = '{"name": "itcast","age": 10}';
+
+		// JSON是一个内建对象
+
+		// 将字符串转成JS对象
+		// obj = JSON.parse(obj);
+
+		// console.log(obj);
+
+		var obj = {"name": "itcast","age": 10};
+
+		obj = JSON.stringify(obj);
+
+		console.log(obj);
+
+		var stars = {
+			"name": '刘德华',
+			"age": 53
+		}
+
+	</script>
+</body>
+</html>

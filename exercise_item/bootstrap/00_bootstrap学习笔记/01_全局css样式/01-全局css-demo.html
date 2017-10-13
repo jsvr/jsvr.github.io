@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--指定当前网页的编码格式-->
+    <meta charset="utf-8">
+    <!--指定当前的IE浏览器用它最新的渲染引擎 来渲染的网页-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--只会在移动端识别  视口  当前的宽度等于设备的宽度，默认的缩放比1.0，不予许用户自行缩放-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>01-全局css-demo</title>
+    <!-- Bootstrap -->
+    <!--引入核心css文件-->
+    <link href="../../../dist/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--
+    html5shiv 是IE9一下的浏览器支持html5标签
+    respond 在IE9一下不支持media query的时候让它能支持 我们的媒体查询
+    注意：：：：：以http形式打开预览
+    cdn 资源加速引擎  由于是在本地开发是不是应用本地的文件
+
+    -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../../../dist/html5shiv/html5shiv.min.js"></script>
+    <script src="../../../dist/respond/respond.min.js"></script>
+    <![endif]-->
+    <!--自己的css样式-->
+    <link rel="stylesheet" href="css/01-demo.css"/>
+</head>
+<body>
+<!--头部-->
+<header>
+    <!--导航-->
+    <nav></nav>
+</header>
+
+<section class="layout container">
+    <!-- 文章 -->
+    <article></article>
+    <!-- 侧边栏 -->
+    <aside></aside>
+    <!--栅格系统 12列-->
+    <script>
+        /* 超小屏幕（手机，小于 768px） */
+        /* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+        /* 小屏幕（平板，大于等于 768px） */
+        /* @media (min-width: @screen-sm-min) { ... } */
+
+        /* 中等屏幕（桌面显示器，大于等于 992px） */
+        /* @media (min-width: @screen-md-min) { ... } */
+
+        /* 大屏幕（大桌面显示器，大于等于 1200px） */
+        /* @media (min-width: @screen-lg-min) { ... } */
+        //最大最小宽度设置
+        /*
+        我们偶尔也会在媒体查询代码中包含 max-width 从而将 CSS 的影响限制在更小范围的屏幕大小之内。
+        @media (max-width: @screen-xs-max) { ... }
+        @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+        @media (min-width: @screen-lg-min) { ... }
+
+         */
+    </script>
+
+    <section class="lattice_cell1">
+        <h2 class="row">栅格系统 实例1</h2>
+        <!--不加 row 类名盒子左右两边会有15px的空白-->
+        <div class="row">
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+            <div class="col-md-1">.col-md-1</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">.col-md-8</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">.col-md-6</div>
+            <div class="col-md-6">.col-md-6</div>
+        </div>
+    </section>
+
+    <section class="drain_layout">
+        <h2 class="row">流式布局容器 实例1</h2>
+        <div class="container-fluid">
+            <div class="row mt20">
+                <div class="col-md-12">
+                    Big sister what are you nong sha lei!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mob_pc">
+        <h2 class="row">移动设备和桌面屏幕 实例1</h2>
+        <h4 class="row">超小屏幕类col-xs-* 和 中等屏幕类(pc小屏幕)col-md-* 大屏幕类col-lg-*(pc大屏幕)</h4>
+        <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+        <div class="row">
+            <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+
+        <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+        <div class="row">
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+        <div class="row">
+            <div class="col-xs-6">.col-xs-6</div>
+            <div class="col-xs-6">.col-xs-6</div>
+        </div>
+    </section>
+
+    <section class="mob_pad_pc">
+        <h2 class="row">手机、平板、中等屏幕(pc小屏幕) 实例</h2>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+            <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+            <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+            <!-- Optional: clear the XS cols if their content doesn't match in height -->
+            <div class="clearfix visible-xs-block"></div>
+            <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="row">多余的列(column)</h2>
+        <div class="row">
+            <div class="col-xs-9">.col-xs-9</div>
+            <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+            <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+        </div>
+    </section>
+
+    <setion>
+        <h2 class="row">响应式列重置  .clearfix 和 响应式工具类</h2>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3Resize your viewport or check it out on your phone for an example.</div>
+            <div class="clearfix col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+            <!-- Add the extra clearfix for only the required viewport -->
+            <div class="clearfix visible-xs-block">在分界点清除响应</div>
+
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+            <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        </div>
+        <h2 class="row">除了列在分界点清除响应， 您可能需要 重置偏移, 后推或前拉某个列</h2>
+        <h4 class="row">col-xx-offset-* 在某个屏幕向右偏移几个栅格</h4>
+        <div class="row">
+            <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+            <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">.col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+            <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0</div>
+        </div>
+        <h2 class="row">列偏移</h2>
+        <h4 class="row">使用 .col-md-offset-* 类可以将列向右侧偏移。这些类实际是通过使用 * 选择器为当前元素增加了左侧的边距（margin）。</h4>
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+        </div>
+        <h2 class="row">嵌套列</h2>
+        <h4 class="row">栅格系统内容再次嵌套 栅格系统</h4>
+        <div class="row">
+            <div class="col-md-9">
+                Level 1: .col-md-9
+                <div class="row">
+                    <div class="col-md-8 col-sm-6">Level 2: .col-md-8 .col-sm-6</div>
+                    <div class="col-md-4 col-sm-6">Level 3: .col-md-4 .col-sm-6</div>
+                </div>
+            </div>
+        </div>
+        <h2 class="row">列排序</h2>
+        <h4 class="row">
+            通过使用 .col-md-push-* 和 .col-md-pull-* 类就可以很容易的改变列（column）的顺序
+            <br>
+            和offset 类似,主要作用是调换前后位置
+        </h4>
+        <div class="row">
+            <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+            <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+            <h4>从前面插入4个 栅格</h4>
+            <div class="col-md-3 col-md-push-4">.col-md-3 .col-md-push-4</div>
+        </div>
+    </setion>
+
+    <section>
+        <h2 class="row">表格 基本实例</h2>
+        <h4 class="row">
+            <strong>table样式</strong>
+            .table:表格基本样式，很少的padding,灰色的细水平分隔线。
+            <br>
+            .table-striped:斑马纹样式，隔行换色。
+            <br>
+            .table-bordered:为表格和其中的每个单元格增加边框。
+            <br>
+            .table-hover:鼠标悬停，鼠标经过数据行时，该行背景色与斑马纹背景效果相同。
+            <br>
+            .table-condensed:紧凑型表格，padding减半。
+            <br>
+        </h4>
+        <h4 class="row">
+            <strong>tr或td样式：通过这些状态类可以为行或单元格设置颜色。</strong>
+            <br>
+            .active:鼠标悬停在行或单元格上时所设置的颜色
+            <br>
+            .success:标识成功或积极的动作
+            <br>
+            .danger:标识危险或潜在的带来负面影响的动作
+            <br>
+            .warning:标识警告或需要用户注意
+            <br>
+            .info:标识普通的提示信息或动作
+        </h4>
+        <h2 class="row">
+            将任何 .table 元素包裹在 .table-responsive 元素内，即可创建响应式表格，其会在小屏幕设备上（小于768px）水平滚动。
+            <br>
+            当屏幕大于 768px 宽度时，水平滚动条消失
+        </h2>
+        <div class="row table-responsive">
+            <table class="table table-bordered table-hover">
+                <caption>Optional table caption.</caption>
+                <thead>
+                <tr class="active">
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="success">
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr class="info">
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr class="warning">
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                <tr class="danger">
+                    <th scope="row">4</th>
+                    <td class="bg-info">Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <section>
+        <h2 class="row">表单 基本实例</h2>
+        <h4 class="row">
+            单独的表单控件会被自动赋予一些全局样式。所有设置了 .form-control 类的 &lt;input&gt;、&lt;textarea&gt 和 &lt;select&gt; 元素都将被默认设置宽度属性为 width: 100%;
+            将 label 元素和前面提到的控件包裹在 .form-group 中可以获得最好的排列。
+        </h4>
+        <div style="margin-left: -15px;margin-right: -15px">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="examplePassword1">Password</label>
+                    <input type="password" class="form-control" id="examplePassword1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile1">File input</label>
+                    <input type="file" id="exampleInputFile1">
+                    <p class="help-block">.help-block 相当于 display:block</p>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <h2>内联 表单</h2>
+            <h4>
+                为 &lt;form&gt; 元素添加 .form-inline 类可使其内容左对齐并且表现为 inline-block 级别的控件。
+                <br>
+                只适用于视口（viewport）至少在 768px 宽度时（视口宽度再小的话就会使表单折叠）
+            </h4>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                </div>
+                <button type="submit" class="btn btn-primary">Send invitation</button>
+            </form>
+            <br>
+            <h4>一定要添加 label 标签,不设置的话,屏幕阅读器将无法正确识别 label标签没用的话,可以使用 .sr-only隐藏</h4>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="exampleInputPassword3">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-info">Sign in</button>
+            </form>
+            <br>
+            <h2>水平排列的表单</h2>
+            <h4>通过为表单添加 .form-horizontal 类，并联合使用 Bootstrap 预置的栅格类，可以将 label 标签和控件组水平并排布局。
+                <br>
+                这样做将改变 .form-group 的行为，使其表现为栅格系统中的行（row），因此就无需再额外添加 .row 了
+            </h4>
+            <form class="form-horizontal">
+                <br>
+                <h4>.control-label 使文本右对齐, 配合form-horizontal一起使用, form-control 给input添加自适应宽度和样式</h4>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-xs-2 control-label">Email</label>
+                    <div class="col-xs-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-xs-2 control-label">Password</label>
+                    <div class="col-xs-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">Remeber me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <h2 class="row">内联单选和多选框</h2>
+            <h4 class="row">
+                通过将 .checkbox-inline 或 .radio-inline 类应用到一系列的多选框(checkbox)或单选框(radio)控件上
+                <br>
+                可以使这些控件排列在一行
+            </h4>
+            <div class="my_row clearfix">
+                <div class="col-xs-offset-4 col-xs-4">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox1" value="option1">1
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox2" value="option2">2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox3" value="option3">3
+                    </label>
+                </div>
+                <div class="col-xs-offset-4 col-xs-4">
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1">3
+                    </label>
+                </div>
+            </div>
+            <h2 class="row">不带label文本的Checkbox 和 radio</h2>
+            <h4 class="row">
+                如果需要 &lt;label&gt; 内没有文字，输入框（input）正是你所期望的。 目前只适用于非内联的 checkbox 和 radio。
+                <br>
+                请记住，仍然需要为使用辅助技术的用户提供某种形式的 label（例如，使用 aria-label）
+            </h4>
+            <div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                    </label>
+                </div>
+            </div>
+            <h2 class="row">下拉框</h2>
+            <h4 class="row">默认通栏显示</h4>
+            <select name="exampleSelect1" id="exampleSelect1" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <h2 class="row">静态控件 </h2>
+            <h4 class="row">让一行纯文本和label在同一行, 为 &lt;p&gt;元素添加 .form-control-static类即可</h4>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">email@example.com</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword4" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10 has-success">
+                        <input type="password" class="form-control" id="inputPassword4"
+                               placeholder="Password: .has-success 得设置在input外面的盒子上,直接设置input没用">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName1" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10 has-error">
+                        <input type="text" class="form-control" id="userName1"
+                               placeholder="Username">
+                    </div>
+                </div>
+            </form>
+            <h2 class="row">添加额外的图标</h2>
+            <h4 class="row">你还可以针对校验状态为输入框添加额外的图标。只需设置相应的 .has-feedback 类并添加正确的图标即可。</h4>
+            <div class="form-group has-success has-feedback">
+                <label class="control-label" for="inputSuccess2">Input with success</label>
+                <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                <span id="inputSuccess2Status" class="sr-only">(success)</span>
+            </div>
+            <div class="form-group has-warning has-feedback">
+                <label class="control-label" for="inputWarning2"> Input with warning</label>
+                <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                <span id="inputWarning2Status" class="sr-only">(warning)</span>
+            </div>
+            <div class="form-group has-error has-feedback">
+                <label class="control-label" for="inputError2">Input with error</label>
+                <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                <span id="inputError2Status" class="sr-only">(error)</span>
+            </div>
+
+            <div class="form-group has-success has-feedback">
+                <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+                </div>
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+            </div>
+            <h4 class="row">为水平排列的表单和内联表单设置可选的图标</h4>
+            <h4 class="row">
+                input 获得焦点时,图标不隐藏是因为当前版本的bootstrap css和官网的css不是一个版本
+                <br>
+                http://v3.bootcss.com/dist/css/bootstrap.min.css
+            </h4>
+            <form class="form-horizontal">
+                <div class="form-group has-success has-feedback">
+                    <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span id="inputSuccess3Status" class="sr-only">(success)</span>
+                    </div>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+                        </div>
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
+                    </div>
+                </div>
+            </form>
+            <h2 class="row">表单控件尺寸</h2>
+            <h4 class="row">通过 .input-lg 类似的类可以为控件设置高度，通过 .col-lg-* 类似的类可以为控件设置宽度</h4>
+            <div class="form-group">
+                <input class="form-control input-lg" type="text" placeholder=".input-lg">
+                <input class="form-control" type="text" placeholder="Default input">
+                <input class="form-control input-sm" type="text" placeholder=".input-sm">
+                <select class="form-control input-lg">...</select>
+                <select class="form-control">...</select>
+                <select class="form-control input-sm">...</select>
+            </div>
+            <h2 class="row">按钮</h2>
+            <h4 class="row">
+                可作为按钮使用的标签和元素 &lt;a&gt; &lt;button&gt; &lt;input&gt;
+            </h4>
+            <div class="form-group">
+                <a href="#" class=" btn btn-default" role="button">Default</a>
+                <button class="btn btn-primary">Button</button>
+                <input type="text" class="btn btn-success" value="Input">
+
+                <button type="button" class="btn btn-default">（默认样式）Default</button>
+                <button type="button" class="btn btn-primary">（首选项）Primary</button>
+                <button type="button" class="btn btn-success">（成功）Success</button>
+                <button type="button" class="btn btn-info">（一般信息）Info</button>
+                <button type="button" class="btn btn-warning">（警告）Warning</button>
+                <button type="button" class="btn btn-danger btn-lg btn-block">（危险）Danger</button>
+                <button type="button" class="btn btn-link">（链接）Link</button>
+            </div>
+            <h2 class="row">button 元素</h2>
+            <h4 class="row">
+                由于 :active 是伪状态，因此无需额外添加，但是在需要让其表现出同样外观的时候可以添加 .active 类。
+            </h4>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+                <button type="button" class="btn btn-default btn-lg active">Button</button>
+                <button type="button" class="btn btn-default btn-lg " disabled="disabled">Button</button>
+            </div>
+            <h2 class="row">图片形状</h2>
+            <h4 class="row">.img-rounded .img-circle .img-thumbnail</h4>
+            <div class="">
+                <img src="" alt="" class="img-rounded my_img">
+                <img src="" alt="" class="img-circle my_img">
+                <img src="" alt="" class="img-thumbnail my_img">
+                <img src="" alt="" class="img-responsive my_img">
+            </div>
+            <h2 class="row">辅助类</h2>
+            <h4 class="row">情景文本颜色</h4>
+            <div class="row">
+                <p class="text-muted hover">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+                <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+                <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <h4 class="row">
+                情境背景色
+            </h4>
+            <div class="row">
+                <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+                <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <h4 class="row">关闭按钮</h4>
+            <div class="row">
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <h4 class="row">三角符号</h4>
+            <span class="caret"></span>
+            <h4 class="row">快速浮动</h4>
+            <div class="clearfix">
+                <div class="pull-left">.pull-left</div>
+                <div class="pull-right">.pull-right</div>
+            </div>
+
+            <div class="row">
+                <div style="width: 300px;" class="center-block text-center">使用 .center-block 内容块居中</div>
+            </div>
+            <h4 class="row">显示或隐藏 使用 .hidden 将左边的盒子隐藏</h4>
+            <div class="row clearfix">
+                <div class="pull-left hidden">左边盒子</div>
+                <div class="pull-right">右边盒子</div>
+            </div>
+        </div>
+        <h4>bootstrap div浮动  使用内置的栅格系统 . col-xx-xx,或 .pull-left</h4>
+
+    </section>
+
+</section>
+
+<footer></footer>
+
+
+<script src="../../../dist/jquery-1.11.1.min.js"></script>
+
+<script src="../../../dist/bootstrap/js/bootstrap.js"></script>
+
+<script src="../../../dist/underscore/underscore-min.js"></script>
+
+<script src="js/swipe.js"></script>
+
+<script src="js/01-demo.js"></script>
+</body>
+</html>

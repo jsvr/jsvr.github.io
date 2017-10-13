@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>组件通信</title>
+</head>
+<body>
+<div ng-controller="appCtrl as a">
+    <my-directive get-var="a.foo" func="a.bar(name)"></my-directive>
+</div>
+</body>
+<script>
+    angular.module('app', [])
+            .directive('myDirective', function () {
+                return {
+                    restrict: 'E',
+                    controller: 'directiveCtrl',
+                    controllerAs: 'b',
+                    scope: {},
+                    bindToController: {
+                        func: '&',
+                        getVar: '&'
+                    }
+                };
+            })
+            .controller('directiveCtrl', function () {
+                this.name = "directive controller";
+                console.log(this.getVar().name);
+                this.func({name: this.name});
+            })
+            .controller('appCtrl', function () {
+                this.welcome = 'Hello';
+                this.foo = {name: 'outer controller'};
+                this.bar = function (name) {
+                    console.log(this.welcome + ' ' + name);
+                };
+            });
+</script>
+</html>

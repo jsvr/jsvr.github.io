@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-src-href</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <img ng-src="{{ imgSrc }}" alt="">
+        <a ng-href="{{ aHref }}">a链接</a>
+        <!--下面这种方法也可以绑定 src 和 href 但是有时候会有问题-->
+        <!--<img src="{{ imgSrc }}" alt="">-->
+        <!--<a href="{{ aHref }}">a链接</a>-->
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.imgSrc = 'xingye.jpg';
+        $scope.aHref = 'https://www.baidu.com'
+    });
+</script>
+</html>

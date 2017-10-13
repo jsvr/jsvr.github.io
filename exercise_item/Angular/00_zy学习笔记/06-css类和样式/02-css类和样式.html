@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-css类和样式</title>
+    <style>
+        *{
+            font-family:'MICROSOFT YAHEI';
+            font-size:12px
+        }
+        .tip {
+            margin:auto; width:300px; height:30px; line-height:30px; text-align:center;
+        }
+        .err-cuowu {
+            color:#A91818; background:#F3976C
+        }
+        .warn {
+            color:#F3976C; background:#F6EBBC;
+        }
+        button {
+            border:1px solid #ccc; outline:0
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <div>
+            <div class="tip" ng-class="{'err-cuowu':ifError,'warn':ifWarn}" ng-show="ifShow">{{ tipText }}</div>
+        </div>
+        <div>
+            <button ng-click="showError()">error</button>
+            <button ng-click="showWarn()">warning</button>
+        </div>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.tipText = '';
+        $scope.ifShow = false;
+        $scope.ifError = false;
+        $scope.ifWarn = false;
+        $scope.showError = function () {
+            $scope.ifShow = true;
+            $scope.tipText = '错误';
+            $scope.ifError = true;
+            $scope.ifWarn = false;
+        };
+        $scope.showWarn = function () {
+            $scope.ifShow = true;
+            $scope.tipText = '警告';
+            $scope.ifWarn = true;
+            $scope.ifError = false;
+        }
+    });
+</script>
+</html>

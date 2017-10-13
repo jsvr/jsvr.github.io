@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-解析module</title>
+    <style>
+        .del{
+            color: deepskyblue;
+        }
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <h1>your shopping cart</h1>
+        <table>
+            <tr ng-repeat="item in items">
+                <td>{{item.title}}</td>
+                <td><input ng-model="item.quantity"/></td>
+                <td>{{item.price|currency}}</td>
+                <td class="red">{{item.price*item.quantity|currency}}</td>
+                <td><button ng-click="remove($index)">remove</button></td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td>总价: <span class="del">{{bill.all|currency}}</span></td>
+            </tr>
+            <tr>
+                <td>折扣: <span class="red">{{bill.discount|currency}}</span></td>
+            </tr>
+            <tr>
+                <td>现价: <span class="green">{{bill.now|currency}}</span></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.factory('Items',function(){
+        var items = {};
+        //这段数据实际应该是从数据库拉取的
+        items.query = function(){
+            return [
+                {"title":"兔子","quantity":1,"price":"100"},
+                {"title":"喵","quantity":2,"price":"200"},
+                {"title":"狗只","quantity":1,"price":"400"},
+                {"title":"仓鼠","quantity":1,"price":"300"}
+            ]
+        };
+        return items;
+    });
+    app.controller('myCtrl', function ($scope,Items) {
+        $scope.items = Items.query();
+        $scope.remove = function(index){
+            $scope.items.splice(index,1)
+        };
+        $scope.bill = {
+            "all":0,
+            "discount":0,
+            "now":0
+        };
+        $scope.compute = function(){
+            var total = 0;
+            for(var i=0; i<$scope.items.length; i++){
+                total += $scope.items[i].quantity*$scope.items[i].price;
+            }
+            $scope.bill.all = total;
+            $scope.bill.discount = total >= 500 ? total*0.1 : 0 ;
+            $scope.bill.now = $scope.bill.all - $scope.bill.discount
+        };
+        $scope.$watch('items',$scope.compute,true);
+    });
+    /*
+     1. var shoppingCart = angular.module('shoppingCart',[]);
+
+     注意, 第一个shoppingCart 是模型变量名,下面的factory和controller,都是该模型下的方法.第二个shoppingCart是模型的名字,在ng-app后面使用
+
+
+     2.shoppingCart.factory('Items',function(){
+     ...
+     return items;
+     });
+
+     Items就是服务的名字
+     第二个参数是一个函数,在调用这个服务的时候,就会执行该函数,然后把函数的返回值传到控制器中
+     shoppingCart.controller('CartController',function($scope,Items){
+     $scope.items = Items.query();
+     });
+     这里在控制器中传入的Items就是factory中第二个参数的函数的返回值
+     注意,当Items被注入到其它地方的时候,注入的结果是items,而不是定义Items的时候的那个function
+
+     3. shoppingCart.controller('CartController',function($scope,Items){
+     $scope.items = Items.query();
+     ...
+     });
+
+     通过controller方法,在shoppingCart模型下创建一个名为CartController的控制器,传入Items服务
+     其余的控制器写法都和原来一样,只是原来的items改为通过Items服务来获取数据
+
+     4. 其实$scope也是服务,是angular内置的服务,还有$location,$route,$http等... angular内置的服务,都是用$开头,因此,自定义的服务,最好不要使用$开头.
+     5. 控制器中传入服务作为参数,是没有顺序的,是根据名字来的.以下两种写法运行结果是一致的:
+     shoppingCart.controller('CartController',function($scope,Items){...});
+     shoppingCart.controller('CartController',function(Items,$scope){...});
+     */
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

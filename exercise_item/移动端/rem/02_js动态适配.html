@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<title>js-动态适配移动端</title>
+	<link rel="stylesheet" href="">
+	<script type="text/javascript">
+	/*
+	 * [移动端适配]
+         * 宽度固定，viewport 缩放
+         * width 设计稿宽度
+         */
+		 (function(win, doc){
+            var metaViewport = doc.querySelector('meta[name="viewport"]');
+            var width = 750;
+            var iw = win.innerWidth || width;
+            var ow = win.outerWidth || iw;
+            var sw = win.screen.width || iw;
+            var saw = win.screen.availWidth || iw;
+            var minWidth = Math.min(width, iw, ow, sw, saw);
+            var scale = minWidth / width;
+            metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
+                    ',minimum-scale=' + scale + ',user-scalable=no';
+        }(window, document));
+
+	</script>
+	<style>
+		.box{
+			width: 240px;
+			height: 60px;
+			background-color: deepskyblue;
+			font-size: 16px;
+			line-height: 60px;
+		}
+		.img{
+			width: 80px;
+			height: 80px;
+			background: url("../images/nav1.png") no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">移动端适配方案2</div>
+	<div class="img"></div>
+</body>
+</html>

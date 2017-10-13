@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script language=Javascript>
+    function Animal(){
+        this.name = "Animal";
+        this.showName = function(){
+            alert(this.name);
+        }
+    }
+
+    function Cat(){
+        this.name = "Cat";
+    }
+
+    var animal = new Animal();
+    var cat = new Cat();
+
+    //通过call或apply方法，将原本属于Animal对象的showName()方法交给对象cat来使用了。
+    //输入结果为"Cat"
+    animal.showName.call(cat,",");// 本来是执行call前面的this.那么;想在执行的call
+
+    //
+    var Person = function( name, age ) {
+        this.name = name;
+        this.age = age;
+    };
+
+    var p = new Person('jim', 19); // p -> P.p -> O.p -> null
+
+    //var o1 = new Person();
+    //console.log(o1('jim',20));
+    var o = {};
+    Person.call( o, 'tom', 20 );   // o -> O.p -> null
+    console.log(o.name);
+    //后面 cat 的this.name
+    //animal.showName.apply(cat,[]);
+
+    //    function parent(name,age,tel){
+    //        this.name=name;
+    //        this.age=age;
+    //        this.tel=tel;
+    //        this.say=function(){
+    //            alert(this.name);
+    //        }
+    //    }
+    //    var o1 = new parent('zhangSan',18,18);
+    //    o1.say();
+    //
+    //    function Son(){
+    //        var dd1="ha ha ha";
+    //        this.tel="11";
+    //        //调用parennt函数，且此时的该函数（即parennt）内的this对象具有dd1的属性。注意：
+    //        //仅限于本次执行时才能确定具有dd1的属性。
+    //        parent.name.apply(dd1,[ ]);
+    //        this.calltel=function(){
+    //            alert(ddl.name);
+    //        }
+    //
+    //    }
+    //    var s = new Son("ss","aa");
+    //    s.calltel();
+
+</script>
+</body>
+</html>

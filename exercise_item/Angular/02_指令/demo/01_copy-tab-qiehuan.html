@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular-tab-demo</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div id="App" ng-app="app" ng-controller="tabChangeDemo">
+        <!--demo1-->
+        <h1>点击按钮显示隐藏</h1>
+        <div ng-show="menuState.show">点击显示隐藏内容</div>
+        <button ng-click="testShow1()">切换</button>
+
+        <!--demo2-->
+        <!--添加类名改变opacity控制内容的显示隐藏-->
+        <hr>
+        <style>
+            .menu-disabled-true{
+                opacity: 1;
+                color: red;
+                -webkit-transition: all .8s linear;
+                -moz-transition: all .8s linear;
+                -ms-transition: all .8s linear;
+                -o-transition: all .8s linear;
+                transition: all .8s linear;
+            }
+            .menu-disabled-false{
+                opacity: 0;
+                color: yellowgreen;
+                -webkit-transition: all .8s linear;
+                -moz-transition: all .8s linear;
+                -ms-transition: all .8s linear;
+                -o-transition: all .8s linear;
+                transition: all .8s linear;
+            }
+        </style>
+        <h1>添加类名改变opacity 控制内容显示隐藏</h1>
+        <div class="menu-disabled-{{isDisabled}}">动态拼接class类名'menu-disabled-\{\{isDisabled\}\}'</div>
+        <button ng-click="testDemo2Hide()">隐藏</button>
+        <button ng-click="testDemo2Show()">显示</button>
+        <button ng-click="testDemoChange()">切换</button>
+
+        <!--demo3 实现方法2-->
+        <hr>
+        <h1>添加类名改变opacity 控制内容显示隐藏 实现方法2</h1>
+        <div class="menu-disabled-true" ng-class='{"menu-disabled-false":demo3IsDisabled}'>动态拼接class类名'menu-disabled-\{\{isDisabled\}\}'</div>
+        <button ng-click="testDemo3Hide()">隐藏</button>
+        <button ng-click="testDemo3Show()">显示</button>
+        <button ng-click="testDemoChange3()">切换</button>
+
+        <!--demo4-->
+        <hr>
+        <style>
+            .tab-box{
+                background-color: #7bff62;
+            }
+        </style>
+        <h1>循环输出tab li 添加点击的样式</h1>
+        <div ng-repeat="item in items" ng-class="{'tab-box':$index == selectedRow}" ng-click="selectedActive($index)">
+            <span>{{ item.product_name }}</span>
+            <span>{{ item.price }}</span>
+        </div>
+    </div>
+    <script>
+        var app = angular.module("app",[]);
+        app.controller("tabChangeDemo", function ($scope) {
+            //demo1
+            //先将menuState的属性设置为true.(默认就是true显示)
+            $scope.menuState = {'show':true};
+            //再给nh-click绑定 testShow1 方法
+            $scope.testShow1 = function () {
+                $scope.menuState.show = !$scope.menuState.show;
+            };
+
+            //demo2
+            $scope.isDisabled = true;
+            $scope.testDemo2Hide = function () {
+                $scope.isDisabled = false;
+            };
+            $scope.testDemo2Show = function () {
+                $scope.isDisabled = true;
+            };
+            $scope.testDemoChange = function () {
+                $scope.isDisabled = !$scope.isDisabled;
+            };
+
+            //demo3
+            $scope.demo3IsDisabled = false;
+            $scope.testDemo3Hide = function () {
+                $scope.demo3IsDisabled = true;
+            };
+            $scope.testDemo3Show = function () {
+                $scope.demo3IsDisabled = false;
+            };
+            $scope.testDemoChange3 = function () {
+                $scope.demo3IsDisabled = !$scope.demo3IsDisabled;
+            };
+
+            //demo4
+            //items json 格式的数组
+            $scope.items = [
+                { product_name: 'Product 1', price: 10 },
+                { product_name: 'Product 2', price: 50 },
+                { product_name: 'Product 3', price: 100 },
+            ];
+            $scope.selectedActive = function (row) {
+                $scope.selectedRow = row;
+            }
+            $scope.selectedActive(0);
+        })
+    </script>
+</body>
+</html>

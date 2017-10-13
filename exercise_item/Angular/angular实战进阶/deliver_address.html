@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>deliver_address收货地址页面</title>
+    <script src="../../dist/angular/angular.js"></script>
+    <!--<script src="../../dist/jquery-1.11.1.min.js"></script>-->
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            font-family:Arial, 'Microsoft YaHei', Helvetica, 'Hiragino Sans GB';
+        }
+        html{
+            font-size: 10px;
+        }
+        body{
+            background-color: #f8f8f8;
+        }
+        .address-item{
+            font-size: 1.8rem;
+            background-color: #a7e0a7;
+            margin-bottom:10px;
+        }
+        .item-op{
+            color: #FF4354;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ccc;
+        }
+        a:link,a:visited{
+            color: #FF4354;
+        }
+        .item-con{
+            padding: 10px 15px;
+        }
+        .c_333{
+            color: deepskyblue;
+            cursor: pointer;
+        }
+        .f-r{
+            float: right;
+        }
+        .item-btn{
+            display: inline-block;
+            padding: 0px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .nothing {
+            font-size: 1.8rem;
+            text-align: center;
+            line-height: 150%;
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+        .sort-box{
+            overflow: hidden;
+        }
+        .id-sort{
+            font-size: 1.8rem;
+            cursor: pointer;
+            border: 1px solid #3c3c3c;
+            background-color: #94ffbb;
+            margin:15px 15px;
+        }
+    </style>
+</head>
+<body ng-controller="daCtrl">
+    <!--数据排序 stat-->
+    <div class="sort-box">
+        <div class="id-sort f-r" ng-click="sortSmall();">按id从小到大排序</div>
+        <div class="id-sort f-r" ng-click="sortBig();">按id从大到小排序</div>
+        <div class="id-sort f-r" ng-click="sortLetter();">默认字母</div>
+    </div>
+    <!--数据排序 end-->
+    <!--地址列表 start-->
+    <div class="address-list" ng-if="address_list.length>0">
+        <div class="address-item" ng-repeat="item in address_list">
+            <div class="item-op">
+                <span ng-if="item.isDefault">默认地址</span>
+                <span class="c_333" ng-if="!item.isDefault" ng-click="set_default(item.id)">设为默认</span>
+                <span class="item-btn f-r" ng-click="del(item.id)">删除</span>
+                <span class="item-btn f-r"><a href="javascript:void (0);">编辑</a></span>
+            </div>
+            <div class="item-con">
+                <p>{{ item.name }} {{ item.mobile }}</p>
+                <p>{{ item.address }}</p>
+            </div>
+        </div>
+    </div>
+    <!--地址列表结束 end-->
+
+    <!--没有地址时显示 start-->
+    <div class="nothing" ng-if="address_list.length==0">
+        当前还没有地址
+    </div>
+    <!--没有地址时显示 end-->
+</body>
+<script>
+    /*
+        知识点
+
+        > 实现功能
+        + 显示地址列表
+        + 设置默认地址
+        + 删除某地址
+        + 当用户没有地址时,显示没有地址
+
+        > 地址管理的控制器 [数据准备与方法计划]
+        + 用户地址数组
+        + 设置默认地址的方法
+        + 删除地址的方法
+        + 查找元素真正索引方法
+
+        > 数据处理逻辑
+        + 当数组变化时(删除地址时)数据的真实索引都会发生变化,所以要实时获取;
+
+        > ng-if 和 ng-show 的区别
+        +
+     */
+    var app = angular.module('app',[]);
+    app.controller('daCtrl', function ($scope) {
+        //用户地址列表数据
+        $scope.address_list = [
+            {isDefault:true, id:10, name:'唐三藏', mobile:'15891712340', address:'东土大唐'},
+            {isDefault:false, id:1, name:'孙悟空', mobile:'15891712341', address:'花果山水帘洞'},
+            {isDefault:false, id:5, name:'猪八戒', mobile:'15891712342', address:'高老庄'},
+            {isDefault:false, id:4, name:'沙悟净', mobile:'15891712343', address:'流沙河'},
+            {isDefault:false, id:3, name:'白龙马', mobile:'15891712344', address:'东海'},
+            {isDefault:false, id:23, name:'如来佛祖', mobile:'15891712345', address:'西天'},
+        ];
+
+        //设置为默认地址
+        $scope.set_default = function (id) {
+            //获取当前数据在数组中的真实索引
+            var relIndex = $scope.getRealIndex(id);
+            //循环让所有地址为false
+            for(var i=0; i<$scope.address_list.length; i++){
+                $scope.address_list[i].isDefault = false;
+            }
+            //设置当前索引的isDefault为true(也就是默认地址)
+            $scope.address_list[relIndex].isDefault = true;
+        }
+
+        //获取数组元素的真实索引
+        $scope.getRealIndex = function (id) {
+            //var一个真实数据索引变量
+            var relIndex = -1;
+            //遍历数据 当id一样时给真实数据变量赋值
+            for(var i=0; i<$scope.address_list.length; i++){
+                if($scope.address_list[i].id == id){
+                    relIndex = i;
+                    break;//跳出结束整个循环
+                }
+            }
+            console.log(relIndex);
+            return relIndex;//返回真实数据索引变量
+        }
+
+        //删除 地址方法
+        $scope.del = function (id) {
+            var relIndex = $scope.getRealIndex(id);
+            //从数组第几项删除一个
+            $scope.address_list.splice(relIndex,1);
+        }
+        
+        //从小到大排序
+        $scope.sortSmall = function () {
+            $scope.address_list.sort(function (a,b) {
+                return a.id - b.id;
+            });
+        }
+
+        //从大到小排序
+        $scope.sortBig = function () {
+            $scope.address_list.sort(function (a,b) {
+                return b.id - a.id;
+            });
+        }
+
+        //字母顺序排序
+        $scope.sortLetter = function () {
+            $scope.address_list.sort();
+        }
+    });
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

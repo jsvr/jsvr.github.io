@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环给li添加链接</title>
+    <script src="../../jquery-1.12.1.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        .box a{
+            display: block;
+            width: 200px;
+            height: 50px;
+            background-color: dodgerblue;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><a href="">a1</a></li>
+            <li><a href="">a2</a></li>
+            <li><a href="">a3</a></li>
+            <li><a href="">a4</a></li>
+            <li><a href="">a5</a></li>
+            <li><a href="">a6</a></li>
+            <li><a href="">a7</a></li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $('.box a').each(function (i,n) {
+                this.href = 'www.baidu.com/' + (i+1) + 'word';
+                this.title = '这是li' + (i+1);
+                //$(this).attr('data',i);
+                console.log(i + '-' + n );
+            });
+
+        });
+    </script>
+
+    <div class="input_box">
+        <input type="checkbox"  checked="checked">姓名1
+        <input type="checkbox" >姓名2
+        <input type="checkbox" >姓名3
+        <input type="checkbox" >姓名4
+        <input type="checkbox" >姓名5
+        <input type="checkbox" >姓名6
+    </div>
+    <script>
+        // 1. 选中复选框为true，没选中为false  获取在匹配的元素集中的第一个元素的属性值。
+        var propChecked =  $("input[type='checkbox']").prop("checked");
+        $('.input_box input').click(function () {
+            if(propChecked == true){
+                alert(1);//全部alert 1
+            }else {
+                alert(2);//全部alert 1
+            }
+        });
+        // 2. 选中复选框为true，没选中为false
+
+        /*
+        var propChecked =  $("input[type='checkbox']").attr("checked");
+        $('.input_box input').click(function () {
+            if(propChecked == true){
+                alert(1);//alert 1
+            }else {
+                alert(2);//alert 2
+            }
+        });
+        */
+
+
+        /*
+        // 禁用页面上所有的属性 为checkbox 的 input;
+        $("input[type='checkbox']").prop({
+            disabled: true
+        });
+        */
+
+    </script>
+
+</body>
+</html>

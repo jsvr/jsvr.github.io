@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>shopCar-购物车页面</title>
+    <script src="../../dist/angular/angular.js"></script>
+    <!--<script src="../../dist/jquery-1.11.1.min.js"></script>-->
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            font-family:Arial, 'Microsoft YaHei', Helvetica, 'Hiragino Sans GB';
+        }
+        html{
+            font-size:10px;
+        }
+        .page{
+            background-color:#f8f8f8;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 60px;
+            overflow: auto;
+            text-align: left;
+            font-size: 2rem;
+        }
+        nav{
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: 60px;
+            display: flex;
+            border-top:1px solid #ededed;
+            background-color: #fff;
+        }
+
+        nav a:link,nav a:visited{
+            text-decoration:none;
+            flex: 1;
+            text-align: center;
+            box-sizing: border-box;
+            /*      border-right: 1px solid #ededed;*/
+            color: #666;
+            padding-top: 5px;
+            position: relative;
+        }
+        nav a:last-child{
+            border-right: none;
+        }
+        nav a.active{
+            color: #FF4354;
+        }
+        nav a i{
+            display: block;
+            margin: 0 auto;
+            width: 25px;
+            height: 25px;
+        }
+        nav a .tip{
+            display: block;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            line-height: 10px;
+            left: 50%;
+            top: -5px;
+            padding: 5px;
+            transform: translateX(5px);
+            background-color: #FF4354;
+            color: #fff;
+            border-radius: 50%;
+        }
+        nav a.home.active i{
+            background: url('images/nav-home-on.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.home i{
+            background: url('images/nav-home-off.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.topics.active i{
+            background: url('images/nav-circle-on.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.topics i{
+            background: url('images/nav-circle-off.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.message.active i{
+            background: url('images/nav-message-on.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.message i{
+            background: url('images/nav-message-off.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.user.active i{
+            background: url('images/nav-mine-on.png') no-repeat center;
+            background-size: contain;
+        }
+        nav a.user i{
+            background: url('images/nav-mine-off.png') no-repeat center;
+            background-size: contain;
+        }
+        .goods-list{
+        }
+        .goods-item{
+            background-color: #ffffff;
+            box-sizing: border-box;
+            float: left;
+            width: 50%;
+            border-right: 1px solid #ededed;
+            text-align: left;
+        }
+        .goods-item img{
+            width: 100%;
+        }
+        .goods-item .item-op{
+            color: #FF4354;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ededed;
+        }
+        .goods-item  a:link,.goods-item a:visited{
+            color: #FF4354;
+        }
+        .goods-item .item-con{
+            padding: 10px 15px;
+            border-bottom: 1px solid #ededed;
+            color: #717171;
+        }
+        .goods-item .item-con .add{
+            display: inline-block;
+            padding: 5px 10px;
+            background-color:#ff4354;
+            color: #ffffff;
+            border-radius: 50%;
+            margin: 0px;
+            cursor: pointer;
+        }
+        .c_333{
+            color: #333;
+        }
+        .c_ccc{
+            color: #ccc;
+        }
+        .c_ff4354{
+            color:#ff4354;
+        }
+        .f-r{
+            float: right;
+        }
+        .goods-item  .item-btn{
+            display: inline-block;
+            padding: 0px 10px;
+            margin-left: 10px;
+        }
+        .shopcar-items{
+            text-align: left;
+        }
+        .shopcar-item{
+            font-size: 1.5rem;
+            background-color: #ffffff;
+            position: relative;
+            padding: 10px 10px 10px 70px;
+            border-bottom: 1px solid #ededed;
+        }
+        .shopcar-item img{
+            width: 100%;
+        }
+        .shopcar-item .item-img{
+            position: absolute;
+            left: 10px;
+            top:10px;
+            width:50px;
+            height:50px;
+            border-radius: 5px;
+        }
+        .shopcar-item .item-con .mul-btn,.shopcar-item .item-con .add-btn{
+            display: inline-block;
+            padding: 5px 10px;
+            background-color:#ff4354;
+            color: #ffffff;
+            border-radius: 5px;
+            margin: 0px 5px;
+        }
+        .total-info{
+            padding: 10px 15px;
+            text-align: left;
+        }
+
+        .nothing{
+            padding: 40px;
+        }
+        .nothing div{
+            background-color: #ff4354;
+            color: #ffffff;
+            border-radius: 10px;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+        }
+        #toast{
+            position: fixed;
+            width: 200px;
+            height: 60px;
+            background-color: palevioletred;
+            color: black;
+            font:16px/60px "Verdana";
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-controller="scCtrl">
+<div class="pages">
+    <div class="page" ng-show="focusIndex==0">
+        <!--商品列表-->
+        <div class="goods-list">
+            <div class="goods-item" ng-repeat="item in goods">
+                <div class="item-op">
+                    <img ng-src="{{item.url}}">
+                </div>
+                <div class="item-con">
+                    <p>{{item.name}}</p>
+                    <p>
+                        <span class="c_ff4354">￥{{item.price}}</span>
+                        <span class="f-r c_ccc add" ng-click="addToShopcar(item)">+</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--商品列表/-->
+    </div>
+    <div class="page" ng-show="focusIndex==1">游记内容</div>
+    <div class="page" ng-show="focusIndex==2">
+        <!--购物车商品列表-->
+        <div class="total-info">总商品数：{{shopCarItems.length}} 件;总价：￥<span class="c_ff4354">{{totalMoney}}</span>元</div>
+        <div class="shopcar-items">
+            <div class="shopcar-item" ng-repeat="item in shopCarItems">
+                <div class="item-img">
+                    <img ng-src="{{item.url}}">
+                </div>
+                <div class="item-con">
+                    <p>{{item.name}}</p>
+                    <p>
+                        <span class="c_ff4354">￥{{item.price}}</span>
+                  <span class="f-r c_ccc">
+                  <span class="mul-btn" ng-click="mulGoodAmount($index)">-</span>
+                  {{item.amount}}
+                  <span class="add-btn"  ng-click="addToShopcar(item)">+</span>
+                </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--购物车商品列表/-->
+
+        <div class="nothing" ng-if="shopCarItems.length==0">
+            <div ng-click="focus(0)">去购物</div>
+        </div>
+
+    </div>
+    <div class="page" ng-show="focusIndex==3">个人中心内容</div>
+</div>
+<nav>
+    <a class="home" ng-class="{'active':focusIndex==0}" href="javascript:;" ng-click="focus(0)"><i></i>优选圈</a>
+    <a class="topics" ng-class="{'active':focusIndex==1}" href="javascript:;" ng-click="focus(1)"><i></i>游记</a>
+    <a class="message" ng-class="{'active':focusIndex==2}" href="javascript:;" ng-click="focus(2)"><i></i>购物车<span class="tip" ng-if="shopCarItems.length">{{shopCarItems.length}}</span></a>
+    <a class="user" ng-class="{'active':focusIndex==3}" href="javascript:;" ng-click="focus(3)"><i></i>个人中心</a>
+</nav>
+
+</body>
+
+<script>
+    var app = angular.module('app',[]);
+    app.controller('scCtrl', function ($scope) {
+        //设置当前聚焦的索引
+        $scope.focusIndex = 0;
+        //设置聚焦方法
+        $scope.focus = function(index) {
+            $scope.focusIndex = index;
+        }
+        //默认商品列表
+        $scope.goods = [
+            {
+                price: 28,
+                id: 1,
+                name: "满减【三只松鼠_琥珀核桃仁165g】坚果特产休闲零食纸",
+                url: 'http://img10.360buyimg.com/n1/jfs/t2821/18/1316712878/430655/c65ffb7/573c06a0N956686b0.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 2,
+                name: "旺旺旺仔牛奶2940ml原味245 ml× 8罐+苹果味245ml×4罐",
+                url: 'http://img14.360buyimg.com/n1/jfs/t2623/71/2055615738/228070/6f87f326/57553c7aNa8b4b9c3.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 3,
+                name: "旺旺旺仔牛奶2940ml原味245 ml× 8罐+苹果味245ml×4罐",
+                url: 'http://img14.360buyimg.com/n1/jfs/t2623/71/2055615738/228070/6f87f326/57553c7aNa8b4b9c3.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 4,
+                name: "满减【三只松鼠_琥珀核桃仁165g】坚果特产休闲零食纸",
+                url: 'http://img10.360buyimg.com/n1/jfs/t2821/18/1316712878/430655/c65ffb7/573c06a0N956686b0.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 5,
+                name: "满减【三只松鼠_琥珀核桃仁165g】坚果特产休闲零食纸",
+                url: 'http://img10.360buyimg.com/n1/jfs/t2821/18/1316712878/430655/c65ffb7/573c06a0N956686b0.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 6,
+                name: "旺旺旺仔牛奶2940ml原味245 ml× 8罐+苹果味245ml×4罐",
+                url: 'http://img14.360buyimg.com/n1/jfs/t2623/71/2055615738/228070/6f87f326/57553c7aNa8b4b9c3.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 7,
+                name: "满减【三只松鼠_琥珀核桃仁165g】坚果特产休闲零食纸",
+                url: 'http://img10.360buyimg.com/n1/jfs/t2821/18/1316712878/430655/c65ffb7/573c06a0N956686b0.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 8,
+                name: "旺旺旺仔牛奶2940ml原味245 ml× 8罐+苹果味245ml×4罐",
+                url: 'http://img14.360buyimg.com/n1/jfs/t2623/71/2055615738/228070/6f87f326/57553c7aNa8b4b9c3.jpg',
+                left: '4/50'
+            }, {
+                price: 28,
+                id: 9,
+                name: "满减【三只松鼠_琥珀核桃仁165g】坚果特产休闲零食纸",
+                url: 'http://img10.360buyimg.com/n1/jfs/t2821/18/1316712878/430655/c65ffb7/573c06a0N956686b0.jpg',
+                left: '4/50'
+            }
+        ]
+        //购物车商品；列表
+        $scope.shopCarItems = [
+            {
+                price: 28,
+                id: 1,
+                name: "满减【三只松鼠_琥珀核桃仁165g】坚果特产休闲零食纸皮核桃",
+                url: 'http://img10.360buyimg.com/n1/jfs/t2821/18/1316712878/430655/c65ffb7/573c06a0N956686b0.jpg',
+                amount: 2
+            }, {
+                price: 28,
+                id: 2,
+                name: "旺旺旺仔牛奶2940ml原味245 ml× 8罐+苹果味245ml×4罐",
+                url: 'http://img14.360buyimg.com/n1/jfs/t2623/71/2055615738/228070/6f87f326/57553c7aNa8b4b9c3.jpg',
+                amount: 1
+            }
+        ]
+        //添加商品到购物车
+        $scope.addToShopcar = function(item) {
+            var realIndex = $scope.getRealIndex(item.id);
+
+            /**
+             得到的真实索引>=0则代表商品已经在购物车内
+             若已经在则增加商品数量
+             若不在则增加一个商品条目
+             **/
+            if (realIndex >= 0) {
+                $scope.shopCarItems[realIndex].amount += 1;
+            } else {
+                item.amount = 1;
+                $scope.shopCarItems.push(item);
+            }
+            //增加商品数量或条目则重新计算购物车商品总金额
+            $scope.getTotalMoney();
+            showAltMsg("添加到购物车成功");
+        }
+        //获得商品在购物车中的真实索引
+        $scope.getRealIndex = function(id) {
+            var realIndex = -1;
+            for (var i = 0; i < $scope.shopCarItems.length; i++) {
+                if ($scope.shopCarItems[i].id == id) {
+                    realIndex = i;
+                    break;
+                }
+            }
+            return realIndex;
+        }
+        //计算购物车总额
+        $scope.getTotalMoney = function() {
+            var sum = 0;
+            for (var i = 0; i < $scope.shopCarItems.length; i++) {
+                sum += $scope.shopCarItems[i].price * $scope.shopCarItems[i].amount
+            }
+            $scope.totalMoney = sum;
+        };
+
+        //初次加载计算一下总金额
+        $scope.getTotalMoney();
+
+        //减少购物车商品数量
+        $scope.mulGoodAmount = function(index) {
+            $scope.shopCarItems[index].amount -= 1;
+            //商品数量减少到0时直接删除商品
+            if ($scope.shopCarItems[index].amount < 0) {
+                $scope.shopCarItems.splice(index, 1);
+            }
+            //减少商品数量之后重新计算购物车商品总金额
+            $scope.getTotalMoney();
+        }
+    })
+    //显示操作成功
+    function showAltMsg(msg){
+        var toast=document.getElementById('toast');
+        if(toast){
+            toast.innerHTML=msg;
+            toast.style.display="block";
+        }else{
+            var msgDom=document.createElement('div');
+            msgDom.id='toast';
+            msgDom.innerHTML=msg;
+            var body=document.getElementsByTagName('body')[0]
+            body.appendChild(msgDom);
+        }
+
+        setTimeout(function(){
+            var toast=document.getElementById('toast');
+            toast.style.display="none";
+        },500);
+    }
+
+</script>
+</html>

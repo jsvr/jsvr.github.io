@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-alert弹框</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <h3>bootstrap 演示</h3>
+    <div class="alert alert-success">...</div>
+    <div class="alert alert-info">...</div>
+    <div class="alert alert-warning">...</div>
+    <div class="alert alert-danger">...</div>
+    <h3>脚本 警告框</h3>
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Warning!</strong> Best check yo self, you're not looking too good.
+    </div>
+    <h3>bootstrap UI中的使用方法</h3>
+    <div ng-controller="AlertDemoCtrl">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+        <!--<button class='btn btn-default' ng-click="closeAlert($index)">Cloes Alert</button>-->
+    </div>
+    <!-- end ngRepeat: alert in alerts -->
+    <div class="alert ng-isolate-scope alert-success" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+        <button ng-show="closeable" type="button" class="close" ng-click="close()">×</button>
+        <div ng-transclude=""><span class="ng-scope ng-binding">Well done! You successfully read this important alert message.</span></div>
+    </div>
+    <!-- end ngRepeat: alert in alerts -->
+    <h3>内嵌模板</h3>
+    <div ng-controller="Ctrl">
+        <div my-customer></div>
+    </div>
+    <button class="btn btn-default" ng-click="addAlert()">Add Alert</button>
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('AlertDemoCtrl', function ($scope) {
+            $scope.alerts = [
+                {type:'danger',msg:'Oh snap! Change a few things up and try submitting again.'},
+                {type:'success',msg:'Well done! You successfully read this important alert message.'},
+            ];
+            $scope.addAlert = function () {
+                $scope.alerts.push({msg: "Another alert!"})
+            };
+            $scope.closeAlert = function () {
+                $scope.alerts.splice(index,1);
+            };
+        });
+
+        angular.module('ui.bootstrap.alert', [])
+
+            .controller('AlertController', ['$scope', '$attrs', function ($scope, $attrs) {
+                $scope.closeable = 'close' in $attrs;
+            }])
+
+            .directive('alert', function () {
+                return {
+                    restrict:'EA',
+                    controller:'AlertController',
+                    templateUrl:'template/alert/alert.html',
+                    transclude:true,
+                    replace:true,
+                    scope: {
+                        type: '@',
+                        close: '&'
+                    }
+                };
+            });
+
+        angular.module('docsSimpleDirective', [])
+                .controller('Ctrl', function($scope) {
+                    $scope.customer = {
+                        name: 'Naomi',
+                        address: '1600 Amphitheatre'
+                    };
+                })
+                .directive('myCustomer', function() {
+                    return {
+                        template: 'Name: {{customer.name}} Address: {{customer.address}}'
+                    };
+                });
+    </script>
+</body>
+</html>

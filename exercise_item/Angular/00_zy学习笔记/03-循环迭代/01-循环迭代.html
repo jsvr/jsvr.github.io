@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-01-循环迭代</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body>
+<div ng-app="app" ng-controller="StudentList">
+    <button ng-click="insertDog()">添加</button>
+    <button ng-click="delLast()">删除</button>
+    <ul>
+        <li ng-repeat="student in students">
+            <span class="index">{{$index+1}}</span>
+            <span class="name"><a href="/student/view/{{student.id}}" class="name">{{student.name}}</a></span>
+            <span class="score">{{student.score}}</span>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    var app = angular.module('app',[]);
+    app.controller('StudentList', function ($scope) {
+        $scope.students = [
+            {"name":"code_bunny","score":"100","id":"001"},
+            {"name":"white_bunny","score":"90","id":"002"},
+            {"name":"black_bunny","score":"80","id":"003"}
+        ];
+        $scope.insertDog = function(){
+            $scope.students.splice($scope.students.length,0,{"name":"code_dog","score":"101","id":"004"});
+            //$scope.students.push({"name":"code_dog","score":"101","id":"004"});
+        };
+        $scope.delLast = function(){
+            $scope.students.splice(-1,1)
+        }
+    });
+</script>
+</body>
+</html>

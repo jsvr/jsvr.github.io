@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-alert弹框</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="AlertDemoCtrl" class="ng-scope">
+        <!-- ngRepeat: alert in alerts -->
+        <div class="alert ng-isolate-scope alert-danger" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+            <button ng-show="closeable" type="button" class="close" ng-click="close()">×</button>
+            <div ng-transclude=""><span class="ng-scope ng-binding">Oh snap! Change a few things up and try submitting again.</span></div>
+        </div>
+
+        <!-- end ngRepeat: alert in alerts -->
+        <div class="alert ng-isolate-scope alert-success" ng-class="&quot;alert-&quot; + (type || &quot;warning&quot;)" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+            <button ng-show="closeable" type="button" class="close" ng-click="close()">×</button>
+            <div ng-transclude=""><span class="ng-scope ng-binding">Well done! You successfully read this important alert message.</span></div>
+        </div><!-- end ngRepeat: alert in alerts -->
+        <button class="btn btn-default" ng-click="addAlert()">Add Alert</button>
+    </div>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('AlertDemoCtrl', function ($scope) {
+        $scope.alerts = [
+            {type:'danger',msg:'Oh snap! Change a few things up and try submitting again.'},
+            {type:'success',msg:'Well done! You successfully read this important alert message.'},
+        ];
+        $scope.addAlert = function () {
+            $scope.alerts.push({msg: "Another alert!"})
+        };
+        $scope.closeAlert = function () {
+            $scope.alerts.splice(index,1);
+        };
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_angular外部文件中的控制器</title>
+    <script src="../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <ul>
+            <!--ng-repeat 后面不加引号会报错-->
+            <li ng-repeat="item in items">
+                {{ item.name + ',' + item.country }}
+            </li>
+
+            <!--<li ng-repeat="(key,value) in items">-->
+                <!--{{ key + ',' + value }}-->
+            <!--</li>-->
+        </ul>
+    </div>
+    <script src="03_angular.js"></script>
+</body>
+</html>

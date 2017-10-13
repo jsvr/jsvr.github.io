@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-控制器</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl1">
+        <h1>{{ title }}</h1>
+        <div ng-controller="myCtrl2">
+            <h5>{{ title }}</h5>
+        </div>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl1', function ($scope) {
+        $scope.title = "第一个控制器的 title!"
+    });
+    app.controller('myCtrl2', function ($scope) {
+        //$scope.title = "第二个控制器的 title!"
+        // 注销后 控制器2 里的 title 继承 控制器1的 title
+    });
+</script>
+</html>

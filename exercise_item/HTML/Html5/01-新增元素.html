@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>新增元素</title>
+</head>
+<script src="../../jquery-1.12.1.js"></script>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+
+    <!--自定义属性-->
+    <ul>
+        <!-- 所有的自定义属性都必须以data-开头 -->
+        <li data-type="guonei" data-id="1" data-my-name="test">国内新闻</li>
+        <li>国际新闻</li>
+        <li>体育新闻</li>
+        <li>娱乐新闻</li>
+    </ul>
+
+    <script>
+        var li = document.querySelector('li');
+
+        // getAttribute
+        // setAttribute
+
+        var attr = li.getAttribute('data-type');
+
+        var attr1 = li.getAttribute('data-id');
+
+        // console.log(attr);
+        // console.log(attr1);
+
+        // 用传统方法去获取相对的麻烦
+
+        // H5里提供了新一接口dataset
+        console.log(li.dataset);
+
+        console.log(li.dataset.type);
+        console.log(li.dataset.id);
+
+        // 设置属性
+        li.dataset.type = 'guoji';
+
+        console.log(li.dataset.myName);
+
+        li.style.backgroundColor = 'red';
+
+    </script>
+</div>
+<audio controls>
+    <source src='images/See%20You%20Again.mp3'>
+</audio>
+<video controls="controls" autoplay="autoplay" loop="loop" width="250px" height="160px">
+    <source src='https://d2g83ydku1zde9.cloudfront.net/www/static/platform/images/index/imperia_video1.mp4'>
+</video>
+
+<body>
+<script>
+    // 1. 选择器
+    var lis = document.querySelectorAll('div ul li')
+    console.log(lis);
+    // 2. 音频
+    // 3. 视频
+    // 4. 标签语义化
+    // 5. 表单
+    /*
+    表单元素
+    <datalist> 下拉选项，使用中文时要注意
+    <keygen> 生成加密字符串
+    <output> 不可当做数据提交？
+    <meter> 表示度量器，不建议用作进度条
+    表单属性
+    placeholder 占位符
+    autofocus 获取焦点
+    multiple 文件上传多选或多个邮箱地址
+    autocomplete 自动完成，用于form元素，也可用于部分input，默认值on
+    form 指定表单项属于哪个form，处理复杂表单时会需要
+    novalidate 关闭验证，可用于<form>标签，（只适应用form）
+    required 验证条件，必填项
+    pattern 正则表达式 自定义验证规则
+    表单重写没有提及，自行验证，共包含
+    formaction、formenctype、formtarget、formmethod、formnovalidate
+    应用于提交按钮上，如：<input type="submit" formaction="xxx.php">
+
+    表单事件
+    oninput 用户输入内容时触发，可用于移动端输入字数统计
+    oninvalid 验证不通过时触发
+
+
+    自定义属性
+    在HTML5中我们可以自定义属性，其格式如下data-*=""，例如
+    data-info="我是自定义属性"，通过Node.dataset['info'] 我们便可以获取到自定义的属性值。
+    Node.dataset是以对象形式存在的
+    当我们如下格式设置时，则需要以驼峰格式才能正确获取
+    data-my-name="itcast"，获取Node.dataset['myName']
+     */
+</script>
+</body>
+</html>

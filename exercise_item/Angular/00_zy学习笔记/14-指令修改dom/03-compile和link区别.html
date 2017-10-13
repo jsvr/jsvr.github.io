@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-compile和link区别</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div compiletest="5">
+        <p>hello word!</p>
+    </div>
+    <!--指令在定义是hello和Hello都行,在html里引用是得从驼峰命名的大写字母出分开-->
+    <div auto-hello="5">
+        <p>你好世界</p>
+    </div>
+    <script>
+        var app = angular.module("app",[]);
+            app.directive('compiletest', function () {
+                return {
+                    restrict: 'A',
+                    compile: function (ele,attrs,transclude) {
+                        //transclude:表示是不是在指令插入一些内容 或者变换
+                        console.log("指令编译");
+                        var tpl = ele.children().clone();
+                        for(var i = 0;i < attrs.compiletest-1; i++){
+                            ele.append(tpl.clone());
+                        }
+
+                        return function (scope,ele,attrs,contrller) {
+                            console.log("指令链接");
+                        }
+                    },
+                    link: function () {
+                        //此时的link函数是不起作用,注释掉compile函数,link函数才能起作用
+                        console.log("link函数不起作用");
+                    }
+
+
+                }
+            }).directive('autoHello', function () {
+                return {
+                    restrict: 'A',
+                    compile: function(ele,attrs,transclude){
+                        var tpl = ele.children().clone();
+                        for(var i = 0; i < attrs.autoHello -1; i++){
+                            ele.append(tpl.clone());
+                        }
+                    }
+                }
+            });
+            /*
+            compile与link的区别
+            compile 函数的作用是对指令的模板进行转换;
+            link的作用是在模型和视图之间建立关联,包括在元素上注册事件监听;
+            scope在链接阶段才会被绑定到元素上,因此compile只会执行一次;而link对于指令的每个实例都会执行一次;
+            一般情况我们只要编写link函数就够了;
+            ***如果你编写的自定义的compile函数,自定义的link函数无效,因为compile函数应该返回一个link函数供后续处理***
+             */
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

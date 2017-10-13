@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../../../../dist/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/form-demo1.css">
+    <script src="../../../../../dist/angular/angular.js"></script>
+
+</head>
+<body>
+    <div ng-app="myApp" style="margin-top:50px;" ng-controller="myCtrl">
+        <script>
+            /*
+             1. requered 必填项 ----- myForm.username.$error.required
+             2. 用正则直接验证用户名的最大最小长度(在不需要最大最小长度单独验证的时候)
+             3. minlength myForm.username.$error.minlength
+             4. maxlength myForm.username.$error.maxlength
+            */
+
+        </script>
+        <form name="myForm" action="" class="container form-horizontal" id="animate">
+            <div class="form-group" ng-class="{'has-error':myForm.username.$dirty && myForm.username.$invalid}">
+                <label class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-5">
+                    <input type="text" autocomplete="off" name="username" ng-pattern="/^[a-zA-Z]{5,10}$/" ng-required="true" ng-change="getUserName();"
+                            ng-model="data.username" class="form-control" placeholder="用户名">
+
+                </div>
+                <div class="col-sm-3 has-feedback">
+                    <div ng-show="myForm.username.$dirty && ( myForm.username.$error.required || myForm.username.$error.pattern)"
+                         class="alert alert-danger">
+                        用户名不符合要求
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                    </div>
+                    <div ng-show="myForm.username.$dirty && !myForm.username.$error.required && !myForm.username.$error.pattern"
+                         class="alert alert-success">
+                         用户名合法
+                        <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <a href="javascript:void (0)" ng-show="myForm.username.$dirty && !myForm.username.$error.required && !myForm.username.$error.pattern"
+                       class="btn btn-success">点击验证用户名是否存在</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >密码</label>
+                <div class="col-sm-5">
+                       <input type="password" autocomplete="off" name="password" ng-required="true" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/"
+                              ng-model="data.password" class="form-control" placeholder="密码"/>
+                </div>
+                <div class="col-sm-3 has-feedback">
+
+                    <div ng-show="myForm.password.$dirty && (myForm.password.$error.required || myForm.password.$error.pattern)"
+                         class="alert alert-danger">
+                        密码为6-20的字母和数字组合
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                    </div>
+                    <div ng-show="myForm.password.$dirty && !myForm.password.$error.pattern && !myForm.password.$error.required" class="alert alert-success">
+                        密码格式正确
+                        <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label class="col-sm-2 control-label" >确定密码</label>
+                <div class="col-sm-5">
+                    <input type="password" autocomplete="off" name="conFirmPassword" ng-required="true"
+                           ng-model="data.conFirmPassword" class="form-control" placeholder="确认密码"/>
+                </div>
+                <div class="col-sm-3 has-feedback">
+                    <div ng-show="myForm.password.$dirty && myForm.conFirmPassword.$dirty && data.conFirmPassword !== data.password"
+                         class="alert alert-danger">
+                        密码和确认密码不一致
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                    </div>
+                    <div ng-show="myForm.password.$dirty && myForm.conFirmPassword.$dirty && data.conFirmPassword == data.password && myForm.conFirmPassword.$error.required"
+                         class="alert alert-success">
+                        密码和确认密码一致
+                        <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" >
+                <label class="col-sm-2 control-label" >邮箱</label>
+                <div class="col-sm-5">
+                    <input type="email" autocomplete="off" name="email" ng-required="true"
+                           ng-minlength="5" ng-maxlength="30" ng-model="data.email" class="form-control" placeholder="邮箱"/>
+                </div>
+                <div class="col-sm-3 has-feedback">
+                    <div ng-show="myForm.email.$dirty && myForm.email.$error.email" class="alert alert-danger">
+                        邮箱格式不正确
+                        <span class="glyphicon glyphicon-remove form-control-feedback" style="color: red"></span>
+                    </div>
+                    <div ng-show="myForm.email.$dirty && !myForm.email.$error.email" class="alert alert-success">
+                        邮箱格式不正确
+                        <span class="glyphicon glyphicon-ok form-control-feedback" style="color: limegreen"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label class="col-sm-2 control-label" >年龄</label>
+                <div class="col-sm-10">
+                    <input type="number" autocomplete="off" name="age" ng-required="true"
+                           ng-minlength="2" ng-maxlength="3" ng-model="data.age" class="form-control" placeholder="年龄"/>
+                    <div ng-show="myForm.age.$dirty && myForm.age.$error.maxlength" class="alert alert-danger help-block">
+                        年龄不能大于99岁
+                    </div>
+                    <div ng-show="myForm.age.$dirty && myForm.age.$error.minlength" class="alert alert-danger help-block">
+                        年龄不能小于10岁
+                    </div>
+                    <div ng-show="myForm.age.$dirty && myForm.age.$error.number" class="alert alert-danger help-block">
+                        年龄式不正确
+                    </div>
+                </div>
+            </div>
+            </form>
+    </div>
+
+
+    <script src="js/form-demo1.js"></script>
+</body>
+</html>

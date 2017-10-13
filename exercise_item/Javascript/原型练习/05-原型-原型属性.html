@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			// 这个是覆盖原型,旧的对象指向他自己的原型,他的原型上没有name属性;
+			function Func() {
+			}
+			var f1 = new Func();
+			Func.prototype = {
+				name: 'jim'
+			};
+			var f2 = new Func();
+			console.log( f1.name );
+			console.log( f2.name );
+
+			
+			
+			// 变式
+			// 这个是在原型上动态添加属性;
+			function Func() {}
+			var f1 = new Func();
+
+			Func.prototype.name = 'jim';
+			var f2 = new Func();
+
+			console.log( f1.name );
+			console.log( f2.name );
+
+
+			var a = new Object();
+			a.value = 1;
+			b = a;
+			b.value = 2;
+			alert(a.value);//2
+
+			var arr1 = [ 1, 2, 3 ];
+			var arr2 = arr1;
+			arr1 = [ 4, 5, 6 ];
+			alert(arr1);// 456
+			alert(arr2);// 123
+
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

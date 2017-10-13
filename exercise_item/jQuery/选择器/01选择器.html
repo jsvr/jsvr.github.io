@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <script src="../../jquery-1.12.1.js"></script>
+    <style>
+
+    </style>
+    <script>
+        $(function () {
+            //子选择器,所有亲儿子
+            $(".item>li").css({'backgroundColor':'red'});
+            //后代选择器,子孙中所有 li;
+            $(".item li").css({'backgroundColor':'deeppink','color':'blue'});
+            //checkbox 选择器;
+            //$("input:checked").attr('value','lisi'); //正确
+            //$("input:eq(1)").attr('checked','checked');//正确
+            //$('input')[1].attr('checked','checked');//错误原因 $('input')[1] 是一个dom 对象
+            $('.item').find('span:eq(1)').css('color','green');
+            $('.item').find('span')[0].innerHTML='zhang';
+            $('.item').find('span:eq(2)').attr('innerHTML','zhnagyang');//为什么不行
+            console.log($('.item').children()[0].innerHTML = 'aaaa');
+            $('.item')[0].style.backgroundColor = 'red'//第一个类名 DOM 操作
+            console.log($('.item > li').parent()[0].style.backgroundColor = 'deepskyblue');//第一个父盒子
+
+            //重要方法 end() 回到上一个操作,继续链式编程;
+        })
+
+    </script>
+</head>
+<body>
+<ul class="item">
+    <li>1我是子选择器</li>
+    <li>2</li>
+    <li>3</li>
+    <div>4
+        <ul>
+            <li>我是后代选择器</li>
+            <li>我是后代选择器</li>
+            <span>span标签</span>
+            <span>span标签</span>
+            <span>span标签</span>
+        </ul>
+    </div>
+</ul>
+
+<form>
+    <input type="text" />
+    <input type="checkbox" value='zhang'/>
+    <input type="radio" />
+    <input type="image" />
+    <input type="file" />
+    <input type="submit" />
+    <input type="reset" />
+    <input type="password" />
+    <input type="button" />
+    <select><option/></select>
+    <textarea></textarea>
+    <button></button>
+</form>
+</body>
+</html>

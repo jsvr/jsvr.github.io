@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-css类和样式</title>
+    <style>
+    .submit-false{
+        color: #00a1cb;
+        cursor: default;
+        background-color: #EFEFEF;
+    }
+    button{
+        width: 60px;
+        height: 40px;
+        border: 1px solid #000;
+        outline: none;
+        cursor: pointer;
+    }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <button class="submit-{{disable}}" ng-click="active()">提交</button>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.disable = true;
+        $scope.active = function () {
+            $scope.disable = false;
+            //$scope.disable = !$scope.disable;
+        }
+    });
+</script>
+</html>

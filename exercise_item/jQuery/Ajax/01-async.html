@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async</title>
+</head>
+<a href="javascript:void(0)" onmouseover="testAsync()"/></a>
+</body>
+<script src="../../dist/jquery-1.11.1.min.js"></script>
+<script>
+    //jsonpCallback的话,同域得返回json,跨域得返回jsonp
+    /*
+     $.ajax({
+         url: GAME_URL + "/index.php?m=XcgameLogin&a=register&sub=landingpage&scgid=naruto&gid=5&jstype=fzy&fr=home",
+         dataType: "jsonp",
+         data:{email:email,password:password,channel:channel,cashsubid:cashsubid,cashcid:cashcid},
+         jsonCallback: "jsonp",
+         success: function(item) {
+             if (item.status == 1) {
+                 window.location.href=data.data;
+             } else {
+                 is_reg = true;
+                 layer.alert('A conta já existe, por favor verifique se o seu email está registrado',5,' ');
+                 return false;
+             }
+         },
+         error:function  (argument) {
+             is_reg = true;
+             layer.alert('Erro da sistema, Por favor, tente novamente!',5,' ');
+         }
+     });
+     */
+    function testAsync(){
+        var temp;
+        $.ajax({
+            async: false,
+            type : "GET",
+            url : '01-async.php',
+            complete: function(msg){
+                alert('complete');
+            },
+            success : function(data) {
+                alert('success');
+                temp=data;
+            }
+        });
+        alert(temp+'   end');
+    }
+    /*
+     当async: true 时，ajax请求是异步的。但是其中有个问题：testAsync()中的ajax请求和其后面的操作是异步执行的，那么当tet.php还未执行完，就可能已经执行了 ajax请求后面的操作，如： alert(temp+' end');然而，temp这个数据是在ajax请求success后才赋值的，结果，输出时会为空。
+     同步的意思是当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，页面出去假死状态，当这个AJAX执行完毕后才会继续运行其他代码页面假死状态解除。
+     而异步则这个AJAX代码运行中的时候其他代码一样可以运行。
+     */
+</script>
+
+</html>

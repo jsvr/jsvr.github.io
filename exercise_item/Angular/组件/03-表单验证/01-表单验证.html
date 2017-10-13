@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-表单验证</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myform">
+        <form name="signUp" >
+            <h1>注册:</h1>
+            <!--ng-show的值,不一定要是true或者false,这里的message为空的时候,就会是false,有值的话就是true.-->
+            <!--所以,当message不为空的时候,h3就会被显示出来-->
+            <h3 ng-show="message">{{message}}</h3>
+            <span>昵称:</span><span><input type="text" ng-model="user.name" required/></span>
+            <br>
+            <br>
+            <span>邮箱:</span><span><input type="email" ng-model="user.email" required/></span>
+            <br>
+            <br>
+            <span>年龄:</span><span><input type="number" ng-model="user.age" required ng-maxlength="3" ng-minlength="1"/></span>
+            <br>
+            <br>
+            <!--表单需要有一个名字,signUp.$valid就是这个表单的验证状态,这个状态决定了button按钮是否禁用.-->
+            <!--当所有的验证都通过时,signUp.$valid值就是true,否则,就是false-->
+            <button ng-disabled="!signUp.$valid" ng-click="addUser()">提交</button>
+            <!--ng-disabled属性用于绑定元素是否禁用,如果是true就禁用, false则不禁用.-->
+        </form>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myform', function ($scope) {
+        $scope.user = {
+            name:'',
+            email:'',
+            age:''
+        };
+        $scope.message = "";
+        $scope.addUser = function(){
+            //把数据存入数据库
+            $scope.message = "提交成功,欢迎您,"+$scope.user.name;
+        }
+    });
+</script>
+</html>

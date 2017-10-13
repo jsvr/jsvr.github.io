@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-过滤器</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <!--demo 1-->
+    <div ng-controller="myCtrl">
+        <span>{{ title_1 | titleCase: 1 }}</span>
+        <br>
+        <span>{{ title_2 | titleCase: 2 }}</span>
+    </div>
+    <hr>
+    <!--demo 2-->
+    <div ng-controller="mainController">
+        <!--过滤已接受的数据-->
+        <div ng-repeat="item in array | filter:{state:'已接受'}">
+            {{item.name}},{{item.state}}
+        </div>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    //demo 1
+    app.filter('titleCase', function () {
+        var titlecase = function (title,num) {
+            var words = title.split(' ');
+            for(var i = 0; i < words.length; i++){
+                //将第一个字母转化为大写,加上 新返回的一个从索引1截取到最后的字符串;
+                words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1);
+            }
+            //把数组 转化成字符串 返回
+            return num+'. '+words.join(' ');
+        };
+        return titlecase;
+    });
+    app.controller('myCtrl', function ($scope) {
+        $scope.title_1 = ' i am black bunny!';
+        $scope.title_2 = ' i am white bunny!'
+    });
+    //demo 2
+    app.controller('mainController', function ($scope) {
+        $scope.array =  [
+            {name: "张三", phone: "18612345678", state: "邀请中"},
+            {name: "李四", phone: "18612345678", state: "已接受"}
+        ];
+    });
+    /*
+    1.> app.filter
+     .filter的第一个参数为过滤器的名字,也就是在{{}}里面使用的名字,
+     第二个参数是一个函数,函数需要再返回一个函数,被返回的函数,就是用来处理数据的函数
+    2.> 处理数据的函数
+     第一个参数是被过滤的数据,后面的参数就是在使用过滤器的时候,冒号后面传入的值.
+     比如这里的1
+     */
+</script>
+</html>

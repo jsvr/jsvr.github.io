@@ -1,0 +1,6 @@
+.alert{
+    padding: 6px;
+    margin-bottom: 0;
+}
+#animate{-webkit-transition:all linear 2s; transition:all linear 2s; opacity:1;}
+#animate.ng-hide{ opacity:0;}

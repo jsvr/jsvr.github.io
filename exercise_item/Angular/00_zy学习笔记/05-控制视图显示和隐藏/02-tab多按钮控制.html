@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-控制视图显示和隐藏</title>
+    <style>
+        .box{
+            width: 1000px;
+            height: 300px;
+        }
+        #ulTab1{
+            overflow: hidden;
+        }
+        #ulTab1 li{
+            width: 200px;
+            height: 100px;
+            background-color: deepskyblue;
+            margin:10px;
+            float: left;
+        }
+        #ulTab2{
+            overflow: hidden;
+            margin-top: 100px;
+        }
+    </style>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app='app' ng-controller="showHide">
+<button ng-click="toggleShow();">{{ text }}</button>
+<div class="box box-tab">
+    <ul id="ulTab1">
+        <li data-li1>盒子1</li>
+        <li>盒子2</li>
+        <li>盒子3</li>
+    </ul>
+</div>
+<div>
+
+</div>
+<ul id="ulTab2">
+    <li>nav1</li>
+    <li>nav2</li>
+    <li>nav3</li>
+</ul>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller('showHide', function ($scope) {
+
+    });
+    app.directive('boxTab', function () {
+        return{
+            restrict: 'C',
+            scope:false,
+            link: function (scope,element,attrs) {
+                element.find('li').on('click',function () {
+                    console.log(1);
+                    this.show().siblings('li').hide();
+                });
+            },
+        }
+    })
+</script>
+</html>

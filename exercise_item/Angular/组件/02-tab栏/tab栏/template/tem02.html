@@ -1,0 +1,17 @@
+<div>
+    <nav class="zy_nav clearfix">
+        <div class="zy_nav_list" ng-repeat= "item in tabData.dataNav"
+            ng-class="{'navActive':$index == 1}">
+            <h3>{{ item.title }}</h3>
+            <span>{{ item.detail }}</span>
+        </div>
+    </nav>
+    <content class="zy_content clearfix">
+        <div class="zy_content_list" ng-repeat="item in tabData.dataContent"
+             ng-class="{'cotentActive':$index == 1}">
+            <h3>{{ item.title }}</h3>
+            <span>{{ item.detail }}</span>
+        </div>
+    </content>
+</div>
+

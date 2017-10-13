@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-指令修改dom</title>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <!--html5中,元素有autofocus属性,添加了这个属性的元素,会自动获取焦点.下面用angular模拟这个指令-->
+        <button ng-click="nofocus()">没有焦点</button>
+        <br>
+        <button myautofocus ng-click="hasfocus()">有焦点</button>
+        <br>
+        <br>
+        <span>{{ text }}</span>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.text = "没有点击任何按钮";
+        $scope.nofocus = function () {
+            $scope.text = "没有点击任何按钮";
+        };
+        $scope.hasfocus = function () {
+            $scope.text = "点击了焦点按钮"
+        };
+        //自定义属性(在定义的app模块下面定义directive)
+        /*
+         directive传入两个参数:
+
+         第一个参数是指令的名字;
+
+         第二个参数是一个工厂函数:
+
+         函数返回一个对象,对象的link方法的函数有四个参数:
+
+         scope:获取外层scope的引用
+
+         elements:它所存在的DOM元素
+
+         attrs:传递给指令的一个属性数组
+
+         controller:DOM元素上的控制器
+
+         1.restrict
+         E： 表示该directive仅能以element方式使用，即：<my-dialog></my-dialog>
+         A： 表示该directive仅能以attribute方式使用，即：<div my-dialog></div>
+         EA: 表示该directive既能以element方式使用，也能以attribute方式使用
+
+         2.transclude
+         你的directive可能接受页面上的其他html内容时才会用到，建议你先去掉该参数。有些高阶了。
+
+         3.scope
+         当你写上该属性时，就表示这个directive不会从它的controller里继承$scope对象，而是会重新创建一个。
+         templateUrl
+         你的directive里的html内容
+         4.link
+         可以简单理解为，当directive被angular 编译后，执行该方法
+
+         */
+
+    });
+    app.directive('myautofocus', function () {
+        return {
+            link: function (scope,elements,attrs,controller) {
+                elements[0].focus();
+                elements.text("55555");
+                elements.eq(0).text('小型的jq');
+                elements.eq(0).attr('data-order','10086');
+                console.log(elements.eq(0).text('小型的jq'));
+                console.log(elements.text());
+            }
+        }
+    });
+</script>
+</html>

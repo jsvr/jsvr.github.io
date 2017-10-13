@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类</title>
+</head>
+<body>
+
+</body>
+<script>
+    // javascript 定义类(class)的的三种方法
+
+    // 1.构造函数方法
+    // 这是经典方法.它用构造函数模拟'类',在其内部用this关键字指代实例对象.
+    function Cat() {
+        this.name = "莉莉";
+    }
+    // 使用new关键字 生成实例
+    var cat1 = new Cat();
+    console.log(cat1.name);
+
+    // 类的属性和方法,还可以在构造函数的prototype对象上定义
+    // 方法缺点:
+    // 01.复杂,用到了this和prototype
+    // 02.编写和阅读都很费力
+    Cat.prototype.makeSound = function () {
+        console.log("喵喵");
+    }
+
+
+    // 2.Object.create() ---- ECMAScript第五版提出的新方法
+    // 用这个方法,'类'就是一个对象,不是函数,存在兼容问题
+    var Cat2 = {
+        name: "莉莉",
+        makeSound: function () {
+            console.log("喵喵");
+        }
+    }
+    // 然后直接用Object.create()生成实例,不需要用到new.
+    var cat2 = Object.create(Cat2);
+    console.log(cat2.name);
+    console.log(cat2.makeSound());//执行 喵喵,再打印 undefined;???
+    // 兼容写法
+    if (!Object.create) {
+        Object.create = function (o) {
+            function F() {}
+            F.prototype = o;
+            return new F();
+        };
+    }
+    // 这种方法比构造函数简单,但是不能实现私有属性和私有方法,实例之间不能共享数据,
+    // 对类模拟的不够全面
+
+
+    // 3.极简主义方法
+
+    // 3.1封装
+
+    var Cat3 = {
+        createNew: function () {
+            // some code here
+            var cat = {};
+            cat.name = "咪咪";
+            cat.makeSound = function () {
+                console.log("喵喵喵");
+            }
+            return cat;
+        }
+    }
+
+    // 使用的时候，调用createNew()方法，就可以得到实例对象
+    var cat3 = Cat3.createNew();
+    cat3.makeSound();// 喵喵喵
+
+    // 3.2继承
+    // 让一个类继承另一个类,只要在前者的createNew()方法中,调用后者的createNew()方法即可.
+    var Animal = {
+        createNew: function () {
+            var animal = {};
+            animal.sleep = function () {
+                console.log("睡懒觉4");
+            }
+            return animal;
+        }
+    }
+
+    var Cat4 = {
+        createNew: function () {
+            var cat = Animal.createNew();
+            cat.name = "大毛4";
+            cat.makeSound = function () {
+                console.log("喵喵喵4")
+            };
+            return cat;
+        }
+    }
+    var cat4 = Cat4.createNew();//var 一个createNew()方法的实例
+    cat4.sleep();//睡懒觉4
+
+    // 3.3添加私有属性和方法
+    // 在createNew()方法中,只要不是定义在cat对象上的方法和属性,都是私有的
+    var Cat5 = {
+        createNew: function () {
+            var cat = {};
+            var sound = "喵喵喵5";//外部无法获取此变量,只有通过cat的共有方法来调取
+            cat.makeSound = function () {
+                console.log(sound);
+            }
+            return cat;
+        }
+    }
+    var cat5 = Cat5.createNew();
+    console.log(cat5.makeSound());
+    console.log(cat5.sound);//undefined
+
+    // 3.4数据共享
+    // 有时候我们需要所有的实例对象,能够读写同一项内部的数据.
+    // 这个时候,只要把这个内部数据封装在类对象里面,createNew()方法外面即可.
+    var Cat6 = {
+        sound: "喵喵喵6",
+        createNew: function () {
+            var cat = {};
+            cat.makeSound = function () {
+                console.log(Cat6.sound);
+            };
+            cat.changeSound = function (name) {
+                Cat6.sound = name;
+            };
+            return cat;
+        }
+    }
+    // 生成实例对象
+    var cat601 = Cat6.createNew();
+    var cat602 = Cat6.createNew();
+
+    console.log(cat601.makeSound());
+    console.log(cat602.makeSound());
+    cat601.changeSound("喵喵喵7");
+    console.log(cat601.makeSound());
+    console.log(cat602.makeSound());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>directive详解01</title>
+</head>
+<body>
+    <!--元素名-->
+    <gagaye-directive-element>
+        <br/>
+        <span>元素名指令原始内容</span>
+    </gagaye-directive-element>
+    <gagaye-directive-element></gagaye-directive-element>
+    <!--属性-->
+    <div gagaye-directive-attr>123</div>
+    <!--类名-->
+    <div class="gagaye-directive-class">456</div>
+    <!--注释-->
+    <!-- directive: gagaye-directive-note -->
+</body>
+<script src="../../../dist/angular/angular.js"></script>
+<script>
+    var app = angular.module('app',[]);
+        app.directive('gagayeDirectiveElement', function () {
+            return {
+                scope: false,//默认值,共享父级作用域
+                //scope: true,//继承父级作用域并创建自己的作用域.
+                //scope: {},//创建自己的独立作用域,与父级毫无关系.
+                restrict: 'E',
+                template: '<h1>元素名自定义指令<span ng-transclude></span></h1>',
+                transclude: true
+                // 保留有ng-transclude 的标签内容
+            }
+        }).directive('gagayeDirectiveAttr', function () {
+            return {
+                scope: false,
+                restrict: 'A',
+                template: '<h1>属性名自定义指令</h1>',
+                replace: false,// div 标签被替换掉
+                // 是否替换掉页面中的标签,true 替换掉,false 不替换掉;
+            }
+        }).directive('gagayeDirectiveClass', function () {
+            return {
+                scope: false,
+                restrict: 'C',
+                template: '<h1>类名自定义指令</h1>'
+            }
+        }).directive('gagayeDirectiveNote', function () {
+            return {
+                scope: false,
+                restrict: 'M',
+                template: '<h1>注释自定义指令</h1>',
+                replace: true //不加replace 模板显示不出来
+            }
+        });
+</script>
+</html>

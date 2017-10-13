@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #test{
+            margin-bottom: 50px;
+        }
+        div{
+            width: 100px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<div id="test"></div>
+<div></div>
+<script>
+    $('#test').attr('item','1');
+      $('div').click(function () {
+       if($(this).attr('item')==1){
+           alert(1);
+       } else{
+           alert(2);
+       }
+    });
+
+</script>
+</body>
+<body>
+
+</body>
+</html>

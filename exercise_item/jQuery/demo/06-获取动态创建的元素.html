@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加的li绑定事件</title>
+    <style type=text/css>
+
+    </style>
+    <!--<script src="../modules/2.1.0/node_modules/jquery/dist/cdn/jquery-2.1.0.min.js"></script>-->
+    <script src="../modules/1.11.1/node_modules/jquery/dist/cdn/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div id="uploadDiv">
+    <input name="import" value="import" type="file" id="fileCtrl" />
+    <input type="submit" value="export" id="fileupload"  />
+</div>
+<script>
+
+    $(document).ready()
+    {
+        $("#submitFile").live('click', function (e) {
+            alert('button clicked');
+            e.preventDefault();
+            alert(1);
+        });
+
+        $('#fileCtrl').live('change', function (event) {
+            alert(1);
+        });
+
+        <!--  this was a typo from-->
+        $('#fileCtrl').live('on', function (event) {
+            alert(1);
+        });
+
+    }
+</script>
+</body>
+</html>

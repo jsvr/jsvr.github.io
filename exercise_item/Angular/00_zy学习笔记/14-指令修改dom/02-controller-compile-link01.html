@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>controller-compil-link01</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div ng-controller="myCtrl" order>
+
+    </div>
+</body>
+<script>
+    var ag = angular.module("myApp",[]);
+    ag.controller("myCtrl",["$rootScope",function($rootScope){
+
+    }]);
+    ag.directive("order",function(){
+        return{
+            //E： 表示该directive仅能以element方式使用，即：<my-dialog></my-dialog>
+            //A： 表示该directive仅能以attribute方式使用，即：<div my-dialog></div>
+            //EA: 表示该directive既能以element方式使用，也能以attribute方式使用
+            restrict:"AE",
+            controller:function($scope, $element, $attrs, $transclude) {
+                console.log("controller");
+            },
+            compile:function(tElement, tAttrs, transclude){
+                //进行编译后的dom操作
+                console.log("compile");
+                return{
+                    pre:function(scope, iElement, iAttrs, controller){
+                        //在子元素被链接之前执行
+                        //在这里进行dom转换不安全
+                        console.log("pre")
+                    },
+                    post:function(scope, iElement, iAttrs, controller){
+                        //在子元素被链接之后执行
+                        console.log("post")
+                    }
+                }
+            },
+            link:function(scope, iElement, iAttrs, controller){
+                console.log("link")
+            }
+        }
+    });
+    /*
+    1.执行顺序是他们的执行顺序不同,最先执行的是complie函数 ; 然后是controller函数,然后是pre函数,最后是post函数.
+    2.link函数没有执行
+    ### angular 生命周期
+      - 第一个阶段是编译阶段
+        + 在编译阶段，AngularJS会遍历整个HTML文档并根据JavaScript中的指令定义来处理页面上声明的指令。
+          每一个指令的模板中都可能含有另外一个指令，另外一个指令也可能会有自己的模板。当AngularJS调用
+          HTML文档根部的指令时，会遍历其中所有的模板，模板中也可能包含带有模板的指令.一旦对指令和其中
+          的子模板进行遍历或编译，编译后的模板会返回一个叫做模板函数的函数。我们有机会在指令的模板函数
+          被返回前，对编译后的DOM树进行修改。
+      - 第二个阶段是链接阶段
+        + 链接函数来将模板与作用域链接起来;负责设置事件监听器，监视数据变化和实时的操作DOM.链接函数是可选的。
+          如果定义了编译函数，它会返回链接函数，因此当两个函数都定义了时，编译函数会重载链接函数.
+
+    3. controller 和 link的区别
+     01-定义(controller渲染组件模板,link函数来控制模板的dom操作???)
+     指令的控制器和link函数可以进行互换。控制器主要是用来提供可在指令间复用的行为，但链接函数只能在当前内部
+     指令中定义行为，且无法在指令间复用.link函数可以将指令互相隔离开来，而controller则定义可复用的行为。
+
+     02-使用建议
+     如果我们希望将当前指令的API暴露给其他指令使用，可以使用controller参数，否则可以使用link来构造当前指
+     令元素的功能性。如果我们使用了scope.$watch()或者想要与DOM元素做实时的交互，使用链接会是更好的选择。
+     */
+</script>
+</html>

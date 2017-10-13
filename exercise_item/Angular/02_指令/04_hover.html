@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_hover_ng-mouseenter_ng-mouseleave</title>
+    <script src="../../dist/angular/angular.js"></script>
+    <style type=text/css>
+        .red{
+            background-color: red;
+        }
+        .italic{
+            font-style: italic;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!--要是只定义 ng-app 就不用在js 里定义模版 和 控制器代码也能执行 为什么???-->
+    <!--<div ng-app>-->
+    <!--给 ng-app 设置 app 属性 后,就得在js 里定义angular的模版和控制器, 不然报错-->
+    <div ng-app="app" ng-controller="myCtrl">
+        <!--方法1: 设置方法 在 鼠标移入 和 移出是调用,设置 hover 的属性值-->
+        <!--<div class="italic" ng-class="{red:hover}" ng-mouseenter="enter()" ng-mouseleave="leave()">-->
+
+        <div class="italic" ng-class="{red:hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+            Hover me!
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('myCtrl', function ($scope) {
+            $scope.enter = function () {
+                $scope.hover = true;
+            };
+            $scope.leave = function () {
+                $scope.hover = false;
+            }
+        });
+    </script>
+</body>
+</html>

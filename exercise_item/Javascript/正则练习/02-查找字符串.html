@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找字符串</title>
+</head>
+<body>
+<script>
+    var str = new RegExp('dsf');
+    var newStr = str.exec('jdfdsfsdf');
+    console.log(newStr[0]);// 得到一个数组,第0项是匹配到的; index 是该字符串在原字符串中的索引
+
+    // 循环遍历匹配字符串
+    var str1 = 'jdfdsfsdf';
+    var newStr1 = 'dsf';
+    for(var i = 0; i < str1.length - newStr1.length+1; i++){
+        if(str1.slice(i, i + newStr1.length) == newStr1){
+            break;
+        }
+    }
+    console.log(i);
+</script>
+</body>
+</html>

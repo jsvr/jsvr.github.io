@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<input type="checkbox" name="xieyi" title="123">请阅读协议!
+<button class="btn">按钮</button>
+<script>
+    $('.btn').click(function () {
+//        if($("input").is(":checked") == false){
+//            console.log('请同意协议!');
+//        }else {
+//            console.log('已经同意协议!');
+//        }
+        console.log($("input").attr("checked"));
+        if($("input").attr("checked")){
+            console.log('已经同意协议!');
+        }else{
+            console.log('请同意协议!');
+        }
+    });
+</script>
+</body>
+</html>

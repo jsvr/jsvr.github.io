@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="MyController">
+    <div class="show">姓名: {{name}}</div>
+    <div class="show">邮件: {{sex}}</div>
+    <div class="show">{{title}}</div>
+    <button ng-click="say()">主题</button>
+</div>
+
+</body>
+<script>
+    /*
+     1. service(name, fn)
+     fn 返回的是一个构造函数,fn为构造函数，当注入该服务时，通过该函数并使用new关键字来实例化服务对象
+     */
+    var app = angular.module('app',[]);
+    function constructorFun(name,sex,sayHello){
+        this.name = name;
+        this.sex = sex;
+        this.sayHello = function () {
+            if(typeof sayHello === "function"){
+                return sayHello();
+            }
+        }
+    }
+    app.service('Student',function () {
+        return new constructorFun("李四","女",function () {
+            alert(1);
+        });
+//        this.name = "张三",
+//        this.sex = "男",
+//        this.sayHello = function () {
+//            return "Hello Angular Service!"
+//        }
+    });
+//    app.service('Student',constructorFun("李四","女"));
+    app.controller('MyController',['$scope', 'Student', function ($scope, Student) {
+        $scope.name = Student.name;
+        $scope.sex = Student.sex;
+        $scope.say = function () {
+            $scope.title = Student.sayHello();
+        }
+    }]);
+</script>
+</html>

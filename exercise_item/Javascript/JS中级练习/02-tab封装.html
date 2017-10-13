@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab {
+            width: 300px;
+            height: 302px;
+            border: 1px solid #ccc;
+            margin: 50px;
+        }
+
+        .btn li {
+            width: 100px;
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+            background-color: pink;
+            float: left;
+        }
+
+        .btn li.current1 {
+            background-color: #fff;
+            border-bottom: none;
+        }
+
+        .box {
+            clear: both;
+        }
+
+        .box div {
+            width: 100%;
+            height: 250px;
+            display: none;
+        }
+
+        .box div.current2 {
+            display: block;
+        }
+    </style>
+    <script src="jquery-1.12.1.js"></script>
+    <script>
+        //        $(function () {
+        //            var btns = $('.btn li');
+        //            var boxs = $('.box div');
+        //
+        //            for (var i = 0; i < btns.length; i++) {
+        //                btns[i].index = i;
+        //                btns[i].onclick = function () {
+        //
+        //                    for(var j=0;j<boxs.length;j++){
+        //                        btns[j].className = '';
+        //                        boxs[j].className = '';
+        //                    }
+        //                    this.className = 'current';
+        //                    boxs[this.index].className = 'current';
+        //                }
+        //            }
+        //        })
+
+        var Fn = function (x, y, css, css2) {
+            this.x = x;
+            this.y = y;
+            this.css = css;
+            this.css2 = css2;
+        };
+
+        Fn.prototype.a = function () {
+            var _this = this, i, j;
+            for (i = 0; i < _this.x.length; i++) {
+                _this.x[i].index = i;
+                _this.x[i].onclick = function () {
+
+                    for (j = 0; j < _this.y.length; j++) {
+                        _this.x[j].className = '';
+                        _this.y[j].className = '';
+                    }
+                    this.className = _this.css;
+                    _this.y[this.index].className = _this.css2;
+                }
+            }
+        }
+
+        $(function () {
+            var btns = $('.btn li');
+            var boxs = $('.box div');
+            var b = new Fn(btns, boxs, 'current1','current2');
+            b.a();
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="tab">
+    <ul class="btn">
+        <li class="current1"></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="box">
+        <div class="current2">111111111111</div>
+        <div>333333333333</div>
+        <div>44444444444444</div>
+    </div>
+</div>
+</body>
+</html> 

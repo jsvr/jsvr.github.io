@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script>
+    // 方法里面是等于号,name 是全局的 所以undefined;
+    var Person = function () {
+        name = "jim";
+        age = 19;
+        gender = "男";
+    };
+    var p = new Person();
+    console.log( p.name )
+
+
+    //构造函数new 对象
+    var Person1 = function () {
+        this.name = "jim";
+        this.age = 19;
+        this.gender = "男";
+    };
+    var p = new Person1();
+    console.log( p.name )
+
+    // 对象 赋值
+    var obj = {name:'tom',age:25,gender:"男"};
+    var o1 = obj;
+    console.log(o1.name);
+
+
+//    var obj1 = {name:'lucy',age:25,gender:"女"}
+//    var o2 = new obj1;
+//    console.log(o2);
+
+
+    //构造函数new 对象 传参数
+    var Person = function ( newName, newAge, newGender ) {
+        // 构造函数中不需要 return
+        // 为对象添加成员使用 this.成员名 = 值
+        this.name = newName;
+        this.age = newAge;
+        this.gender = newGender;
+
+        this.sayHello = function () {
+            alert( 'hello world' );
+        };
+
+    };
+    var p = new Person( 'tom', 20, '女' );
+</script>
+</body>
+</html>

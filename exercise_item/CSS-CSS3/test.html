@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box_l_slid{
+            float: left;
+            width: 620px;
+            height: 485px;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .box_l_slid img {
+            transform: scale(1);
+            transition: all 0.5s ease-in-out;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+        }
+        .box_l_slid:hover img{
+            transform: scale(1.3);
+            -webkit-transform:scale(1.3);
+            -moz-text-replace:scale(1.3);
+        }
+    </style>
+</head>
+<body>
+<div class="box_l_slid">
+    <a target="_blank" href="/index/article?article_id={$vo.article_id}">
+        <img src="ip_banner1_img1.png" alt="">
+    </a>
+</div>
+</body>
+</html>

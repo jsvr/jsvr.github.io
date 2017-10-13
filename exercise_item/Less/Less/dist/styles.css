@@ -1,0 +1,20 @@
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: gray;
+}
+.box > .itemp {
+  color: red;
+}
+.box > span {
+  color: orange;
+}
+.box > span > a {
+  color: red;
+}
+.box > span > a:hover {
+  color: blue;
+}
+.box > span > a::before {
+  content: 'a链接的伪类';
+}

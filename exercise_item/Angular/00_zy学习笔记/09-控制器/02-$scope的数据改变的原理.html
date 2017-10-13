@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-$scope数据改变的原理</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <span ng-click="number = number + 3">点击改变值1</span>
+        <br>
+        <span ng-click="computerNum();">点击改变值2</span>
+        <br>
+        <span>
+            <input type="text" ng-model="number">
+        </span>
+        <p>{{ number }}</p>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.number = 0;
+        $scope.computerNum = function () {
+            $scope.number = $scope.number + 3;
+        }
+    });
+</script>
+</html>

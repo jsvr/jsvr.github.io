@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$http-getJson</title>
+    <script src="jquery.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.3/angular.min.js"></script>
+    <script src="jsonpService.js"></script>
+</head>
+<body>
+<div ng-app="app" ng-controller="getJson" >
+    <ul get-ul-val>
+        <li ng-repeat="x in names" ng-click="getVal($index);">
+            {{ x.Name + ', ' + x.Country }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    /*
+    * 每个控制器或者自定义指令在执行的时候就去执行一下$http请求
+    *
+    *
+    * */
+    var app = angular.module('app',['ml.services.jsonp']);
+    app.controller('getJson', function ($scope,$http) {
+
+
+    });
+    app.directive('getUlVal',function ($http) {
+        return{
+            scope: false,
+            restrict: 'A',
+            template: '',
+            replace: false,// div 标签被替换掉
+            link: function ($scope, $element, $attrs) {
+                $http({
+                    method: 'GET',
+                    url: 'json/sites.json'
+                }).then(function successCallback(response) {
+                    $scope.names = response.data.sites;
+                },function errorCallback(response) {
+                    console.log(response)
+                    console.log("请求失败！");
+                });
+                $element.on('click','li:eq(0)',function () {
+                    console.log(123);
+                });
+                $scope.getVal = function (index) {
+                    console.log($element.find('li').eq(index).text().trim())
+
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Factory</title>
+</head>
+<body>
+<h2>AngularJS Sample Application</h2>
+<div ng-controller="CalcController">
+    <p>Enter a number: <input type="number" ng-model="number" />
+        <button ng-click="square()">X<sup>2</sup></button>
+    <p>Result: {{result}}</p>
+</div>
+<div ng-controller="MyController">
+    <div>{{str('我是factory返回的内容')}}</div>
+    <div>{{name(1)}}</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script>
+    /*
+    1. factory(name, fn)
+        fn 返回的是一个object(对象)
+     */
+    var mainApp = angular.module("mainApp", []);
+    //factory1
+    mainApp.factory('MathService', function() {
+        var factory = {};
+        factory.multiply = function(a, b) {
+            return a * b
+        }
+        //返回对象 factory
+        return factory;
+    });
+
+    //第一个参数是服务名字，函数参数传工厂方法名字；
+    mainApp.service('CalcService', function(MathService){
+        this.square = function(a) {
+            return MathService.multiply(a,a);
+        }
+    });
+
+    mainApp.controller('CalcController', function($scope, CalcService) {
+        $scope.square = function() {
+            //给全局 result 赋值，调用服务(CalcService)的square方法。
+            //CalService.square 调用并返回 factory(MathService)的 multiply方法。
+            $scope.result = CalcService.square($scope.number);
+        }
+    });
+
+    //factory2
+    mainApp.factory('outfun', function () {
+        return {
+            str: function (s) {
+                return s;
+            }
+        }
+    });
+    mainApp.factory('outarr', function () {
+        return ['张三', '李四', '王五'];
+    });
+    mainApp.controller('MyController', function ($scope, outfun, outarr) {
+        //返回参数字符串
+        $scope.str = function (n) {
+            return outfun.str(n);
+        }
+        $scope.name = function (n) {
+            return outarr[n];
+        }
+    });
+
+</script>
+</body>
+</html>

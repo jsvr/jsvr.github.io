@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <script src="../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        姓名: <input type="text" ng-model="name">
+        <span>{{ name }}</span>
+    </div>
+    <script>
+        //定义一个 angular模块 ,名字为 myApp;
+        var app = angular.module('myApp',[]);
+        //定义一个app的 控制器的名为 myCtrl的方法,传入固定的$scope 参数;
+        app.controller('myCtrl', function ($scope) {
+            $scope.name = "Gagaye";
+        });
+    </script>
+</body>
+</html>

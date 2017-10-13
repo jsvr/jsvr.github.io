@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-表达式</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        {{ items.message }}
+        <br>
+        {{ foo()/10 }}
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.items = {};
+        $scope.items = {
+         message: 'go go 0',
+         message1: '10'
+        };
+        $scope.foo = function () {
+            return 10
+        }
+    });
+
+    /*
+     表达式虽然方便,但实际中应该尽量把带有逻辑的运算放入控制器中,而不是在ui中进行.
+
+     表达式是用angular自定义的解析方式计算的,不是javascript的eval(),因此是有限的.只限用于一些基本,简单的操作,比如:
+
+     计算(+,-,*,/%)
+
+     比较(==,!=,<,>,>=,<=)
+
+     布尔逻辑(&&,||,!)
+
+     数组和对象([],{})
+
+     调用方法,传入参数(fun(i))
+
+
+
+     不能够使用:
+
+     ++,--,if,else,throw,for,while,...
+    */
+</script>
+</html>

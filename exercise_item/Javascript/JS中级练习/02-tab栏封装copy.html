@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab{
+            width: 500px;
+            height: 450px;
+            border: 1px solid red;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .tab > .btn{
+            list-style: none;
+            width: 800px;
+            margin-left: -1px;
+        }
+        .tab > .btn > li {
+            width: 100px;
+            height: 80px;
+            float: left;
+            padding-left: 1px;
+            padding-right: 1px;
+            background-color: deepskyblue;
+            border-bottom: 1px solid red;
+            text-align: center;
+            line-height: 80px;
+        }
+        .btn li.current {
+            border-left: 1px solid red;
+            border-right: 1px solid red;
+            background-color: deeppink;
+            padding: 0;
+            border-bottom:1px solid deeppink;
+
+        }
+        .box{
+            clear: both;
+        }
+        .tab > .box > div{
+            width: 500px;
+            height: 370px;
+            float: left;
+            background-color: deeppink;
+            display: none;
+        }
+        .tab > .box >.show{
+            display: block;
+        }
+    </style>
+    <script src="jquery-1.12.1.js"></script>
+    <script>
+        /*
+        $(function () {
+            var lis = $('.btn > li'),
+                    divs = $('.box > div'),
+                    i,
+                    lisL = lis.length,
+                    j,
+                    divL = divs.length;
+            //console.log(btns);
+            //循环给每个li 绑定onmouseover 事件;
+            for(i = 0; i < lisL; i++){
+                lis[i].index = i;
+                lis[i].onmousemove = function () {
+                    for(j = 0; j < divL; j++){
+                        lis[j].className = '';
+                        divs[j].className = '';
+                    }
+                    this.className = 'current';
+                    divs[this.index].className = 'show';
+                }
+            }
+        })
+
+        var Tab = function(lis,divs,current,show){
+            this.lis = lis;
+            this.divs = divs;
+            this.current = current;
+            this.show = show;
+        }
+        Tab.prototype.tabShow = function () {
+            var _this = this, i,j;
+            for(i = 0; i < _this.lis.length; i++){
+                _this.lis[i].index = i;
+                _this.lis[i].onmousemove = function () {
+                    for(j = 0; j < _this.divs.length; j++){
+                        _this.lis[j].className = '';
+                        _this.divs[j].className = '';
+                    }
+                    this.className =_this.current;
+                    _this.divs[this.index].className = _this.show;
+                }
+            }
+        }
+
+        $(function () {
+            var tab = new Tab($('.btn > li'),$('.box > div'),
+                    'current',
+                    'show');
+            tab.tabShow();
+        });
+         */
+        var Tab = function(lis,divs,current,show){
+            console.log(this);// 这个this 是不是指new 出来得的对象???
+            this.lis = lis;
+            this.divs = divs;
+            this.current = current;
+            this.show = show;
+        }
+        var o1 = new Tab();
+        var o2 = new Tab();
+
+        Tab.prototype.tabShow = function () {
+            var _this = this, i, j;
+            console.log(this);
+            // this是不是指调用 tabShow()的tab;而tab 是构造函数Tab new出来的对象;
+            for(i = 0; i < _this.lis.length; i++){
+                _this.lis[i].index = i;
+                _this.lis[i].onmousemove = function () {
+                    for(j = 0; j < _this.divs.length; j++){
+                        _this.lis[j].className = '';
+                        _this.divs[j].className = '';
+                    }
+                    this.className = _this.current;
+                    _this.divs[this.index].className = _this.show;
+                }
+            }
+        }
+        $(function () {
+            var tab = new Tab($('.btn > li'),$('.box > div'),
+                            'current',
+                            'show'
+            )
+            tab.tabShow();
+        })
+
+
+//
+        $(function(){
+            // 1. 给tab栏菜单 绑定鼠标移入事件
+            $(".btn > li").mouseenter(function() {
+                // 给当前这个元素添加类，给兄弟元素移除这个类
+                $(this).addClass("current").siblings().removeClass("current");
+
+                // 让菜单对应的内容展示出来，让内容的兄弟隐藏
+                var index = $(this).index();
+                //console.log(index);
+                $(".box > div")
+                        .eq(index)
+                        .addClass("show")
+                        .siblings()
+                        .removeClass("show");
+            });
+
+           // $(".box").css({"cursor":"default","width":"100px","height":"100px","backgroundColor":"red","position":"absolute","left":"400px"});
+        });
+
+//       $(function () {
+//           $('.btn > li').on('click',function () {
+//               $(this).addClass('current').siblings().removeClass('current');
+//
+//               var index = $(this).index();
+//               $('.box > div').eq(index).addClass('show').siblings().removeClass('show');
+//           })
+//       })
+
+        var arr = [1,2,3,4,5,6,3,2,3,5,3,11,3]
+        var deRepeat = function(arr){
+            var i = 0, newArray = [], arrL = arr.length;
+            for(; i < arrL; i++){
+                if(deRepeat[arr[i]] === undefined){
+                    deRepeat[arr[i]] = 2;
+                    newArray.push(arr[i]);
+                }
+            }
+            return newArray;
+        }
+        var newArr = deRepeat(arr);
+        console.log(newArr);
+
+    </script>
+</head>
+<body>
+    <div class="tab">
+        <ul class="btn">
+            <li class="current">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+            <li>tab4</li>
+            <li>tab5</li>
+        </ul>
+        <div class="box">
+            <div class="show">show1</div>
+            <div>show2</div>
+            <div>show3</div>
+            <div>show4</div>
+            <div>show5</div>
+        </div>
+    </div>
+    <div class="box">
+
+    </div>
+</body>
+</html>

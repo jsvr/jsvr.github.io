@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增删改查</title>
+    <script src="../../jquery-1.12.1.js"></script>
+</head>
+<body>
+    <div id="create">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div id='clone'>
+
+        </div>
+    </div>
+    <div id='remove'>
+        <p>删除自己</p>
+    </div>
+</body>
+<script>
+    // 增加节点
+    var createDom = document.getElementById('create');
+    var ulDom = document.createElement('ul');
+    ulDom.innerHTML = '我是创建的ul';
+    ulDom.style.backgroundColor = 'deeppink';
+    ulDom.style.width = '100px';
+    ulDom.style.height = '100px';
+    createDom.appendChild(ulDom);
+    // 删除节点
+    var removeDom = document.getElementById('remove');
+    var psDom = document.getElementsByTagName('p');
+    removeDom.removeChild(psDom[0]);
+    // 复制节点
+    var cloneDom = document.getElementById('clone');
+    var ulDom = createDom.children[0];
+    cloneDom.appendChild(ulDom.cloneNode(true));
+</script>
+</html>

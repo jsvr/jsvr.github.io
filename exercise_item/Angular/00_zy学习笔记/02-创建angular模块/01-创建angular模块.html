@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.1-创建angular模块</title>
+    <script src="../../../dist/angular/angular.js"></script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="myCtrl">
+        <h1>{{ text.message }}</h1>
+        <h2>{{ text.name }}</h2>
+    </div>
+
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('myCtrl', function ($scope) {
+            $scope.text = {
+                message: 'test message!',
+                name: 'test name!'
+            }
+        });
+    </script>
+</body>
+</html>

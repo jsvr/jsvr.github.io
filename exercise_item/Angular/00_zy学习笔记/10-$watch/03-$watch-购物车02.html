@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-$watch-购物车02</title>
+    <script src="../../../dist/angular/angular.js"></script>
+    <style>
+        ul li {
+            list-style: none;
+        }
+        .del{
+            color: deepskyblue;
+        }
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body ng-app="app">
+<div ng-controller="myCtrl">
+    <h1>your shopping cart</h1>
+    <ul>
+        <li ng-repeat="item in items">
+            <span>{{ item.tetle }}</span>
+            <span><input type="text" ng-model="item.quantity"></span>
+            <span>{{ item.price | currency }}</span>
+            <span class = "red">{{ item.price * item.quantity | currency }}</span>
+            <span><button ng-click="remove($index);">remove</button></span>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li>总价: <span class="del">{{computeTotal()|currency}}</span></li>
+        <li>折扣: <span class="red">{{discount | currency}}</span></li>
+        <li>现价: <span class="green">{{ computeNow() | currency }}</span></li>
+    </ul>
+</div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.items = [
+            {'title':'兔子', 'quantity':1, 'price':100},
+            {'title':'咪咪', 'quantity':2, 'price':200},
+            {'title':'二哈', 'quantity':1, 'price':300},
+            {'title':'土狗', 'quantity':1, 'price':400},
+        ];
+        $scope.remove = function (index) {
+            $scope.items.splice(index,1);
+        };
+        $scope.discount = 0;
+        $scope.computeTotal = function(){
+            var total = 0;
+            for(var i=0; i<$scope.items.length; i++){
+                total += $scope.items[i].quantity*$scope.items[i].price;
+            }
+            return total
+        };
+        $scope.computeDiscount = function(newV,oldV,scope){
+            $scope.discount = newV >= 500 ? newV*0.1 : 0 ;
+        };
+        $scope.computeNow = function(){
+            return $scope.computeTotal() - $scope.discount;
+        };
+        $scope.$watch('computeTotal()',$scope.computeDiscount);
+        //$scope.$watch($scope.computeTotal,$scope.computeDiscount);
+    });
+    /*
+     1. 视图的总价部分,改成computeTotal()
+
+     2. $watch监测computeTotal函数返回值的变化
+
+     3. 总价变化,则调用computeDiscount函数计算折扣,其中第一个参数就是最新的总价
+
+     4. 视图的现价部分,改成computeNow(),通过总价和折扣计算现价
+
+     //监测 computeTotal 函数的 返回值是否发生变化,如果发生变化 就执行 $scope.computeDiscount 这个(回调函数)
+     */
+</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加的li绑定事件</title>
+    <style type=text/css>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 400px;
+            height: 200px;
+            margin:0 auto;
+            background-color: #78ff83;
+        }
+        .box ul li{
+            list-style: none;
+            width: 100px;
+            height: 20px;
+            margin:10px 0;
+            background-color: #9f9dff;
+        }
+        .addLiBtn{
+            width: 100px;
+            display: block;
+            margin:0 auto;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+    <!--<script src="../modules/2.1.0/node_modules/jquery/dist/cdn/jquery-2.1.0.min.js"></script>-->
+    <script src="../modules/1.11.1/node_modules/jquery/dist/cdn/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>1</li>
+        </ul>
+    </div>
+    <button class="addLiBtn">
+        addLiBtn
+    </button>
+    <script>
+        $('.addLiBtn').click(function () {
+            var html = '';
+//            html += '<tr>';
+//            html += '<td>' + 123 + '</td>';
+//            html += '<td>' + 1234 + '</td>';
+//            html += '<td>' + 12345 + '</td>';
+//            html += '<td>' + 123456 + '</td>';
+//            html += '</tr>';
+            html += '<div class="box1">';
+            html += '<p>box1<span>456</span>';
+            html += '</p>';
+            html += '</div>';
+            $('.box').append(html);
+        });
+        console.log($('.box'));
+        console.log($('.box1'));
+        $('.box').click(function () {
+            console.log("trigger 执行了123");
+        })
+        $('.box').on('click','.box1',function () {
+            console.log($(this).find('span').text());
+        });
+        window.onload = function () {
+            console.log(999);
+            var html = '';
+//            html += '<tr>';
+//            html += '<td>' + 123 + '</td>';
+//            html += '<td>' + 1234 + '</td>';
+//            html += '<td>' + 12345 + '</td>';
+//            html += '<td>' + 123456 + '</td>';
+//            html += '</tr>';
+            html += '<div class="box1">';
+            html += '<p>box1<span>456</span>';
+            html += '</p>';
+            html += '</div>';
+            $('.box').append(html);
+            $('.box').trigger('click');
+        }
+    </script>
+</body>
+</html>

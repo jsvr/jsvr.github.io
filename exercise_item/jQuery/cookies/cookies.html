@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookies</title>
+    <script src="jquery-1.12.1.js"></script>
+    <script src="jquery.cookie.js"></script>
+</head>
+<body>
+<script>
+    $(function () {
+        // 运行时必须有环境
+        //设置一个名称为exist，值为exist的cookie：
+        $.cookie("exist", "cookies1");
+        //设置一个名称为exist，值为exist的cookie，同时设置过期时间（expires属性）为7天：
+        $.cookie("exist", "cookies2", { expires: 7 });
+        //设置cookie一小时后过期：
+        var cookiesdate = new Date();
+        cookiesdate.setTime(cookiesdate.getTime() + ( 60 * 60 * 1000));
+        $.cookie("exist", "cookies2", { expires: cookiesdate });
+        //设置一个名称为exist，值为exist的cookie，设置过期时间（expires属性）为7天，同时设置cookie的path属性为”/admin”
+        //只有当在这个路径下时 才会读取到当前的cookies 值;
+        $.cookie("exist3", "cookies3", { path: '/admin', expires: 7 });
+        //读取名称为exist的cookie值：
+        alert( $.cookie("exist3") );
+    });
+</script>
+</body>
+</html>

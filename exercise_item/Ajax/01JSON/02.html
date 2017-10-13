@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	json
+
+	<script>
+		var xhr = new XMLHttpRequest;
+
+		xhr.open('get', '02.php');
+
+		xhr.send(null);
+
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				// console.log(xhr.responseText);
+
+				var data = JSON.parse(xhr.responseText);
+
+				console.log(data);
+
+				// console.log(data[0].name)
+			}
+		}
+	</script>
+</body>
+</html>

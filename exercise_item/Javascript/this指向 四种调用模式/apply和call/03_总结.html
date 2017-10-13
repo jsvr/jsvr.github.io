@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<script>
+    // 1.函数模式
+        //定义一个函数,如果将其单独使用,不将它与其它任何东西关联,那么就是函数调用模式. this 指向window;
+        function foo1(){
+            console.log(this);
+        }
+        foo1();
+
+    // 2.方法模式
+        //定义一个函数,如果将函数赋值给一个对象的成员,那么就是方法模式. this 谁调用指向谁
+        function foo2(){
+            console.log(this.age);//18 this 指向object对象;
+        }
+        var o = {'name':'jim','age':18};
+        o.fn = foo2;
+        o.fn();
+    // 3.构造器模式
+        //定义一个函数,使用new 来调用创建对象就是构造器(constructor)模式;
+        function foo3(){
+            //console.log(this);
+            this.name = 'lucy';
+        }
+        var o3 = new foo3();
+        console.log(o3.name);//lucy
+        var o4 = new foo3();
+
+//        o = {
+//            f : function(){
+//                return this.a + this.b;
+//            }
+//        };
+//        var p = Object.create(o);
+//        p.a = 1;
+//        p.b = 4;
+//
+//        console.log(p.f()); // 5
+
+    // 4.上下文模式
+        var Animal = function (){
+            this.name = "Animal";
+            this.showName = function(){
+                alert(this.name);
+            }
+        }
+
+        function Cat(){
+            this.name = "Cat";
+        }
+
+        var animal = new Animal();
+        var cat = new Cat();
+        //console.log(Animal.showName())//怎么没有这个方法??
+        animal.showName();//Animal;
+        animal.showName.call(cat,",");//Cat;
+
+
+        var func=new function(){this.a="func"}
+        var myfunc=function(x){
+            var a="myfunc";
+            alert(this.a);
+            alert(x);
+        }
+        myfunc.call(func,"var");//执行结果 func var;
+
+        //apply 和 call 的区别
+        //call, apply方法区别是,从第二个参数起, call方法参数将依次传递给借用的方法作参数,
+        // 而apply直接将这些参数放到一个数组中再传递, 最后借用方法的参数列表是一样的.
+    function print(a, b, c, d){
+        alert(a + b + c + d);
+    }
+    function example(a, b , c , d){
+        //用call方式借用print,参数显式打散传递
+        print.call(this, a, b, c, d);//this 指的是print 谁调用call指向谁,所以是print;
+        //用apply方式借用print, 参数作为一个数组传递,
+        //这里直接用JavaScript方法内本身有的arguments数组
+        print.apply(this, arguments);
+        //或者封装成数组
+        print.apply(this, [a, b, c, d]);
+    }
+    //下面将显示”背光脚本”
+    example('背' , '光' , '脚', '本');
+
+</script>
+
+</body>
+</html>

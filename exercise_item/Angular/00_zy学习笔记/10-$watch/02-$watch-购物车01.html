@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-$watch-购物车01</title>
+    <script src="../../../dist/angular/angular.js"></script>
+    <style>
+        ul li {
+            list-style: none;
+        }
+        .del{
+            color: deepskyblue;
+        }
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body ng-app="app">
+    <div ng-controller="myCtrl">
+        <h1>your shopping cart</h1>
+        <ul>
+            <li ng-repeat="item in items">
+                <span>{{ item.tetle }}</span>
+                <span><input type="text" ng-model="item.quantity"></span>
+                <span>{{ item.price | currency }}</span>
+                <span class = "red">{{ item.price * item.quantity | currency }}</span>
+                <span><button ng-click="remove($index);">remove</button></span>
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li>总价: <span class="del">{{ bill.all | currency }}</span></li>
+            <li>折扣: <span class="red">{{bill.discount | currency}}</span></li>
+            <li>现价: <span class="green">{{ bill.now | currency }}</span></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.items = [
+            {'title':'兔子', 'quantity':1, 'price':100},
+            {'title':'咪咪', 'quantity':2, 'price':200},
+            {'title':'二哈', 'quantity':1, 'price':300},
+            {'title':'土狗', 'quantity':1, 'price':400},
+        ];
+        $scope.remove = function (index) {
+            $scope.items.splice(index,1);
+        };
+        $scope.bill = {
+            'all':0,
+            "discount":0,
+            "now":0
+        }
+        //监听事件函数
+        $scope.compute = function(){
+            var total = 0;
+            for(var i=0; i<$scope.items.length; i++){
+                total += $scope.items[i].quantity*$scope.items[i].price;
+            }
+            $scope.bill.all = total;
+            $scope.bill.discount = total >= 500 ? total*0.1 : 0 ;
+            $scope.bill.now = $scope.bill.all - $scope.bill.discount
+        };
+        $scope.$watch('items',$scope.compute,true);
+        //$scope.$watch($scope.compute);//直接传入一个函数
+    });
+</script>
+</html>

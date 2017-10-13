@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery获取</title>
+    <script src="../jquery-1.12.1.js"></script>
+</head>
+<body>
+    <form action="表单">
+        <fieldset>
+            <legend>兴趣爱好</legend>
+            <label for="check1">
+                兴趣1:<input type="checkbox" id="check1">
+            </label>
+            <label for="check2">
+                兴趣2:<input type="checkbox" id="check2">
+            </label>
+            <label for="check3">
+                兴趣3:<input type="checkbox" id="check3">
+            </label>
+            <label for="check4">
+                兴趣4:<input type="checkbox" id="check4">
+            </label>
+            <label for="check5">
+                兴趣5:<input type="checkbox" id="check5">
+            </label>
+        </fieldset>
+    </form>
+</body>
+<script>
+    $('input:checkbox').each(function (i) {
+        this.checked = true;// this 之的是DOM对象
+    });
+    //console.log($('input[checkbox]'));// 这是什么意思
+    // $each 和 each 的区别是什么???
+</script>
+</html>

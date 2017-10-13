@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-js回调函数</title>
+</head>
+<body>
+<script>
+    function getName(name,callback){
+        alert(name);
+        //if(callback && callback instanceof Function){
+        if(callback && typeof callback === "function"){
+            callback();
+        }
+    }
+
+    getName('zhangYang', function () {
+        alert('callback执行!');
+    })
+</script>
+</body>
+</html>

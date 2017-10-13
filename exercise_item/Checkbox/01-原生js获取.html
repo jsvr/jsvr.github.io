@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js获取Checkbox</title>
+    <style>
+        form{
+            width: 100%;
+            max-width: 500px;
+            margin: 30px auto;
+            box-shadow:  5px 5px 5px ;
+        }
+        /*input{*/
+            /*display: block;*/
+            /*!*width: 100%;*!*/
+        /*}*/
+        /*label{*/
+            /*display: block;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div></div>
+<form action="表单">
+    <fieldset>
+        <legend>兴趣爱好</legend>
+        <label for="check1">
+            兴趣1:<input type="checkbox" id="check1">
+        </label>
+        <label for="check2">
+            兴趣2:<input type="checkbox" id="check2">
+        </label>
+        <label for="check3">
+            兴趣3:<input type="checkbox" id="check3">
+        </label>
+        <label for="check4">
+            兴趣4:<input type="checkbox" id="check4">
+        </label>
+        <label for="check5">
+            兴趣5:<input type="checkbox" id="check5">
+        </label>
+    </fieldset>
+</form>
+<script>
+    var ipts = document.getElementsByTagName('input'),
+            iptArr = [],
+            len = ipts.length,
+            i = 0;
+    for(; i < len; i++){
+        if(ipts[i].type=='checkbox'){
+            iptArr.push(ipts[i]);
+        }
+    }
+    console.log(iptArr);
+    // iptArr[0].checked='checked';// 选中第一个复选框;
+    for(var i = 0; i < iptArr.length; i++){
+        iptArr[i].checked = true;// 或者是iptArr[i].checked = 'checked';
+    }
+    // 选中全部的复选框
+
+</script>
+</body>
+</html>

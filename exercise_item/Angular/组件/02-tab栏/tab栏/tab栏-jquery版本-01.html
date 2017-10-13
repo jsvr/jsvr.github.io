@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>tab栏-01-jquer版本</title>
+    <script src="../../../../dist/angular/angular.js"></script>
+    <script src="../../../../dist/jquery-1.11.1.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        ul{
+            width: 100%;
+            margin: 20px 0;
+        }
+        ul li{
+            list-style: none;
+            cursor: pointer;
+        }
+        .ul_box01{
+            height: 300px;
+        }
+        .ul_box01 li{
+            float: left;
+            width: 200px;
+            height: 300px;
+            background-color: deepskyblue;
+            margin:0 30px;
+        }
+        .ul_box01 .active01{
+            background-color: deeppink !important;
+        }
+        .ul_box02 li{
+            width: 100px;
+            height: 60px;
+            float: left;
+            color: #fff;
+            background-color: #262626;
+            margin:0 20px;
+            font:14px/60px "Verdana";
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div ng-controller="myCtrl">
+        <ul class="ul_box01">
+            <li class="active01">li01</li>
+            <li>li02</li>
+            <li>li03</li>
+        </ul>
+        <ul class="ul_box02">
+            <li>li01</li>
+            <li>li02</li>
+            <li>li03</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('myCtrl', function ($scope) {
+        $scope.getActiveFoo1 = function (index) {
+            $('.ul_box01 li').eq(index).addClass('active01').siblings().removeClass('active01');
+        }
+        $('.ul_box01 li').click(function () {
+            var _index = $(this).index();
+            $scope.getActiveFoo1(_index);
+            //$(this).addClass('active01').siblings().removeClass('active01');
+        });
+        $('.ul_box01 li').hover(
+            function() {
+                $(this).css({'backgroundColor':'deeppink'});
+            },
+            function() {
+                $(this).css({'backgroundColor':'deepskyblue'});
+            }
+        )
+        $('.ul_box02 li').click(function () {
+            var _index = $(this).index();
+            $scope.getActiveFoo1(_index);
+        });
+
+    });
+</script>
+</html>
