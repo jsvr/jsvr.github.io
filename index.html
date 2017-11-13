@@ -78,6 +78,230 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/11/13/Git-0回滚代码/" title="Git-0回滚代码" itemprop="url">Git-0回滚代码</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-13T08:00:34.000Z" itemprop="datePublished"> Published 2017-11-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Git-0Git回滚代码"><a href="#Git-0Git回滚代码" class="headerlink" title="Git-0Git回滚代码"></a>Git-0Git回滚代码</h2><h3 id="本地代码回滚"><a href="#本地代码回滚" class="headerlink" title="本地代码回滚"></a>本地代码回滚</h3><blockquote>
+<p>将代码回滚到之前提交的某个commit id</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git reset --hard commit-id        //回滚到commit-id，讲commit-id之后提交的commit都去除</span></div><div class="line"></div><div class="line"><span class="comment"># git reset --hard HEAD~3           //将最近3次的提交回滚</span></div></pre></td></tr></table></figure>
+<h3 id="远程代码回滚"><a href="#远程代码回滚" class="headerlink" title="远程代码回滚"></a>远程代码回滚</h3><blockquote>
+<p>应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布</p>
+</blockquote>
+<p>  原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git checkout the_branch</span></div><div class="line"><span class="comment"># git pull</span></div><div class="line"><span class="comment"># git branch the_branch_backup          //备份一下这个分支当前的情况</span></div><div class="line"><span class="comment"># git reset --hard the_commit_id        //把the_branch本地回滚到the_commit_id</span></div><div class="line"><span class="comment"># git push origin :the_branch           //删除远程 the_branch</span></div><div class="line"><span class="comment"># git push origin the_branch            //用回滚后的本地分支重新建立远程分支</span></div><div class="line"><span class="comment"># git push origin :the_branch_backup    //如果前面都成功了，删除这个备份分支</span></div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/10/Git-4本地分支和合并分支/" title="Git-4本地分支和合并分支" itemprop="url">Git-4本地分支和合并分支</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-10T07:18:48.000Z" itemprop="datePublished"> Published 2017-11-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Git-4本地分支和合并分支"><a href="#Git-4本地分支和合并分支" class="headerlink" title="Git-4本地分支和合并分支"></a>Git-4本地分支和合并分支</h2><h3 id="Git本地创建分支"><a href="#Git本地创建分支" class="headerlink" title="Git本地创建分支"></a>Git本地创建分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git branch test       //新建分支，创建完成后还在主分支上，需要手动切换到分支上</span></div><div class="line"><span class="comment"># git branch            //不带参数，列出本地已经存在的分支，并且在当前分支前面会加“*”号标记</span></div><div class="line"><span class="comment"># git branch -r         //列出远程分支</span></div><div class="line"><span class="comment"># git branch -a         //列出本地分支和远程分支</span></div><div class="line"><span class="comment"># git branch -m | -M oldbranch  newbranch        //重命名分支，如果newbranch名字分支已经存在，则需要使用 -M强制重命名，否则，使用-m进行重命名</span></div><div class="line"><span class="comment"># git branch -d | -D branchname                  //删除branchname分支</span></div><div class="line"><span class="comment"># git branch -d -r branchname                    //删除远程branchname分支</span></div></pre></td></tr></table></figure>
+<h3 id="Git-给分支起别名"><a href="#Git-给分支起别名" class="headerlink" title="Git 给分支起别名"></a>Git 给分支起别名</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Git/">Git</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/10/Git-2本地安装和使用/" title="Git-2本地安装和使用" itemprop="url">Git-2本地安装和使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-10T06:47:40.000Z" itemprop="datePublished"> Published 2017-11-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Git-2本地安装和使用"><a href="#Git-2本地安装和使用" class="headerlink" title="Git-2本地安装和使用"></a>Git-2本地安装和使用</h2><h3 id="配置自己的git信息"><a href="#配置自己的git信息" class="headerlink" title="配置自己的git信息"></a>配置自己的git信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git config -- global user.name jsvr</span></div><div class="line"><span class="comment"># git config -- global user.email 343954072@qq.com</span></div></pre></td></tr></table></figure>
+<h3 id="Git配置的三个级别"><a href="#Git配置的三个级别" class="headerlink" title="Git配置的三个级别"></a>Git配置的三个级别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># system  针对于系统</span></div><div class="line"><span class="comment"># glogbal 针对于当前用户</span></div><div class="line"><span class="comment"># local   针对于当前仓库</span></div><div class="line"><span class="comment"># 配置的优先级：local&gt;global&gt;system</span></div></pre></td></tr></table></figure>
+<h3 id="产看Git文档"><a href="#产看Git文档" class="headerlink" title="产看Git文档"></a>产看Git文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># git config --help</div><div class="line"># git help config</div></pre></td></tr></table></figure>
+<h3 id="重命名Git命令"><a href="#重命名Git命令" class="headerlink" title="重命名Git命令"></a>重命名Git命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git config --global alias.co checkout</span></div><div class="line"><span class="comment"># git config --global alias.br branch</span></div><div class="line"><span class="comment"># git config --global alias.st status</span></div><div class="line"><span class="comment"># git config --global alias.cm commit</span></div></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Git/">Git</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/10/Git-1初识/" title="Git-1初识" itemprop="url">Git-1初识</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-10T06:27:36.000Z" itemprop="datePublished"> Published 2017-11-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Git-1初识"><a href="#Git-1初识" class="headerlink" title="Git-1初识"></a>Git-1初识</h2><h3 id="Git与Svn的对比"><a href="#Git与Svn的对比" class="headerlink" title="Git与Svn的对比"></a>Git与Svn的对比</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Git是分布式的SCM,SVN是集中式的。</span></div><div class="line"><span class="comment"># Git每个历史版本存储完整的文件, SVN存储文件差异。</span></div><div class="line"><span class="comment"># Git可离线完成大本分操作,SVN则依赖于网络。</span></div><div class="line"><span class="comment"># Git有更优雅的分支和合并实现。</span></div><div class="line"><span class="comment"># Git有更强的撤销修改和修改历史版本的能力。</span></div><div class="line"><span class="comment"># Git速度更快效率更高。</span></div></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Git/">Git</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/11/07/面试题总结1/" title="面试题总结1" itemprop="url">面试题总结1</a>
   </h1>
   <p class="article-author">By
@@ -367,6 +591,10 @@
 <div class="tagslist">
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>3</sup></a></li>
+			
 		
 			
 				<li><a href="/tags/面试/" title="面试">面试<sup>2</sup></a></li>
