@@ -44,7 +44,7 @@
 				<h1 class="site-name"><a href="/" title="ZhangYang">ZhangYang</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,7 +60,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -85,7 +85,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-13T08:00:34.000Z" itemprop="datePublished"> Published 2017-11-13</time>
+    <time datetime="2017-11-13T08:00:34.000Z" itemprop="datePublished"> 发表于 2017-11-13</time>
     
   </p>
 </header>
@@ -142,7 +142,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-10T07:18:48.000Z" itemprop="datePublished"> Published 2017-11-10</time>
+    <time datetime="2017-11-10T07:18:48.000Z" itemprop="datePublished"> 发表于 2017-11-10</time>
     
   </p>
 </header>
@@ -197,7 +197,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-10T06:47:40.000Z" itemprop="datePublished"> Published 2017-11-10</time>
+    <time datetime="2017-11-10T06:47:40.000Z" itemprop="datePublished"> 发表于 2017-11-10</time>
     
   </p>
 </header>
@@ -254,7 +254,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-10T06:27:36.000Z" itemprop="datePublished"> Published 2017-11-10</time>
+    <time datetime="2017-11-10T06:27:36.000Z" itemprop="datePublished"> 发表于 2017-11-10</time>
     
   </p>
 </header>
@@ -309,7 +309,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-07T03:46:17.000Z" itemprop="datePublished"> Published 2017-11-07</time>
+    <time datetime="2017-11-07T03:46:17.000Z" itemprop="datePublished"> 发表于 2017-11-07</time>
     
   </p>
 </header>
@@ -317,47 +317,99 @@
         
         <h2 id="开放性题目"><a href="#开放性题目" class="headerlink" title="开放性题目"></a>开放性题目</h2>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">自我介绍: 除了个人基本信息以外,面试官更想听的是你与众不同的地方和你的优势。</div><div class="line">项目介绍</div><div class="line">如何看待前端开发</div><div class="line">未来三到五年的规划是怎样的</div></pre></td></tr></table></figure>
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="Position的值，-relative和absolute分别是相对于谁进行定位的"><a href="#Position的值，-relative和absolute分别是相对于谁进行定位的" class="headerlink" title="Position的值， relative和absolute分别是相对于谁进行定位的"></a>Position的值， relative和absolute分别是相对于谁进行定位的</h3><ul>
-<li>fixed</li>
-<li>relative</li>
-<li>absolute</li>
-<li>static</li>
-<li>sticky</li>
+<li><p>fixed</p>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>frame 进行定位```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- relative</div><div class="line">  + ```生成相对定位的元素，相对于其在普通流中的位置进行定位</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="Div垂直居中的方法"><a href="#Div垂直居中的方法" class="headerlink" title="Div垂直居中的方法"></a>Div垂直居中的方法</h3><ul>
-<li>定位</li>
-<li>flex</li>
+</li>
+<li><p>absolute</p>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>相对于最近一级的 定位不是 static 的父元素来进行定位。```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- static</div><div class="line">  + ``` 默认值。没有定位，元素出现在正常的流中</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="实现动画的方法"><a href="#实现动画的方法" class="headerlink" title="实现动画的方法"></a>实现动画的方法</h3><ul>
-<li>过度 transition</li>
-<li>keyframe</li>
+</li>
+<li><p>sticky</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Div垂直居中的方法</div><div class="line"></div><div class="line">  - 定位</div><div class="line">  - flex</div><div class="line"></div><div class="line">### 实现动画的方法</div><div class="line"></div><div class="line">  - 过度 transition</div><div class="line">  - keyframe</div><div class="line"></div><div class="line">## Javascript</div><div class="line"></div><div class="line">### js数据类型</div><div class="line"></div><div class="line">  - 基础类型</div><div class="line">  ```bash</div><div class="line">  # 基础类型包括</div><div class="line">  # Number、String、Boolean、Null、Undefined、Symbol（该类型位 ES2015 中新增类型）</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><ul>
+</li>
+<li><p>引用类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 引用类型包括:</span></div><div class="line"><span class="comment"># Object typeof 运算符把类型信息以字符串形式返回，需要注意的是 typeof 返回的类型和 JavaScript 定义的类型有细微的差异。</span></div><div class="line">  typeof 返回七种可能的值：“number”、“string”、“boolean”、“object”、<span class="string">"symbol"</span>、“<span class="keyword">function</span>”和“undefined”。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h3><h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><ul>
 <li>test</li>
 </ul>
 <h3 id="get和post区别"><a href="#get和post区别" class="headerlink" title="get和post区别"></a>get和post区别</h3><ul>
-<li>get</li>
-<li>post</li>
-</ul>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
-<li>test</li>
-</ul>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><ul>
-<li>test</li>
-</ul>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ul>
-<li>test</li>
-</ul>
-<h3 id="数组与伪数组的区别"><a href="#数组与伪数组的区别" class="headerlink" title="数组与伪数组的区别"></a>数组与伪数组的区别</h3><blockquote>
-<p>test</p>
-</blockquote>
-<ul>
-<li><p>test</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">arr.push(<span class="number">4</span>);</div><div class="line"><span class="built_in">console</span>.log(arr.reverse());</div></pre></td></tr></table></figure>
+<li><p>get</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一般用于信息获取，使用URL传递参数，对所发送信息的数量也有限制，一般在2000个字符</span></div><div class="line"><span class="comment"># 可以跨域请求</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>post</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一般用于修改服务器上的资源，对所发送的信息没有限制</span></div><div class="line"><span class="comment"># 没法跨域</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<blockquote>
-<p>test</p>
-</blockquote>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
+<li>闭包特性<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 函数嵌套函数</span></div><div class="line"><span class="comment"># 函数内部可以引用外部的参数和变量</span></div><div class="line"><span class="comment"># 参数和变量不会被垃圾回收机制回收</span></div><div class="line"><span class="comment"># 闭包可以实现数据缓存</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 原型: JavaScript 原型： 每创建一个函数，函数上都有一个属性为 prototype，它的</span></div><div class="line">  值是一个对象。 这个对象的作用在于当使用函数创建实例的时候，那么这些实例都会共享</div><div class="line">  原型上的属性和方法。</div><div class="line"><span class="comment"># 对象都有原型对象, 对象默认继承自原型对象</span></div><div class="line"><span class="comment"># 函数被定义后, 默认就有原型属性, 原型属性也是对象</span></div><div class="line"><span class="comment"># 函数的原型属性默认继承自 Object.prototype</span></div><div class="line"><span class="comment"># 原型对象中 constructor 指向对应的构造函数</span></div><div class="line"><span class="comment"># 所有的函数都是 Function 的实例</span></div><div class="line"><span class="comment"># 函数也是对象</span></div><div class="line"><span class="comment"># prototype:  是函数的原型属性, 是该函数创建的对象的原型对象</span></div><div class="line"><span class="comment"># __proto__ 是对象的原型对象, 是创建该对象的构造函数的 原型属性</span></div></pre></td></tr></table></figure>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 原型链: 在 JavaScript 中，每个对象都有一个指向它的原型（prototype）对象的内部</span></div><div class="line">  链接（proto）。这个原型对象又有自己的原型，直到某个对象的原型为 null 为止（也就</div><div class="line">  是不再有原型指向）。这种一级一级的链结构就称为原型链（prototype chain）。 当查</div><div class="line">  找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止;到</div><div class="line">  查找到达原型链的顶部（Object.prototype），仍然没有找到指定的属性，就会返回 undefined</div></pre></td></tr></table></figure>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h3 id="new操作符具体干了什么"><a href="#new操作符具体干了什么" class="headerlink" title="new操作符具体干了什么?"></a>new操作符具体干了什么?</h3><h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别?"></a>null和undefined的区别?</h3><h3 id="BOM对象-window对象"><a href="#BOM对象-window对象" class="headerlink" title="BOM对象,window对象"></a>BOM对象,window对象</h3><ul>
+<li><p>BOM对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+<li><p>Window对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="数组与伪数组的区别"><a href="#数组与伪数组的区别" class="headerlink" title="数组与伪数组的区别"></a>数组与伪数组的区别</h3><h3 id="Javascript的事件流模型"><a href="#Javascript的事件流模型" class="headerlink" title="Javascript的事件流模型"></a>Javascript的事件流模型</h3><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul>
+<li>Ajax的局限性<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ajax不支持浏览器的back按钮.</span></div><div class="line"><span class="comment"># ajax暴露了与服务器的交互细节.</span></div><div class="line"><span class="comment"># 对搜索引擎的支持比较弱.不会执行你的js脚本,只会操作你的网页源代码.</span></div><div class="line"><span class="comment"># 跨域请求有一定限制.解决方式: jsonp.</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。</span></div><div class="line">  最后，发送端再回传一个带ACK标志的数据包，代表“握手”结束.</div><div class="line"><span class="comment"># 若在握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包.</span></div></pre></td></tr></table></figure>
+<h3 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 200：请求已成功，请求所希望的响应头或数据体将随此响应返回。</span></div><div class="line"><span class="comment"># 302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。</span></div><div class="line">  只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的.</div><div class="line"><span class="comment"># 304：如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）</span></div><div class="line">  并没有改变，则服务器应当返回这个状态码。304 响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。</div><div class="line"><span class="comment"># 403：服务器已经理解请求，但是拒绝执行它。</span></div><div class="line"><span class="comment"># 404：请求失败，请求所希望得到的资源未被在服务器上发现.</span></div><div class="line"><span class="comment"># 500：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码</span></div><div class="line">  出现错误时出现。</div></pre></td></tr></table></figure>
+<h2 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h2><h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># webpack 新特性</span></div><div class="line"><span class="comment"># 对 CommonJS 、 AMD 、ES6的语法做了兼容</span></div><div class="line"><span class="comment"># 对js、css、图片等资源文件都支持打包</span></div><div class="line"><span class="comment"># 串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持</span></div><div class="line"><span class="comment"># 有独立的配置文件webpack.config.js</span></div><div class="line"><span class="comment"># 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间</span></div><div class="line"><span class="comment"># 支持 SourceUrls 和 SourceMaps，易于调试</span></div><div class="line"><span class="comment"># 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活</span></div><div class="line"><span class="comment"># webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快</span></div></pre></td></tr></table></figure>
+<h2 id="前端工程师职责"><a href="#前端工程师职责" class="headerlink" title="前端工程师职责"></a>前端工程师职责</h2><h3 id="价值体现"><a href="#价值体现" class="headerlink" title="价值体现"></a>价值体现</h3><ul>
+<li>为简化用户使用提供技术支持（交互部分）</li>
+<li>为多个浏览器兼容性提供支持 (IE盒模型,cssHack,jsDOM操作)</li>
+<li>为提高用户浏览速度（浏览器性能）提供支持</li>
+<li>为跨平台或者其他基于webkit或其他渲染引擎的应用提供支持</li>
+<li>为展示数据提供支持（数据接口）</li>
+</ul>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="web语义化"><a href="#web语义化" class="headerlink" title="web语义化"></a>web语义化</h3><ul>
+<li>去掉或者丢失样式的时候能够让页面呈现出清晰的结构</li>
+<li>有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重.</li>
+<li>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页.</li>
+<li><p>便于团队开发和维护，语义化更具可读性.</p>
+<h3 id="性能优化问题"><a href="#性能优化问题" class="headerlink" title="性能优化问题"></a>性能优化问题</h3></li>
+<li><p>代码层面: 避免使用css表达式,避免使用高级选择器，通配选择器。</p>
+</li>
+<li>缓存利用: 缓存Ajax，使用CDN，使用外部js和css文件以便缓存，添加Expires头，<br>服务端配置Etag，减少DNS查找等.</li>
+<li>请求数量: 合并样式和脚本，使用css图片精灵，初始首屏之外的图片资源按需加载，静态资源延迟加载。</li>
+<li>请求带宽: 压缩文件，开启GZIP.</li>
+</ul>
+<h3 id="代码层优化"><a href="#代码层优化" class="headerlink" title="代码层优化"></a>代码层优化</h3><ul>
+<li>少用全局变量</li>
+<li>多个变量声明合并</li>
+<li>缓存DOM节点查找的结果</li>
+<li>避免图片和iFrame等的空Src。空Src会重新加载当前页面，影响速度和效率</li>
+</ul>
+<h3 id="移动端性能优化"><a href="#移动端性能优化" class="headerlink" title="移动端性能优化"></a>移动端性能优化</h3><ul>
+<li>尽量使用css3动画，开启硬件加速。</li>
+<li>适当使用touch事件代替click事件.</li>
+<li>避免使用css3渐变阴影效果。</li>
+<li>可以用transform: translateZ(0)来开启硬件加速.</li>
+<li>不滥用Float。Float在渲染时计算量比较大，尽量减少使用</li>
+<li>不滥用Web字体。Web字体需要下载，解析，重绘当前页面，尽量减少使用。</li>
+<li>合理使用requestAnimationFrame动画代替setTimeout</li>
+<li>CSS中的属性（CSS3 transitions、CSS3 3D transforms、Opacity、Canvas、WebGL、Video）会触发GPU渲染，请合理使用。<br>过渡使用会引发手机过耗电增加</li>
+</ul>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul>
+<li>test<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
 
         
         
@@ -406,7 +458,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-06T03:33:52.000Z" itemprop="datePublished"> Published 2017-11-06</time>
+    <time datetime="2017-11-06T03:33:52.000Z" itemprop="datePublished"> 发表于 2017-11-06</time>
     
   </p>
 </header>
@@ -461,7 +513,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-06T03:26:05.000Z" itemprop="datePublished"> Published 2017-11-06</time>
+    <time datetime="2017-11-06T03:26:05.000Z" itemprop="datePublished"> 发表于 2017-11-06</time>
     
   </p>
 </header>
@@ -526,7 +578,7 @@
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-13T08:29:03.000Z" itemprop="datePublished"> Published 2017-10-13</time>
+    <time datetime="2017-10-13T08:29:03.000Z" itemprop="datePublished"> 发表于 2017-10-13</time>
     
   </p>
 </header>
@@ -570,15 +622,15 @@
 
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="jsvr for https://github.com/jsvr" data-theme="medium"></div>
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -589,7 +641,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -613,7 +665,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -635,11 +687,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
@@ -680,7 +732,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
 		<a href="/about" target="_blank" title="jsvr">jsvr</a>
 		
@@ -791,7 +843,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
