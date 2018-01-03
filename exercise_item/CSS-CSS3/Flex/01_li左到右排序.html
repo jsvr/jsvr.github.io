@@ -12,21 +12,35 @@
         display: -webkit-flex;
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
+        justify-content:center;
+        flex-direction: row-reverse;
         border: 1px solid green;
         height: 200px;
         width: 50%;
     }
     .items{
-        width: 30px;
         height: 30px;
         line-height: 30px;
         text-align: center;
         border: 1px solid #000000;
         background-color: pink;
-        margin: 5px 5px 5px 0;
+        margin: 5px;
     }
-
+    @media screen and (min-width:960px) and (max-width:1200px){
+        .items{
+            width: 30%;
+        }
+    }
+    @media screen and (min-width:760px) and (max-width:960px){
+        .items{
+            width: 46%;
+        }
+    }
+    @media screen and (max-width:760px){
+        .items{
+            width: 100%;
+        }
+    }
 </style>
 <div class="box1">
     <div class="items" ng-repeat="li in [1,2,3,4,5,6,7,8,9,10]">
