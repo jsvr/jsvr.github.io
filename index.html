@@ -78,349 +78,20 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/13/Git-0回滚代码/" title="Git-0回滚代码" itemprop="url">Git-0回滚代码</a>
+      <a href="/2018/01/06/面试-移动端/" title="面试-移动端" itemprop="url">面试-移动端</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-13T08:00:34.000Z" itemprop="datePublished"> Published 2017-11-13</time>
+    <time datetime="2018-01-06T04:57:54.000Z" itemprop="datePublished"> Published 2018-01-06</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="Git-0Git回滚代码"><a href="#Git-0Git回滚代码" class="headerlink" title="Git-0Git回滚代码"></a>Git-0Git回滚代码</h2><h3 id="本地代码回滚"><a href="#本地代码回滚" class="headerlink" title="本地代码回滚"></a>本地代码回滚</h3><blockquote>
-<p>将代码回滚到之前提交的某个commit id</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git reset --hard commit-id        //回滚到commit-id，讲commit-id之后提交的commit都去除</span></div><div class="line"></div><div class="line"><span class="comment"># git reset --hard HEAD~3           //将最近3次的提交回滚</span></div></pre></td></tr></table></figure>
-<h3 id="远程代码回滚"><a href="#远程代码回滚" class="headerlink" title="远程代码回滚"></a>远程代码回滚</h3><blockquote>
-<p>应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布</p>
-</blockquote>
-<p>  原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git checkout the_branch</span></div><div class="line"><span class="comment"># git pull</span></div><div class="line"><span class="comment"># git branch the_branch_backup          //备份一下这个分支当前的情况</span></div><div class="line"><span class="comment"># git reset --hard the_commit_id        //把the_branch本地回滚到the_commit_id</span></div><div class="line"><span class="comment"># git push origin :the_branch           //删除远程 the_branch</span></div><div class="line"><span class="comment"># git push origin the_branch            //用回滚后的本地分支重新建立远程分支</span></div><div class="line"><span class="comment"># git push origin :the_branch_backup    //如果前面都成功了，删除这个备份分支</span></div></pre></td></tr></table></figure>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/10/Git-4本地分支和合并分支/" title="Git-4本地分支和合并分支" itemprop="url">Git-4本地分支和合并分支</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-10T07:18:48.000Z" itemprop="datePublished"> Published 2017-11-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Git-4本地分支和合并分支"><a href="#Git-4本地分支和合并分支" class="headerlink" title="Git-4本地分支和合并分支"></a>Git-4本地分支和合并分支</h2><h3 id="Git本地创建分支"><a href="#Git本地创建分支" class="headerlink" title="Git本地创建分支"></a>Git本地创建分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git branch test       //新建分支，创建完成后还在主分支上，需要手动切换到分支上</span></div><div class="line"><span class="comment"># git branch            //不带参数，列出本地已经存在的分支，并且在当前分支前面会加“*”号标记</span></div><div class="line"><span class="comment"># git branch -r         //列出远程分支</span></div><div class="line"><span class="comment"># git branch -a         //列出本地分支和远程分支</span></div><div class="line"><span class="comment"># git branch -m | -M oldbranch  newbranch        //重命名分支，如果newbranch名字分支已经存在，则需要使用 -M强制重命名，否则，使用-m进行重命名</span></div><div class="line"><span class="comment"># git branch -d | -D branchname                  //删除branchname分支</span></div><div class="line"><span class="comment"># git branch -d -r branchname                    //删除远程branchname分支</span></div></pre></td></tr></table></figure>
-<h3 id="Git-给分支起别名"><a href="#Git-给分支起别名" class="headerlink" title="Git 给分支起别名"></a>Git 给分支起别名</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Git/">Git</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/10/Git-2本地安装和使用/" title="Git-2本地安装和使用" itemprop="url">Git-2本地安装和使用</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-10T06:47:40.000Z" itemprop="datePublished"> Published 2017-11-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Git-2本地安装和使用"><a href="#Git-2本地安装和使用" class="headerlink" title="Git-2本地安装和使用"></a>Git-2本地安装和使用</h2><h3 id="配置自己的git信息"><a href="#配置自己的git信息" class="headerlink" title="配置自己的git信息"></a>配置自己的git信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git config -- global user.name jsvr</span></div><div class="line"><span class="comment"># git config -- global user.email 343954072@qq.com</span></div></pre></td></tr></table></figure>
-<h3 id="Git配置的三个级别"><a href="#Git配置的三个级别" class="headerlink" title="Git配置的三个级别"></a>Git配置的三个级别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># system  针对于系统</span></div><div class="line"><span class="comment"># glogbal 针对于当前用户</span></div><div class="line"><span class="comment"># local   针对于当前仓库</span></div><div class="line"><span class="comment"># 配置的优先级：local&gt;global&gt;system</span></div></pre></td></tr></table></figure>
-<h3 id="产看Git文档"><a href="#产看Git文档" class="headerlink" title="产看Git文档"></a>产看Git文档</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># git config --help</div><div class="line"># git help config</div></pre></td></tr></table></figure>
-<h3 id="重命名Git命令"><a href="#重命名Git命令" class="headerlink" title="重命名Git命令"></a>重命名Git命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git config --global alias.co checkout</span></div><div class="line"><span class="comment"># git config --global alias.br branch</span></div><div class="line"><span class="comment"># git config --global alias.st status</span></div><div class="line"><span class="comment"># git config --global alias.cm commit</span></div></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Git/">Git</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/10/Git-1初识/" title="Git-1初识" itemprop="url">Git-1初识</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-10T06:27:36.000Z" itemprop="datePublished"> Published 2017-11-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Git-1初识"><a href="#Git-1初识" class="headerlink" title="Git-1初识"></a>Git-1初识</h2><h3 id="Git与Svn的对比"><a href="#Git与Svn的对比" class="headerlink" title="Git与Svn的对比"></a>Git与Svn的对比</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Git是分布式的SCM,SVN是集中式的。</span></div><div class="line"><span class="comment"># Git每个历史版本存储完整的文件, SVN存储文件差异。</span></div><div class="line"><span class="comment"># Git可离线完成大本分操作,SVN则依赖于网络。</span></div><div class="line"><span class="comment"># Git有更优雅的分支和合并实现。</span></div><div class="line"><span class="comment"># Git有更强的撤销修改和修改历史版本的能力。</span></div><div class="line"><span class="comment"># Git速度更快效率更高。</span></div></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Git/">Git</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/07/面试题总结1/" title="面试题总结1" itemprop="url">面试题总结1</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-07T03:46:17.000Z" itemprop="datePublished"> Published 2017-11-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="开放性题目"><a href="#开放性题目" class="headerlink" title="开放性题目"></a>开放性题目</h2>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">自我介绍: 除了个人基本信息以外,面试官更想听的是你与众不同的地方和你的优势。</div><div class="line">项目介绍</div><div class="line">如何看待前端开发</div><div class="line">未来三到五年的规划是怎样的</div></pre></td></tr></table></figure>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="Position的值，-relative和absolute分别是相对于谁进行定位的"><a href="#Position的值，-relative和absolute分别是相对于谁进行定位的" class="headerlink" title="Position的值， relative和absolute分别是相对于谁进行定位的"></a>Position的值， relative和absolute分别是相对于谁进行定位的</h3><ul>
-<li><p>fixed</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">老IE不支持）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位</div></pre></td></tr></table></figure>
-</li>
-<li><p>relative</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">生成相对定位的元素，相对于其在普通流中的位置进行定位</div></pre></td></tr></table></figure>
-</li>
-<li><p>absolute</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。</div></pre></td></tr></table></figure>
-</li>
-<li><p>static</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">默认值。没有定位，元素出现在正常的流中</div></pre></td></tr></table></figure>
-</li>
-<li><p>sticky</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">生成粘性定位的元素，容器的位置根据正常文档流计算得出</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="Div垂直居中的方法"><a href="#Div垂直居中的方法" class="headerlink" title="Div垂直居中的方法"></a>Div垂直居中的方法</h3><ul>
-<li>定位</li>
-<li>flex</li>
-</ul>
-<h3 id="实现动画的方法"><a href="#实现动画的方法" class="headerlink" title="实现动画的方法"></a>实现动画的方法</h3><ul>
-<li>过度 transition</li>
-<li>keyframe</li>
-</ul>
-<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><h3 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h3><ul>
-<li><p>基础类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 基础类型包括</span></div><div class="line"><span class="comment"># Number、String、Boolean、Null、Undefined、Symbol（该类型位 ES2015 中新增类型）</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>引用类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 引用类型包括:</span></div><div class="line"><span class="comment"># Object typeof 运算符把类型信息以字符串形式返回，需要注意的是 typeof 返回的类型和 JavaScript 定义的类型有细微的差异。</span></div><div class="line">  typeof 返回七种可能的值：“number”、“string”、“boolean”、“object”、<span class="string">"symbol"</span>、“<span class="keyword">function</span>”和“undefined”。</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><ul>
-<li>test</li>
-</ul>
-<h3 id="get和post区别"><a href="#get和post区别" class="headerlink" title="get和post区别"></a>get和post区别</h3><ul>
-<li><p>get</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一般用于信息获取，使用URL传递参数，对所发送信息的数量也有限制，一般在2000个字符</span></div><div class="line"><span class="comment"># 可以跨域请求</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>post</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一般用于修改服务器上的资源，对所发送的信息没有限制</span></div><div class="line"><span class="comment"># 没法跨域</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
-<li>闭包特性<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 函数嵌套函数</span></div><div class="line"><span class="comment"># 函数内部可以引用外部的参数和变量</span></div><div class="line"><span class="comment"># 参数和变量不会被垃圾回收机制回收</span></div><div class="line"><span class="comment"># 闭包可以实现数据缓存</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 原型: JavaScript 原型： 每创建一个函数，函数上都有一个属性为 prototype，它的</span></div><div class="line">  值是一个对象。 这个对象的作用在于当使用函数创建实例的时候，那么这些实例都会共享</div><div class="line">  原型上的属性和方法。</div><div class="line"><span class="comment"># 对象都有原型对象, 对象默认继承自原型对象</span></div><div class="line"><span class="comment"># 函数被定义后, 默认就有原型属性, 原型属性也是对象</span></div><div class="line"><span class="comment"># 函数的原型属性默认继承自 Object.prototype</span></div><div class="line"><span class="comment"># 原型对象中 constructor 指向对应的构造函数</span></div><div class="line"><span class="comment"># 所有的函数都是 Function 的实例</span></div><div class="line"><span class="comment"># 函数也是对象</span></div><div class="line"><span class="comment"># prototype:  是函数的原型属性, 是该函数创建的对象的原型对象</span></div><div class="line"><span class="comment"># __proto__ 是对象的原型对象, 是创建该对象的构造函数的 原型属性</span></div></pre></td></tr></table></figure>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 原型链: 在 JavaScript 中，每个对象都有一个指向它的原型（prototype）对象的内部</span></div><div class="line">  链接（proto）。这个原型对象又有自己的原型，直到某个对象的原型为 null 为止（也就</div><div class="line">  是不再有原型指向）。这种一级一级的链结构就称为原型链（prototype chain）。 当查</div><div class="line">  找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止;到</div><div class="line">  查找到达原型链的顶部（Object.prototype），仍然没有找到指定的属性，就会返回 undefined</div></pre></td></tr></table></figure>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h3 id="new操作符具体干了什么"><a href="#new操作符具体干了什么" class="headerlink" title="new操作符具体干了什么?"></a>new操作符具体干了什么?</h3><h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别?"></a>null和undefined的区别?</h3><h3 id="BOM对象-window对象"><a href="#BOM对象-window对象" class="headerlink" title="BOM对象,window对象"></a>BOM对象,window对象</h3><ul>
-<li><p>BOM对象</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-</li>
-<li><p>Window对象</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="数组与伪数组的区别"><a href="#数组与伪数组的区别" class="headerlink" title="数组与伪数组的区别"></a>数组与伪数组的区别</h3><h3 id="Javascript的事件流模型"><a href="#Javascript的事件流模型" class="headerlink" title="Javascript的事件流模型"></a>Javascript的事件流模型</h3><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul>
-<li>Ajax的局限性<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ajax不支持浏览器的back按钮.</span></div><div class="line"><span class="comment"># ajax暴露了与服务器的交互细节.</span></div><div class="line"><span class="comment"># 对搜索引擎的支持比较弱.不会执行你的js脚本,只会操作你的网页源代码.</span></div><div class="line"><span class="comment"># 跨域请求有一定限制.解决方式: jsonp.</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 发送端首先发送一个带SYN标志的数据包给对方。接收端收到后，回传一个带有SYN/ACK标志的数据包以示传达确认信息。</span></div><div class="line">  最后，发送端再回传一个带ACK标志的数据包，代表“握手”结束.</div><div class="line"><span class="comment"># 若在握手过程中某个阶段莫名中断，TCP协议会再次以相同的顺序发送相同的数据包.</span></div></pre></td></tr></table></figure>
-<h3 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 200：请求已成功，请求所希望的响应头或数据体将随此响应返回。</span></div><div class="line"><span class="comment"># 302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。</span></div><div class="line">  只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的.</div><div class="line"><span class="comment"># 304：如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）</span></div><div class="line">  并没有改变，则服务器应当返回这个状态码。304 响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。</div><div class="line"><span class="comment"># 403：服务器已经理解请求，但是拒绝执行它。</span></div><div class="line"><span class="comment"># 404：请求失败，请求所希望得到的资源未被在服务器上发现.</span></div><div class="line"><span class="comment"># 500：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码</span></div><div class="line">  出现错误时出现。</div></pre></td></tr></table></figure>
-<h2 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h2><h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># webpack 新特性</span></div><div class="line"><span class="comment"># 对 CommonJS 、 AMD 、ES6的语法做了兼容</span></div><div class="line"><span class="comment"># 对js、css、图片等资源文件都支持打包</span></div><div class="line"><span class="comment"># 串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持</span></div><div class="line"><span class="comment"># 有独立的配置文件webpack.config.js</span></div><div class="line"><span class="comment"># 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间</span></div><div class="line"><span class="comment"># 支持 SourceUrls 和 SourceMaps，易于调试</span></div><div class="line"><span class="comment"># 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活</span></div><div class="line"><span class="comment"># webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快</span></div></pre></td></tr></table></figure>
-<h2 id="前端工程师职责"><a href="#前端工程师职责" class="headerlink" title="前端工程师职责"></a>前端工程师职责</h2><h3 id="价值体现"><a href="#价值体现" class="headerlink" title="价值体现"></a>价值体现</h3><ul>
-<li>为简化用户使用提供技术支持（交互部分）</li>
-<li>为多个浏览器兼容性提供支持 (IE盒模型,cssHack,jsDOM操作)</li>
-<li>为提高用户浏览速度（浏览器性能）提供支持</li>
-<li>为跨平台或者其他基于webkit或其他渲染引擎的应用提供支持</li>
-<li>为展示数据提供支持（数据接口）</li>
-</ul>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="web语义化"><a href="#web语义化" class="headerlink" title="web语义化"></a>web语义化</h3><ul>
-<li>去掉或者丢失样式的时候能够让页面呈现出清晰的结构</li>
-<li>有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重.</li>
-<li>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页.</li>
-<li>便于团队开发和维护，语义化更具可读性.</li>
-</ul>
-<h3 id="性能优化问题"><a href="#性能优化问题" class="headerlink" title="性能优化问题"></a>性能优化问题</h3><ul>
-<li>代码层面: 避免使用css表达式,避免使用高级选择器，通配选择器。</li>
-<li>缓存利用: 缓存Ajax，使用CDN，使用外部js和css文件以便缓存，添加Expires头，<br>服务端配置Etag，减少DNS查找等.</li>
-<li>请求数量: 合并样式和脚本，使用css图片精灵，初始首屏之外的图片资源按需加载，静态资源延迟加载。</li>
-<li>请求带宽: 压缩文件，开启GZIP.</li>
-</ul>
-<h3 id="代码层优化"><a href="#代码层优化" class="headerlink" title="代码层优化"></a>代码层优化</h3><ul>
-<li>少用全局变量</li>
-<li>多个变量声明合并</li>
-<li>缓存DOM节点查找的结果</li>
-<li>避免图片和iFrame等的空Src。空Src会重新加载当前页面，影响速度和效率</li>
-</ul>
-<h3 id="移动端性能优化"><a href="#移动端性能优化" class="headerlink" title="移动端性能优化"></a>移动端性能优化</h3><ul>
-<li>尽量使用css3动画，开启硬件加速。</li>
-<li>适当使用touch事件代替click事件.</li>
-<li>避免使用css3渐变阴影效果。</li>
-<li>可以用transform: translateZ(0)来开启硬件加速.</li>
-<li>不滥用Float。Float在渲染时计算量比较大，尽量减少使用</li>
-<li>不滥用Web字体。Web字体需要下载，解析，重绘当前页面，尽量减少使用。</li>
-<li>合理使用requestAnimationFrame动画代替setTimeout</li>
-<li>CSS中的属性（CSS3 transitions、CSS3 3D transforms、Opacity、Canvas、WebGL、Video）会触发GPU渲染，请合理使用。<br>过渡使用会引发手机过耗电增加</li>
-</ul>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><ul>
-<li>test<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-
         
         
         <p class="article-more-link">
@@ -461,141 +132,20 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/06/git/" title="git" itemprop="url">git</a>
+      <a href="/2018/01/06/面试-其他/" title="面试-其他" itemprop="url">面试-其他</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-06T03:33:52.000Z" itemprop="datePublished"> Published 2017-11-06</time>
+    <time datetime="2018-01-06T04:57:11.000Z" itemprop="datePublished"> Published 2018-01-06</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h3 id="git-命令"><a href="#git-命令" class="headerlink" title="git 命令"></a>git 命令</h3><p>  <a href="https://paddywang.github.io/2016/03/06/git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">git命令链接1</a></p>
-
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/git/">git</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/11/06/hello-world/" title="Hello World" itemprop="url">Hello World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-06T03:26:05.000Z" itemprop="datePublished"> Published 2017-11-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-hexo"><a href="#Create-hexo" class="headerlink" title="Create hexo"></a>Create hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g  <span class="comment"># 全局安装构建工具</span></div><div class="line">hexo init blog           <span class="comment"># 初始化一个 blog 会从网上下载一个模板，可能比较慢</span></div><div class="line"><span class="built_in">cd</span> blog                  <span class="comment"># 进入 blog 根目录</span></div><div class="line">hexo server              <span class="comment"># 开启本地服务器 在浏览器中输入 localhost:4000 即可访问</span></div><div class="line">hexo server -p 3000      <span class="comment"># localhost:3000</span></div></pre></td></tr></table></figure>
-<h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-<h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入根目录,运行CMD</span></div><div class="line"><span class="comment"># hexo new (postName)  `postName为文章名`</span></div><div class="line"><span class="comment"># hexo new page (postName) `新建一个页面,列表页--一般不用`</span></div><div class="line"><span class="comment"># 编写markdown完成之后,执行 hexo generate</span></div><div class="line"><span class="comment"># 最后,将文章push到github项目上</span></div></pre></td></tr></table></figure>
-<h3 id="hexo-md-配置"><a href="#hexo-md-配置" class="headerlink" title="hexo md 配置"></a>hexo md 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">toc: <span class="literal">true</span>  <span class="comment">#显示文章目录</span></div></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/13/test/" title="面试题" itemprop="url">面试题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-13T08:29:03.000Z" itemprop="datePublished"> Published 2017-10-13</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h3><p>  <a href="http://www.jianshu.com/p/feab89b88d6b" target="_blank" rel="external">面试题链接</a></p>
-
         
         
         <p class="article-more-link">
@@ -630,6 +180,432 @@
 
 
 
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/面试-编程题/" title="面试-编程题" itemprop="url">面试-编程题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T04:55:22.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/面试-ajax/" title="面试-ajax" itemprop="url">面试-ajax</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:52:10.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/构建工具-gulp/" title="构建工具-gulp" itemprop="url">构建工具-gulp</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:15:22.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/构建工具-webpack/" title="构建工具-webpack" itemprop="url">构建工具-webpack</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:15:07.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/面试-http/" title="面试-http" itemprop="url">面试-http</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:04:30.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/面试-jquery/" title="面试-jquery" itemprop="url">面试-jquery</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:04:03.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/面试-javascript/" title="面试-javascript" itemprop="url">面试-javascript</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:03:50.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/面试-css/" title="面试-css" itemprop="url">面试-css</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T03:03:23.000Z" itemprop="datePublished"> Published 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
 
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
@@ -655,11 +631,11 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Git/" title="Git">Git<sup>3</sup></a></li>
+				<li><a href="/tags/面试/" title="面试">面试<sup>11</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/面试/" title="面试">面试<sup>2</sup></a></li>
+				<li><a href="/tags/Git/" title="Git">Git<sup>3</sup></a></li>
 			
 		
 			

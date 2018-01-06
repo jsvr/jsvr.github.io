@@ -4,23 +4,21 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Git-0回滚代码 | ZhangYang</title>
+    <title>面试-移动端 | ZhangYang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="jsvr">
     
 
     
-    <meta name="description" content="Git-0Git回滚代码本地代码回滚 将代码回滚到之前提交的某个commit id  123# git reset --hard commit-id        //回滚到commit-id，讲commit-id之后提交的commit都去除# git reset --hard HEAD~3           //将最近3次的提交回滚 远程代码回滚 应用场景：自动部署系统发布后发现问题，需要回滚">
+    <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git-0回滚代码">
-<meta property="og:url" content="http://yoursite.com/2017/11/13/Git-0回滚代码/index.html">
+<meta property="og:title" content="面试-移动端">
+<meta property="og:url" content="http://yoursite.com/2018/01/06/面试-移动端/index.html">
 <meta property="og:site_name" content="ZhangYang">
-<meta property="og:description" content="Git-0Git回滚代码本地代码回滚 将代码回滚到之前提交的某个commit id  123# git reset --hard commit-id        //回滚到commit-id，讲commit-id之后提交的commit都去除# git reset --hard HEAD~3           //将最近3次的提交回滚 远程代码回滚 应用场景：自动部署系统发布后发现问题，需要回滚">
-<meta property="og:updated_time" content="2017-11-13T09:19:56.000Z">
+<meta property="og:updated_time" content="2018-01-06T04:59:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git-0回滚代码">
-<meta name="twitter:description" content="Git-0Git回滚代码本地代码回滚 将代码回滚到之前提交的某个commit id  123# git reset --hard commit-id        //回滚到commit-id，讲commit-id之后提交的commit都去除# git reset --hard HEAD~3           //将最近3次的提交回滚 远程代码回滚 应用场景：自动部署系统发布后发现问题，需要回滚">
+<meta name="twitter:title" content="面试-移动端">
 
     
     <link rel="alternative" href="/atom.xml" title="ZhangYang" type="application/atom+xml">
@@ -80,14 +78,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/11/13/Git-0回滚代码/" title="Git-0回滚代码" itemprop="url">Git-0回滚代码</a>
+      <a href="/2018/01/06/面试-移动端/" title="面试-移动端" itemprop="url">面试-移动端</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="jsvr" target="_blank" itemprop="author">jsvr</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-13T08:00:34.000Z" itemprop="datePublished"> Published 2017-11-13</time>
+    <time datetime="2018-01-06T04:57:54.000Z" itemprop="datePublished"> Published 2018-01-06</time>
     
   </p>
 </header>
@@ -96,23 +94,20 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-0Git回滚代码"><span class="toc-number">1.</span> <span class="toc-text">Git-0Git回滚代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本地代码回滚"><span class="toc-number">1.1.</span> <span class="toc-text">本地代码回滚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程代码回滚"><span class="toc-number">1.2.</span> <span class="toc-text">远程代码回滚</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<h2 id="Git-0Git回滚代码"><a href="#Git-0Git回滚代码" class="headerlink" title="Git-0Git回滚代码"></a>Git-0Git回滚代码</h2><h3 id="本地代码回滚"><a href="#本地代码回滚" class="headerlink" title="本地代码回滚"></a>本地代码回滚</h3><blockquote>
-<p>将代码回滚到之前提交的某个commit id</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git reset --hard commit-id        //回滚到commit-id，讲commit-id之后提交的commit都去除</span></div><div class="line"></div><div class="line"><span class="comment"># git reset --hard HEAD~3           //将最近3次的提交回滚</span></div></pre></td></tr></table></figure>
-<h3 id="远程代码回滚"><a href="#远程代码回滚" class="headerlink" title="远程代码回滚"></a>远程代码回滚</h3><blockquote>
-<p>应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布</p>
-</blockquote>
-<p>  原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git checkout the_branch</span></div><div class="line"><span class="comment"># git pull</span></div><div class="line"><span class="comment"># git branch the_branch_backup          //备份一下这个分支当前的情况</span></div><div class="line"><span class="comment"># git reset --hard the_commit_id        //把the_branch本地回滚到the_commit_id</span></div><div class="line"><span class="comment"># git push origin :the_branch           //删除远程 the_branch</span></div><div class="line"><span class="comment"># git push origin the_branch            //用回滚后的本地分支重新建立远程分支</span></div><div class="line"><span class="comment"># git push origin :the_branch_backup    //如果前面都成功了，删除这个备份分支</span></div></pre></td></tr></table></figure>  
+		  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/面试/">面试</a>
+  </div>
 
 </div>
 
@@ -120,7 +115,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/11/13/Git-0回滚代码/" data-title="Git-0回滚代码 | ZhangYang" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2018/01/06/面试-移动端/" data-title="面试-移动端 | ZhangYang" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -133,19 +128,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/01/06/面试-html/" title="面试-html">
-  <strong>上一篇：</strong><br/>
-  <span>
-  面试-html</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/11/10/Git-4本地分支和合并分支/"  title="Git-4本地分支和合并分支">
+<a href="/2018/01/06/面试-其他/"  title="面试-其他">
  <strong>下一篇：</strong><br/> 
- <span>Git-4本地分支和合并分支
+ <span>面试-其他
 </span>
 </a>
 </div>
@@ -161,7 +148,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-0Git回滚代码"><span class="toc-number">1.</span> <span class="toc-text">Git-0Git回滚代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#本地代码回滚"><span class="toc-number">1.1.</span> <span class="toc-text">本地代码回滚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程代码回滚"><span class="toc-number">1.2.</span> <span class="toc-text">远程代码回滚</span></a></li></ol></li></ol>
+ 
  
   </div>
 
