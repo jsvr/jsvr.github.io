@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>变量名提升</title>
+  <meta charset="UTF-8">
+  <title>变量名提升</title>
 </head>
+
 <body>
-<script>
-     var foo = 1;
-     function fn(){
-         console.log(foo);
-         var foo = 2;
-         console.log(foo);
-     }
+  <script>
+    // 1. 变量名提升 (变量名提升只在函数作用域中提升)
+    var foo = 1;
+
+    function fn() {
+      console.log(foo);     // undefined;
+      var foo = 2;
+      console.log(foo);     // 2
+    }
     fn();
-</script>
+
+    // 2. 函数名提升(匿名函数名提升)
+    console.log(fooB(2));   // 
+    console.log(fooA(1));   // fooA is not a function
+    var fooA = function(num) {
+        return num;
+    }
+    function fooB(num) {
+        return num;
+    }
+  </script>
 </body>
+
 </html>
