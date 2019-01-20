@@ -101,9 +101,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="item1">
-                                    <audio class="card_audio"
-                                        loop= true
-                                        src="assets/audio/page03_audio_dxl01.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_dxl01.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -122,9 +120,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item2">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_wmdxsd02.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_wmdxsd02.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -143,9 +139,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item3">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_lj03.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_lj03.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -164,9 +158,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item4">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_sf04.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_sf04.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -185,9 +177,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item5">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_hwg05.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_hwg05.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -206,9 +196,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item6">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_hz06.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_hz06.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -227,9 +215,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item7">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_bmcyj07.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_bmcyj07.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -248,9 +234,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item8">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_mlff08.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_mlff08.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -269,9 +253,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item9">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_thsj09.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_thsj09.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -290,9 +272,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item10">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_slzm10.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_slzm10.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -311,9 +291,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item11">
-                                    <audio class="card_audio"
-                                        loop=true
-                                        src="assets/audio/page03_audio_zjp11.mp3">
+                                    <audio class="card_audio" loop=true src="assets/audio/page03_audio_zjp11.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
@@ -400,10 +378,12 @@
             function palyAudio(index) {
                 console.log(index);
                 const audioLength = $('.card_audio').length - 1;
-                if ($('.card_audio')[index].paused) {
-                    // 开始播放当前点击的音频
-                    $('.card_audio')[index].play();   
-                }
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    if ($('.card_audio')[index].paused) {
+                        // 开始播放当前点击的音频
+                        $('.card_audio')[index].play();
+                    }
+                }, false);
             }
             // 暂停page3 audio
             function pauseAudio() {
