@@ -101,7 +101,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="item1">
-                                    <audio class="card_audio" preload loop=true >
+                                    <audio class="card_audio" preload loop=true>
                                         <source src="assets/audio/page03_audio_dxl01.mp3">
                                     </audio>
                                     <!-- 唱片内容 -->
@@ -380,8 +380,19 @@
                 console.log(index);
                 const audioLength = $('.card_audio').length - 1;
                 if ($('.card_audio')[index].paused) {
-                        // 开始播放当前点击的音频
-                        $('.card_audio')[index].play();
+                    if (window.WeixinJSBridge) {
+                        WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                            $('.card_audio')[index].play();
+                        }, false);
+                    } else {
+                        document.addEventListener("WeixinJSBridgeReady", function () {
+                            WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                $('.card_audio')[index].play();
+                            });
+                        }, false);
+                    }
+                    // 开始播放当前点击的音频
+                    $('.card_audio')[index].play();
                 }
             }
             // 暂停page3 audio
