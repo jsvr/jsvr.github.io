@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 视图窗口，移动端特属的标签。 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <!-- 是否启动webapp功能，会删除默认的苹果工具栏和菜单栏。 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 这个主要是根据实际的页面设计的主体色为搭配来进行设置。 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- 忽略页面中的数字识别为电话号码,email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Year Card</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        /**
+         * [移动端适配]
+         * 宽度固定，viewport 缩放
+         * width 设计稿宽度
+         */
+        (function (win, doc) {
+            var metaViewport = doc.querySelector('meta[name="viewport"]');
+            var width = 750;
+            var iw = win.innerWidth || width;
+            var ow = win.outerWidth || iw;
+            var sw = win.screen.width || iw;
+            var saw = win.screen.availWidth || iw;
+            var minWidth = Math.min(width, iw, ow, sw, saw);
+            var scale = minWidth / width;
+            metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
+                ',minimum-scale=' + scale + ',user-scalable=no';
+        }(window, document));
+    </script>
+
+    <script src="js/zepto.min.js"></script>
+    <script src="js/zepto.fx.js"></script>
+</head>
+
+<body>
+    <div class="swiper-container" id="swiperV">
+        <div class="swiper-wrapper">
+            <!-------------slide1----------------->
+            <div class="swiper-slide">
+                <div class="page page1">
+                    <!-- 新年快乐 icon -->
+                    <div class="icon icon1"></div>
+                    <div class="icon icon2"></div>
+                    <div class="icon icon3"></div>
+                    <div class="icon icon4"></div>
+                </div>
+            </div>
+            <!---------------slide2-------------->
+            <div class="swiper-slide">
+                <div class="page page2">
+                    <div class="top_content">
+                        <!-- 唱片 -->
+                        <div class="disc"></div>
+                        <!-- 唱针 -->
+                        <div class="styli"></div>
+                    </div>
+                    <div class="bottom_content">
+                        <div class="text_box clearx">
+                            <div class="text1">你曾将某个心事</div>
+                            <div class="text2">藏进哪一段旋律?</div>
+                            <div class="text3">你曾将一段时光</div>
+                            <div class="text4">寄予哪几段歌词?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----------------slide3-------------->
+            <div class="swiper-slide">
+                <div class="page page3">
+                    <div class="swiper-container" id="swiperH">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="item1">
+                                    <audio class="card_audio"
+                                        loop= true
+                                        src="assets/audio/page03_audio_dxl01.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item2">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_wmdxsd02.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item3">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_lj03.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item4">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_sf04.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item5">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_hwg05.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item6">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_hz06.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item7">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_bmcyj07.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item8">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_mlff08.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item9">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_thsj09.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item10">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_slzm10.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="item11">
+                                    <audio class="card_audio"
+                                        loop=true
+                                        src="assets/audio/page03_audio_zjp11.mp3">
+                                    </audio>
+                                    <!-- 唱片内容 -->
+                                    <div class="top_content">
+                                        <!-- 唱针 -->
+                                        <div class="styli J-styli"></div>
+                                        <!-- 唱片 -->
+                                        <div class="disc J-disc"></div>
+                                        <!-- 专辑封面  -->
+                                        <div class="album_art J-albumArt"></div>
+                                    </div>
+                                    <!-- 歌手介绍 -->
+                                    <div class="mid_content"></div>
+                                    <!-- 提示滑动 -->
+                                    <div class="bottom_content">左右滑动更换照片</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------slide4----------------->
+            <div class="swiper-slide">
+                <div class="page page4">4</div>
+            </div>
+            <!-------------slide5----------------->
+            <div class="swiper-slide">
+                <div class="page page5">5</div>
+            </div>
+            <!-------------slide6----------------->
+            <div class="swiper-slide">
+                <div class="page page6">6</div>
+            </div>
+            <!-------------slide7----------------->
+            <div class="swiper-slide">
+                <div class="page page7">7</div>
+            </div>
+        </div>
+        <!-- 每页显示的滑动剪头 -->
+        <img src="assets/images/web-swipe-tip.png" style="width:20px;height:15px; top:460px; left:150px;" id="array" class="resize">
+        <div class="swiper-pagination"></div>
+    </div>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/swiper.animate.min.js"></script>
+    <script>
+        //     var swiperIndex = sessionStorage.getItem('swiperIndex') ? sessionStorage.getItem('swiperIndex') : 0,
+        //     initSwiper = {
+        //       // direction: 'vertical',
+        //       initialSlide : swiperIndex,
+        //       // 切换页面成功之前的回调
+        //       onSlideChangeStart: function (swiper) {
+        //         sessionStorage.setItem('swiperIndex', swiper.activeIndex);
+        //       }
+        //     };
+        // var swiperFather = new Swiper('#swiper1', initSwiper);
+        // var swiperSon = new Swiper('#swiper2',{
+        // });
+
+        $(function () {
+            // 设置page3动画
+            function setAnimate(index) {
+                $('.J-disc').eq(index).animate({
+                    'top': '-160px'
+                }, 1000, 'ease-out', function () {
+                    $('.J-styli').eq(index).animate({
+                        'transform': ' rotate(-30deg)',
+                        'transform-origin': 'top left'
+                    }, 1000, 'ease-out', function () {
+                        $('.J-disc').eq(index).addClass('Rotation');
+                        console.log(index);
+                        palyAudio(index);
+                    });
+                });
+            }
+            // 取消page3动画
+            function removeAnimate() {
+                $('.J-disc').css({ 'top': '194px' });
+                $('.J-styli').css({
+                    'transform': ' rotate(0deg)',
+                    'transform-origin': 'top left'
+                });
+                $('.J-disc').removeClass('Rotation');
+            }
+            // 播放page3 audio
+            function palyAudio(index) {
+                console.log(index);
+                const audioLength = $('.card_audio').length - 1;
+                if ($('.card_audio')[index].paused) {
+                    // 开始播放当前点击的音频
+                    $('.card_audio')[index].play();   
+                }
+            }
+            // 暂停page3 audio
+            function pauseAudio() {
+                const audioArr = $('.card_audio');
+                const audioLength = audioArr.length - 1;
+                for (let index = 0; index < audioLength; index++) {
+                    audioArr[index].pause();
+                }
+            }
+            var swiperV = new Swiper('#swiperV', {
+                direction: 'vertical',
+                loop: true,
+                onInit: function (swiper) {
+                    swiperAnimateCache(swiper);
+                    swiperAnimate(swiper);
+                },
+                onSlideChangeEnd: function (swiper) {
+                    swiperAnimate(swiper);
+                }
+            });
+            var swiperH = new Swiper('#swiperH', {
+                direction: 'horizontal',
+                loop: true,
+                onInit: function (swiper) {
+                    swiperAnimateCache(swiper);
+                    swiperAnimate(swiper);
+                },
+                onSlideChangeEnd: function (swiper) {
+                    swiperAnimate(swiper);
+                    // 取消动画
+                    removeAnimate();
+                    // 暂停所有播放
+                    pauseAudio();
+                },
+            });
+            $(".J-albumArt").on('click', function () {
+                const index = swiperH.activeIndex;
+                setAnimate(index);
+            });
+        });
+    </script>
+</body>
+
+</html>

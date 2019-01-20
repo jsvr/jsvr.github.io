@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="面试">
+    <meta name="description" content="Javascriptjs数据类型 基础类型 12# 基础类型包括# Number、String、Boolean、Null、Undefined、Symbol（该类型位 ES2015 中新增类型）  引用类型 123# 引用类型包括:# Object typeof 运算符把类型信息以字符串形式返回，需要注意的是 typeof 返回的类型和 JavaScript 定义的类型有细微的差异。  typeof">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-javascript">
 <meta property="og:url" content="http://yoursite.com/2018/01/06/面试-javascript/index.html">
 <meta property="og:site_name" content="ZhangYang">
-<meta property="og:updated_time" content="2018-01-06T04:59:49.000Z">
+<meta property="og:description" content="Javascriptjs数据类型 基础类型 12# 基础类型包括# Number、String、Boolean、Null、Undefined、Symbol（该类型位 ES2015 中新增类型）  引用类型 123# 引用类型包括:# Object typeof 运算符把类型信息以字符串形式返回，需要注意的是 typeof 返回的类型和 JavaScript 定义的类型有细微的差异。  typeof">
+<meta property="og:updated_time" content="2018-01-06T11:02:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试-javascript">
+<meta name="twitter:description" content="Javascriptjs数据类型 基础类型 12# 基础类型包括# Number、String、Boolean、Null、Undefined、Symbol（该类型位 ES2015 中新增类型）  引用类型 123# 引用类型包括:# Object typeof 运算符把类型信息以字符串形式返回，需要注意的是 typeof 返回的类型和 JavaScript 定义的类型有细微的差异。  typeof">
 
     
     <link rel="alternative" href="/atom.xml" title="ZhangYang" type="application/atom+xml">
@@ -94,11 +97,71 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript"><span class="toc-number">1.</span> <span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">js数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域问题"><span class="toc-number">1.2.</span> <span class="toc-text">跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别"><span class="toc-number">1.3.</span> <span class="toc-text">get和post区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包"><span class="toc-number">1.4.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型"><span class="toc-number">1.5.</span> <span class="toc-text">原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型链"><span class="toc-number">1.6.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承（几种方法）"><span class="toc-number">1.7.</span> <span class="toc-text">继承（几种方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new操作符具体干了什么"><span class="toc-number">1.8.</span> <span class="toc-text">new操作符具体干了什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null和undefined的区别"><span class="toc-number">1.9.</span> <span class="toc-text">null和undefined的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM对象-window对象"><span class="toc-number">1.10.</span> <span class="toc-text">BOM对象,window对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组与伪数组的区别"><span class="toc-number">1.11.</span> <span class="toc-text">数组与伪数组的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript的事件流模型"><span class="toc-number">1.12.</span> <span class="toc-text">Javascript的事件流模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax"><span class="toc-number">1.13.</span> <span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie-sessionStorage-localStorage-统一浏览器共享-可以通信"><span class="toc-number">1.14.</span> <span class="toc-text">cookie sessionStorage localStorage(统一浏览器共享,可以通信)</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><h3 id="js数据类型"><a href="#js数据类型" class="headerlink" title="js数据类型"></a>js数据类型</h3><ul>
+<li><p>基础类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 基础类型包括</span></div><div class="line"><span class="comment"># Number、String、Boolean、Null、Undefined、Symbol（该类型位 ES2015 中新增类型）</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>引用类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 引用类型包括:</span></div><div class="line"><span class="comment"># Object typeof 运算符把类型信息以字符串形式返回，需要注意的是 typeof 返回的类型和 JavaScript 定义的类型有细微的差异。</span></div><div class="line">  typeof 返回七种可能的值：“number”、“string”、“boolean”、“object”、<span class="string">"symbol"</span>、“<span class="keyword">function</span>”和“undefined”。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><ul>
+<li>test</li>
+</ul>
+<h3 id="get和post区别"><a href="#get和post区别" class="headerlink" title="get和post区别"></a>get和post区别</h3><ul>
+<li><p>get</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一般用于信息获取，使用URL传递参数，对所发送信息的数量也有限制，一般在2000个字符</span></div><div class="line"><span class="comment"># 可以跨域请求</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>post</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一般用于修改服务器上的资源，对所发送的信息没有限制</span></div><div class="line"><span class="comment"># 没法跨域</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><ul>
+<li>闭包特性<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 函数嵌套函数</span></div><div class="line"><span class="comment"># 函数内部可以引用外部的参数和变量</span></div><div class="line"><span class="comment"># 参数和变量不会被垃圾回收机制回收</span></div><div class="line"><span class="comment"># 闭包可以实现数据缓存</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 原型: JavaScript 原型： 每创建一个函数，函数上都有一个属性为 prototype，它的</span></div><div class="line">  值是一个对象。 这个对象的作用在于当使用函数创建实例的时候，那么这些实例都会共享</div><div class="line">  原型上的属性和方法。</div><div class="line"><span class="comment"># 对象都有原型对象, 对象默认继承自原型对象</span></div><div class="line"><span class="comment"># 函数被定义后, 默认就有原型属性, 原型属性也是对象</span></div><div class="line"><span class="comment"># 函数的原型属性默认继承自 Object.prototype</span></div><div class="line"><span class="comment"># 原型对象中 constructor 指向对应的构造函数</span></div><div class="line"><span class="comment"># 所有的函数都是 Function 的实例</span></div><div class="line"><span class="comment"># 函数也是对象</span></div><div class="line"><span class="comment"># prototype:  是函数的原型属性, 是该函数创建的对象的原型对象</span></div><div class="line"><span class="comment"># __proto__ 是对象的原型对象, 是创建该对象的构造函数的 原型属性</span></div></pre></td></tr></table></figure>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 原型链: 在 JavaScript 中，每个对象都有一个指向它的原型（prototype）对象的内部</span></div><div class="line">  链接（proto）。这个原型对象又有自己的原型，直到某个对象的原型为 null 为止（也就</div><div class="line">  是不再有原型指向）。这种一级一级的链结构就称为原型链（prototype chain）。 当查</div><div class="line">  找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止;到</div><div class="line">  查找到达原型链的顶部（Object.prototype），仍然没有找到指定的属性，就会返回 undefined</div></pre></td></tr></table></figure>
+<h3 id="继承（几种方法）"><a href="#继承（几种方法）" class="headerlink" title="继承（几种方法）"></a>继承（几种方法）</h3><h3 id="new操作符具体干了什么"><a href="#new操作符具体干了什么" class="headerlink" title="new操作符具体干了什么?"></a>new操作符具体干了什么?</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">新建一个对象 ----- var obj = new Object();</div><div class="line">设置原型链   ----- obi.__proto__ = F.prototype;</div><div class="line">让F中的this指向obj,执行F的函数体</div></pre></td></tr></table></figure>
+<h3 id="null和undefined的区别"><a href="#null和undefined的区别" class="headerlink" title="null和undefined的区别?"></a>null和undefined的区别?</h3><ul>
+<li><p>null</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">null  ----- 表示<span class="string">"没有对象"</span>，即该处不应该有值</div><div class="line">用法: 作为函数的参数，表示该函数的参数不是对象。</div><div class="line">用法: 作为对象原型链的终点. Object.getPrototypeOf(Object.prototype) //null</div></pre></td></tr></table></figure>
+</li>
+<li><p>undefined</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">undefined  ----- 表示就是此处应该有一个值，但是还没有定义。</div><div class="line">用法: 变量被声明了，但没有赋值时，就等于undefined。</div><div class="line">用法: 调用函数时，应该提供的参数没有提供，该参数等于undefined。</div><div class="line">用法: 对象没有赋值的属性，该属性的值为undefined。</div><div class="line">用法: 函数没有返回值时，默认返回undefined。。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="BOM对象-window对象"><a href="#BOM对象-window对象" class="headerlink" title="BOM对象,window对象"></a>BOM对象,window对象</h3><ul>
+<li><p>BOM对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+<li><p>Window对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="数组与伪数组的区别"><a href="#数组与伪数组的区别" class="headerlink" title="数组与伪数组的区别"></a>数组与伪数组的区别</h3><h3 id="Javascript的事件流模型"><a href="#Javascript的事件流模型" class="headerlink" title="Javascript的事件流模型"></a>Javascript的事件流模型</h3><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul>
+<li><p>Ajax的局限性</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ajax不支持浏览器的back按钮.</span></div><div class="line"><span class="comment"># ajax暴露了与服务器的交互细节.</span></div><div class="line"><span class="comment"># 对搜索引擎的支持比较弱.不会执行你的js脚本,只会操作你的网页源代码.</span></div><div class="line"><span class="comment"># 跨域请求有一定限制.解决方式: jsonp.</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>跨域／同源策略</p>
+</li>
+</ul>
+<h3 id="cookie-sessionStorage-localStorage-统一浏览器共享-可以通信"><a href="#cookie-sessionStorage-localStorage-统一浏览器共享-可以通信" class="headerlink" title="cookie sessionStorage localStorage(统一浏览器共享,可以通信)"></a>cookie sessionStorage localStorage(统一浏览器共享,可以通信)</h3><ul>
+<li><p>cookie</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">jquery使用 ----- $.cookie(<span class="string">"example"</span>)</div><div class="line">cookie设置 ----- $.cookie(<span class="string">"xc_username"</span>,<span class="string">"MrFrank"</span>); //设置cookie</div><div class="line">cookie获取 ----- $.cookie(<span class="string">"xc_username"</span>); //获取cookie</div><div class="line">cookie删除 ----- $.cookie(<span class="string">"xc_username"</span>, null);</div><div class="line">cookie设置带时间 ----- $.cookie(<span class="string">"xc_username"</span>,<span class="string">"MrFrank"</span>,&#123;expires:30&#125;); //设置30天的xc_username</div><div class="line">cookie设置带路径 ----- $.cookie(<span class="string">"xc_username"</span>,<span class="string">"MrFrank"</span>,&#123;path:30&#125;); //设置为跟目录</div><div class="line">区别: cookie在本地终端上,有大小限制(约4kb),数量限制;适合保存小数据,标识信息(登录);自动携带发给服务器.</div><div class="line">    生效的时间跟设置的时间有关系,跟浏览器关闭没有关系;</div></pre></td></tr></table></figure>
+</li>
+<li><p>sessionStorage</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">区别: 不会把数据发给服务端,仅在本地保存;大小&gt;=5M;生不生效取决去浏览器是否关闭</div><div class="line">`</div></pre></td></tr></table></figure>
+</li>
+<li><p>localStorage</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">区别: 一直生效(浏览器关闭也生效);可以储存持久数据或者缓存数据</div></pre></td></tr></table></figure>
+</li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -156,7 +219,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript"><span class="toc-number">1.</span> <span class="toc-text">Javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">js数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域问题"><span class="toc-number">1.2.</span> <span class="toc-text">跨域问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get和post区别"><span class="toc-number">1.3.</span> <span class="toc-text">get和post区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包"><span class="toc-number">1.4.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型"><span class="toc-number">1.5.</span> <span class="toc-text">原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型链"><span class="toc-number">1.6.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承（几种方法）"><span class="toc-number">1.7.</span> <span class="toc-text">继承（几种方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#new操作符具体干了什么"><span class="toc-number">1.8.</span> <span class="toc-text">new操作符具体干了什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null和undefined的区别"><span class="toc-number">1.9.</span> <span class="toc-text">null和undefined的区别?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM对象-window对象"><span class="toc-number">1.10.</span> <span class="toc-text">BOM对象,window对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组与伪数组的区别"><span class="toc-number">1.11.</span> <span class="toc-text">数组与伪数组的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript的事件流模型"><span class="toc-number">1.12.</span> <span class="toc-text">Javascript的事件流模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax"><span class="toc-number">1.13.</span> <span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie-sessionStorage-localStorage-统一浏览器共享-可以通信"><span class="toc-number">1.14.</span> <span class="toc-text">cookie sessionStorage localStorage(统一浏览器共享,可以通信)</span></a></li></ol></li></ol>
  
   </div>
 
@@ -268,7 +331,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
 		
 		<a href="/about" target="_blank" title="jsvr">jsvr</a>
 		

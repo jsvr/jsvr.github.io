@@ -11,14 +11,17 @@
     
 
     
-    <meta name="keywords" content="面试">
+    <meta name="description" content="httphttp 的几种请求方式12 http 状态码123456789# 200：请求已成功，请求所希望的响应头或数据体将随此响应返回。# 302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的.# 304：如果客户端发送了一个带条件的">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-http">
 <meta property="og:url" content="http://yoursite.com/2018/01/06/面试-http/index.html">
 <meta property="og:site_name" content="ZhangYang">
-<meta property="og:updated_time" content="2018-01-06T04:59:49.000Z">
+<meta property="og:description" content="httphttp 的几种请求方式12 http 状态码123456789# 200：请求已成功，请求所希望的响应头或数据体将随此响应返回。# 302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的.# 304：如果客户端发送了一个带条件的">
+<meta property="og:updated_time" content="2018-01-06T12:59:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试-http">
+<meta name="twitter:description" content="httphttp 的几种请求方式12 http 状态码123456789# 200：请求已成功，请求所希望的响应头或数据体将随此响应返回。# 302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的.# 304：如果客户端发送了一个带条件的">
 
     
     <link rel="alternative" href="/atom.xml" title="ZhangYang" type="application/atom+xml">
@@ -94,11 +97,14 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#http"><span class="toc-number">1.</span> <span class="toc-text">http</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http-的几种请求方式"><span class="toc-number">1.1.</span> <span class="toc-text">http 的几种请求方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-状态码"><span class="toc-number">1.2.</span> <span class="toc-text">http 状态码</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><h3 id="http-的几种请求方式"><a href="#http-的几种请求方式" class="headerlink" title="http 的几种请求方式"></a>http 的几种请求方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h3 id="http-状态码"><a href="#http-状态码" class="headerlink" title="http 状态码"></a>http 状态码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 200：请求已成功，请求所希望的响应头或数据体将随此响应返回。</span></div><div class="line"><span class="comment"># 302：请求的资源临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。</span></div><div class="line">只有在 Cache-Control 或 Expires 中进行了指定的情况下，这个响应才是可缓存的.</div><div class="line"><span class="comment"># 304：如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）</span></div><div class="line">并没有改变，则服务器应当返回这个状态码。304 响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。</div><div class="line"><span class="comment"># 403：服务器已经理解请求，但是拒绝执行它。</span></div><div class="line"><span class="comment"># 404：请求失败，请求所希望得到的资源未被在服务器上发现.</span></div><div class="line"><span class="comment"># 500：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码</span></div><div class="line">出现错误时出现。</div></pre></td></tr></table></figure>
+<p>###</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -156,7 +162,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#http"><span class="toc-number">1.</span> <span class="toc-text">http</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http-的几种请求方式"><span class="toc-number">1.1.</span> <span class="toc-text">http 的几种请求方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-状态码"><span class="toc-number">1.2.</span> <span class="toc-text">http 状态码</span></a></li></ol></li></ol>
  
   </div>
 
@@ -268,7 +274,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
 		
 		<a href="/about" target="_blank" title="jsvr">jsvr</a>
 		
