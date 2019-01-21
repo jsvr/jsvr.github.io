@@ -462,6 +462,7 @@
                 var dtask = plus.downloader.createDownload(url, {}, function (d, status) {
                     // 下载完成
                     if (status == 200) {
+                        alert('200进入');
                         console.log(d.filename);
                         var filepath = plus.io.convertLocalFileSystemURL(d.filename);
                         console.log(filepath);
@@ -504,7 +505,7 @@
                     // 生成转换成图片的链接
                     let imgData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                     console.log(imgData);
-                    saveGallery(imgData);
+                    saveGallery('https://jsvr.github.io/exercise_item/yearCard/assets/images/page06_img.png');
                     // this.saveFile(imgData, `${that.title}.png`);
                 });
             }
