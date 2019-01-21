@@ -460,6 +460,7 @@
             // 保存到相册
             function saveGallery(url) {
                 var dtask = plus.downloader.createDownload(url, {}, function (d, status) {
+                    alert('执行保存到相册方法');
                     // 下载完成
                     if (status == 200) {
                         alert('200进入');
@@ -505,7 +506,6 @@
                     // 生成转换成图片的链接
                     let imgData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                     console.log(imgData);
-                    alert('200进入');
                     saveGallery('https://jsvr.github.io/exercise_item/yearCard/assets/images/page06_img.png');
                     // this.saveFile(imgData, `${that.title}.png`);
                 });
