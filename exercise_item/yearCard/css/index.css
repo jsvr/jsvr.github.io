@@ -130,7 +130,7 @@ body {
 }
 
 body {
-    font-family: "microsoft yahei";
+    font-family: "Microsoft YaHei";
 }
 
 .swiper-container {
@@ -147,10 +147,10 @@ body {
 }
 
 .page {
-    /* width: 750px;
-    height: 1206px; */
+    /* width: 750px; */
+    height: 1206px;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     background-size: 100% 100%;
 }
 
@@ -190,19 +190,46 @@ body {
     position: absolute;
     background-size: 100% 100%;
 }
-
+.page1>.top_tit{
+    width: 425px;
+    height: 188px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -212px;
+    background: url(../assets/images/page01_title.png) no-repeat 0 0;
+}
+.page1>.mid_img{
+    width: 419px;
+    height: 535px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -268px;
+    margin-left: -210px;
+    background: url(../assets/images/page01_img.png) no-repeat 0 0;
+}
+.page1>.btm_logo{
+    width: 195px;
+    height: 99px;
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    margin-left: -88px;
+    background: url(../assets/images/page01_logo.png) no-repeat 0 0;
+}
 .page2 {
     background: url(../assets/images/page02_bg.jpg) no-repeat 0 0;
     background-size: 100% 100%;
+    position: relative;
     overflow: hidden;
 }
 
 .page2>.top_content {
     width: 100%;
     height: 470px;
-    position: relative;
-    margin-top: 155px;
-    background-color: red;
+    position: absolute;
+    top: 14%;
 }
 
 .page2>.top_content>.disc {
@@ -225,7 +252,8 @@ body {
 
 .page2>.bottom_content {
     width: 100%;
-    margin-top: 77px;
+    position: absolute;
+    bottom: 20%;
 }
 
 .page2>.bottom_content>.text_box {
@@ -382,10 +410,175 @@ body {
     color: #a07e36;
 }
 .page4 {
-    background: url(../assets/images/page06_bg.jpg) no-repeat 0 0;
+    background: url(../assets/images/page04_bg.jpg) no-repeat 0 0;
     background-size: 100% 100%;
+    position: relative;
+}
+.page4>.text_box {
+    width: 176px;
+    height: 340px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -88px;
+    margin-top: -170px;
 }
 
+.page4>.text_box>div {
+    width: 30px;
+    float: right;
+    margin-right: 38px;
+    font-size: 30px;
+    height: 300px;
+    line-height: 38px;
+    word-wrap: break-word;
+    text-align: center;
+}
+.page4>.text_box>div:nth-child(1) {
+    margin-right: 0;
+}
+.page5{
+    background: url(../assets/images/page05_bg.jpg) no-repeat 0 0;
+    background-size: 100% 100%;
+    position: relative;
+}
+.page5>.top_tit{
+    width: 482px;
+    height: 106px;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    margin-left: -241px;
+    background: url(../assets/images/page05_title_bg.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail{
+    width: 544px;
+    height: 751px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -271px;
+    margin-top: -375px;
+}
+.page5>.mid_detail>.swiper-container{
+    width: 544px;
+    height: 751px;
+}
+.page5>.mid_detail .item1{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .item2{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .item3{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.btm_text{
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+    font: 26px/26px "Microsoft YaHei";
+    text-align: center;
+    color: #a07e36;
+}
+.page6{
+    background: url(../assets/images/page06_bg.jpg) no-repeat 0 0;
+    background-size: 100% 100%;
+    position: relative;
+}
+.page6>.top_img{
+    width: 600px;
+    height: 614px;
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    margin-left: -300px;
+    background: url(../assets/images/page06_img.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page6>.mid_text{
+    position: absolute;
+    width: 300px;
+    height: 374px;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+}
+.page6>.mid_text>.text_box {
+    width: 246px;
+    height: 283px;
+    margin: 0 auto;
+}
+
+.page6>.mid_text>.text_box>div {
+    width: 30px;
+    float: right;
+    margin-right: 38px;
+    font-size: 30px;
+    height: 300px;
+    line-height: 38px;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.page6>.mid_text>.text_box>div:nth-child(1) {
+    margin-right: 0;
+}
+.page6>.btm_btn{
+    width: 470px;
+    height: 91px;
+    position: absolute;
+    left: 50%;
+    margin-left: -235px;
+    bottom: 7%;
+    background: url(../assets/images/page06_btnbg.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page6>.user_img{
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../assets/images/page07_bg.jpg) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page6>.user_img .user_img_content{
+    width: 531px;
+    height: 1016px;
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    margin-left: -255px;
+}
+.page6>.user_img .top_tit{
+    width: 509px;
+    height: 112px;
+    padding-left: 15px;
+    background: url(../assets/images/page07_title_bg.png) no-repeat 0 0;
+    background-size: 100% 100%;
+    font: 50px/112px "Microsoft YaHei";
+}
+.page6>.user_img .mid_img{
+    width: 531px;
+    height: 917px;
+    margin-top: 20px;
+    background: url(../assets/images/page07_user_kuaile.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page6>.user_img .user_descriptor{
+    width: 100%;
+    position: absolute;
+    font: 20px/25px "Microsoft YaHei";
+    color: #fff;
+    text-align: center;
+    bottom: 3%;
+}
 @keyframes tipmove {
     0% {
         bottom: 10px;
@@ -402,8 +595,6 @@ body {
         opacity: 0
     }
 }
-
-
 .Rotation {
     transform: rotate(360deg);
     animation: rotation 3s linear infinite;
