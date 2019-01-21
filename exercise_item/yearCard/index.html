@@ -457,6 +457,29 @@
                     audioArr[index].pause();
                 }
             }
+            // 保存到相册
+            function saveGallery(url) {
+                var dtask = plus.downloader.createDownload(url, {}, function (d, status) {
+                    // 下载完成
+                    if (status == 200) {
+                        console.log(d.filename);
+                        var filepath = plus.io.convertLocalFileSystemURL(d.filename);
+                        console.log(filepath);
+                        // 保存相册
+                        plus.gallery.save(filepath);
+                        plus.nativeUI.alert("保存成功");
+                        // 删除
+                        plus.io.resolveLocalFileSystemURL(filepath, function (entry) {
+                            entry.remove(function (e) {}, function (e) {});
+                        }, function (e) {});
+
+                    } else {
+                        plus.nativeUI.alert("Download failed: " + status);
+                    }
+                });
+                //dtask.addEventListener( "statechanged", onStateChanged, false );
+                dtask.start();
+            }
             // 生成截图
             function generateScreenshot() {
                 let width = $('.J-userImgContent').width();
@@ -479,8 +502,9 @@
                 }).then(canvasParams => {
                     console.log(canvasParams);
                     // 生成转换成图片的链接
-                    let imgData = canvasParams.toDataURL("image/png");
+                    let imgData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
                     console.log(imgData);
+                    saveGallery(imgData);
                     // this.saveFile(imgData, `${that.title}.png`);
                 });
             }
