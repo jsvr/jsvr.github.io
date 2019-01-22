@@ -565,10 +565,10 @@ body {
     background-size: 100% 100%
 }
 .page6>.user_img .top_tit .top_tit_name{
-    width: 136px;
+    width: 120px;
     height: 112px;
-    margin:  -112px 0 0 36px;
-    letter-spacing: 8px;
+    margin:  -112px 0 0 42px;
+    /* letter-spacing: 8px; */
     text-align: center;
     overflow: hidden;
     text-overflow:ellipsis;
