@@ -148,9 +148,9 @@ body {
 
 .page {
     /* width: 750px; */
-    height: 1206px;
+    /* height: 1206px; */
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     background-size: 100% 100%;
 }
 
@@ -543,6 +543,7 @@ body {
     height: 100%;
     display: none;
     position: absolute;
+    z-index: 10;
     top: 0;
     left: 0;
     background: url(../assets/images/page07_bg.jpg) no-repeat 0 0;
@@ -556,20 +557,30 @@ body {
     left: 50%;
     margin-left: -255px;
 }
-.page6>.user_img .top_tit{
+.page6>.user_img .top_tit .top_tit_bg{
     width: 509px;
     height: 112px;
-    padding-left: 15px;
+    margin-top: -112px;
     background: url(../assets/images/page07_title_bg.png) no-repeat 0 0;
     background-size: 100% 100%;
     font: 50px/112px "Microsoft YaHei";
 }
-.page6>.user_img .mid_img{
+.page6>.user_img .top_tit .top_tit_name{
+    width: 136px;
+    height: 112px;
+    margin-left: 36px;
+    letter-spacing: 8px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    font: bold 30px/112px"Microsoft YaHei";
+}
+.page6>.user_img .mid_img img{
+    display: block;
     width: 531px;
     height: 917px;
     margin-top: 20px;
-    background: url(../assets/images/page07_user_kuaile.png) no-repeat 0 0;
-    background-size: 100% 100%;
 }
 .page6>.user_img .user_descriptor{
     width: 100%;

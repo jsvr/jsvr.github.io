@@ -370,7 +370,7 @@
                         <!-- 截图的内容 -->
                         <div class="user_img_content J-userImgContent">
                             <div class="top_tit">
-                                <div class="top_tit_name J-userName">晓婉</div>
+                                <div class="top_tit_name J-userName">浪子回头</div>
                                 <div class="top_tit_bg"></div>
                             </div>
                             <div class="mid_img">
@@ -462,13 +462,7 @@
                 ];
                 let markNum = Math.floor(Math.random()*8);
                 console.log(markNum);
-                for (let index = 0; index < imgArr.length; index++) {
-                    if(index === markNum) {
-                        console.log('index===markNum');
-                        $('.j-useRexclusiveImg').attr('src', imgArr[index]);
-                        break;
-                    } 
-                }
+                $('.j-useRexclusiveImg').attr('src', imgArr[markNum]);
             }
             var swiperV = new Swiper('#swiperV', {
                 direction: 'vertical',
@@ -517,7 +511,7 @@
             });
             // 点击生成自己的专属图片
             $(".J-btmBtn").on('click', function () {
-                $('.J-userName').text(userName);
+                // $('.J-userName').text(userName);
                 // 动态生随机/成用户专属图片 src
                 randomUserImg();
                 // 显示生成用户专属图片的弹框
