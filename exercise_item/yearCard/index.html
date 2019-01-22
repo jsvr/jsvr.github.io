@@ -45,6 +45,7 @@
          * width 设计稿宽度
          */
         function adaptive(win, doc) {
+            console.log(win.innerHeight);
             var metaViewport = doc.querySelector('meta[name="viewport"]');
             var width = 750;
             var iw = win.innerWidth || width;
@@ -411,11 +412,19 @@
     <script src="js/swiper.animate.min.js"></script>
     <script>
         $(function () {
+            setCss();
             var userName = '浪子回头天宝';
+            // 给大屏设置css 
+            function setCss() {
+                if(window.innerHeight > 736){
+                    $('.page3 .mid_content').css({'bottom': '24%'});
+                    $('.page3 .bottom_content').css({'bottom': '13%'});
+                }
+            }
             // 设置page3动画
             function setAnimate(index) {
                 $('.J-disc').eq(index).animate({
-                    'top': '-160px'
+                    'top': '-20%'
                 }, 1000, 'ease-out', function () {
                     $('.J-styli').eq(index).animate({
                         'transform': ' rotate(-30deg)',
@@ -527,7 +536,7 @@
             });
             // 点击生成自己的专属图片
             $(".J-btmBtn").on('click', function () {
-                // 动态生随机/成用户专属图片 src
+                // 动态生随机生成用户专属图片 src
                 randomUserImg();
                 // 显示生成用户专属图片的弹框
                 $('.J-userImg').show(400);
