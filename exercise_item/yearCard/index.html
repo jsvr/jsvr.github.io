@@ -56,6 +56,7 @@
             metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
                 ',minimum-scale=' + scale + ',user-scalable=no';
         }
+        adaptive(window, document);
         // (function (win, doc) {
         //     var metaViewport = doc.querySelector('meta[name="viewport"]');
         //     var width = 750;
@@ -68,7 +69,7 @@
         //     metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
         //         ',minimum-scale=' + scale + ',user-scalable=no';
         // }(window, document));
-        window.onload = function () {adaptive(window, document);}
+        // window.onload = function () {adaptive(window, document);}
     </script>
     <script src="js/zepto.min.js"></script>
     <script src="js/html2canvas.min.js"></script>
@@ -410,7 +411,7 @@
     <script src="js/swiper.animate.min.js"></script>
     <script>
         $(function () {
-            var userName = '浪子回头';
+            var userName = '浪子回头天宝';
             // 设置page3动画
             function setAnimate(index) {
                 $('.J-disc').eq(index).animate({
