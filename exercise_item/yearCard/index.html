@@ -44,7 +44,7 @@
          * 宽度固定，viewport 缩放
          * width 设计稿宽度
          */
-        (function (win, doc) {
+        function adaptive(win, doc) {
             var metaViewport = doc.querySelector('meta[name="viewport"]');
             var width = 750;
             var iw = win.innerWidth || width;
@@ -55,7 +55,20 @@
             var scale = minWidth / width;
             metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
                 ',minimum-scale=' + scale + ',user-scalable=no';
-        }(window, document));
+        }
+        // (function (win, doc) {
+        //     var metaViewport = doc.querySelector('meta[name="viewport"]');
+        //     var width = 750;
+        //     var iw = win.innerWidth || width;
+        //     var ow = win.outerWidth || iw;
+        //     var sw = win.screen.width || iw;
+        //     var saw = win.screen.availWidth || iw;
+        //     var minWidth = Math.min(width, iw, ow, sw, saw);
+        //     var scale = minWidth / width;
+        //     metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
+        //         ',minimum-scale=' + scale + ',user-scalable=no';
+        // }(window, document));
+        window.onload = function () {adaptive(window, document);}
     </script>
     <script src="js/zepto.min.js"></script>
     <script src="js/html2canvas.min.js"></script>
@@ -513,12 +526,12 @@
             });
             // 点击生成自己的专属图片
             $(".J-btmBtn").on('click', function () {
-                // $('.J-userName').text(userName);
+                $('.J-userName').text(userName);
                 // 动态生随机/成用户专属图片 src
                 randomUserImg();
                 // 显示生成用户专属图片的弹框
                 $('.J-userImg').show(400);
-                
+                adaptive(window, document);
             })
             // 点击生成截图
             $('.J-userImgContent').on('click', function () {
