@@ -527,12 +527,12 @@
             });
             // 点击生成自己的专属图片
             $(".J-btmBtn").on('click', function () {
-                $('.J-userName').text(userName);
                 // 动态生随机/成用户专属图片 src
                 randomUserImg();
                 // 显示生成用户专属图片的弹框
                 $('.J-userImg').show(400);
                 adaptive(window, document);
+                $('.J-userName').text(userName);
             })
             // 点击生成截图
             $('.J-userImgContent').on('click', function () {
