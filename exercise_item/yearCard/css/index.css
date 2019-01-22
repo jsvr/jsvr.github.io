@@ -557,6 +557,10 @@ body {
     left: 50%;
     margin-left: -255px;
 }
+.page6>.user_img .top_tit{
+    position: relative;
+    top: 1%;
+}
 .page6>.user_img .top_tit .top_tit_bg img{
     display: block;
     width: 509px;
@@ -567,13 +571,17 @@ body {
 .page6>.user_img .top_tit .top_tit_name{
     width: 120px;
     height: 112px;
-    margin:  -112px 0 0 42px;
+    position: absolute;
+    top: 30%;
+    margin:  0 0 0 42px;
     /* letter-spacing: 8px; */
     text-align: center;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
-    font: bold 30px/112px"Microsoft YaHei";
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Microsoft YaHei";
 }
 .page6>.user_img .mid_img img{
     display: block;
