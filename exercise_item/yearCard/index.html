@@ -412,11 +412,12 @@
     <script src="js/swiper.animate.min.js"></script>
     <script>
         $(function () {
+            alert(window.innerHeight);
             setCss();
             var userName = '浪子回头天宝';
             // 给大屏设置css 
             function setCss() {
-                if(window.innerHeight > 736){
+                if(window.innerHeight > 1334){
                     $('.page3 .mid_content').css({'bottom': '24%'});
                     $('.page3 .bottom_content').css({'bottom': '13%'});
                     $('.page1>.icon1, .page1>.icon2').css({'top': '50px'});
