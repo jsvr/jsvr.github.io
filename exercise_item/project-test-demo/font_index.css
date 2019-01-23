@@ -1,9 +1,0 @@
-@font-face{
-    font-family:"wjs";
-    /*引入字体文件 不同的浏览器支持的字体文件格式不一样*/
-    src: url("font/AGENCYB.TTF") format("truetype")
-}
-.box{
-    font-family: wjs;
-    font-size: 30px;
-}

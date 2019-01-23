@@ -78,6 +78,9 @@
 </head>
 
 <body>
+    <audio class="index_audio" preload="auto" loop=true>
+        <source src="assets/audio/index_audio.mp3">
+    </audio>
     <div class="swiper-container" id="swiperV">
         <div class="swiper-wrapper">
             <!-------------slide1----------------->
@@ -412,16 +415,16 @@
     <script src="js/swiper.animate.min.js"></script>
     <script>
         $(function () {
-            alert(window.innerHeight);
             setCss();
             var userName = '浪子回头天宝';
+            var timestamp = 0;
             // 给大屏设置css 
             function setCss() {
-                if(window.innerHeight > 1334){
-                    $('.page3 .mid_content').css({'bottom': '24%'});
-                    $('.page3 .bottom_content').css({'bottom': '13%'});
-                    $('.page1>.icon1, .page1>.icon2').css({'top': '50px'});
-                    $('.page1>.icon4, .page1>.icon3').css({'bottom': '48px'});
+                if (window.innerHeight > 1334) {
+                    $('.page3 .mid_content').css({ 'bottom': '24%' });
+                    $('.page3 .bottom_content').css({ 'bottom': '13%' });
+                    $('.page1>.icon1, .page1>.icon2').css({ 'top': '50px' });
+                    $('.page1>.icon4, .page1>.icon3').css({ 'bottom': '48px' });
                 }
             }
             // 设置page3动画
@@ -488,7 +491,7 @@
                     './assets/images/page07_user_youya.png',
                     './assets/images/page07_user_youya.png',
                 ];
-                let markNum = Math.floor(Math.random()*8);
+                let markNum = Math.floor(Math.random() * 8);
                 console.log(markNum);
                 $('.j-useRexclusiveImg').attr('src', imgArr[markNum]);
             }
@@ -501,6 +504,28 @@
                 },
                 onSlideChangeEnd: function (swiper) {
                     swiperAnimate(swiper);
+                    const index = swiper.activeIndex;
+                    if (index === 3) {
+                        $('.index_audio')[0].pause();
+                        timestamp = $('.index_audio')[0].currentTime;
+                        console.log(timestamp);
+                    } else {
+                        if ($('.index_audio')[0].paused) {
+                            if (window.WeixinJSBridge) {
+                                WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                    $('.index_audio')[0].play();
+                                }, false);
+                            } else {
+                                document.addEventListener("WeixinJSBridgeReady", function () {
+                                    WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                        $('.index_audio')[0].play();
+                                    });
+                                }, false);
+                            }
+                            $('.index_audio')[0].currentTime = timestamp;
+                            $('.index_audio')[0].play();
+                        }
+                    }
                 }
             });
             var swiperH = new Swiper('#swiperH', {
