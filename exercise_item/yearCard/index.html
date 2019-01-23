@@ -73,11 +73,13 @@
         // window.onload = function () {adaptive(window, document);}
     </script>
     <script src="js/zepto.min.js"></script>
-    <script src="js/html2canvas.min.js"></script>
     <script src="js/zepto.fx.js"></script>
 </head>
 
 <body>
+    <div class="loading J-loading">
+        loading动画
+    </div>
     <audio class="index_audio" preload="auto" loop=true>
         <source src="assets/audio/index_audio.mp3">
     </audio>
@@ -415,9 +417,33 @@
     <script src="js/swiper.animate.min.js"></script>
     <script>
         $(function () {
+            loadDefault();
             setCss();
             var userName = '浪子回头天宝';
             var timestamp = 0;
+            var loadingflag;
+            // 判断背景图片是否加载完成
+            function loadDefault(){
+                var avatar=$(".album_art").eq(0).css("background-image");
+                var imgUrl=avatar.match(/url\("(\S*)"\)/)[1];
+                console.log(imgUrl);
+                var img=new Image();
+                img.src=imgUrl;
+                console.log(img);
+                console.log(img.width);
+                img.onload = function () { 
+                　　 console.log(img.width);
+                    if(img.width==0){
+                        // 显示loading 动画页面
+                        $('.J-loading').show();
+                    }else{
+                        // 隐藏loading 动画页面
+                        $('.J-loading').hide();
+                        const index = swiperV.activeIndex;
+                        palyIndexAudio(index);
+                    }
+                }
+            }
             // 给大屏设置css 
             function setCss() {
                 if (window.innerHeight > 1334) {
@@ -438,7 +464,7 @@
                     }, 1000, 'ease-out', function () {
                         $('.J-disc').eq(index).addClass('Rotation');
                         console.log(index);
-                        palyAudio(index);
+                        palyPage3Audio(index);
                     });
                 });
             }
@@ -452,7 +478,7 @@
                 $('.J-disc').removeClass('Rotation');
             }
             // 播放page3 audio
-            function palyAudio(index) {
+            function palyPage3Audio(index) {
                 console.log(index);
                 const audioLength = $('.card_audio').length - 1;
                 if ($('.card_audio')[index].paused) {
@@ -477,6 +503,30 @@
                 const audioLength = audioArr.length - 1;
                 for (let index = 0; index < audioLength; index++) {
                     audioArr[index].pause();
+                }
+            }
+            // 播放index audio
+            function palyIndexAudio(index) {
+                if (index === 3) {
+                    $('.index_audio')[0].pause();
+                    timestamp = $('.index_audio')[0].currentTime;
+                    console.log(timestamp);
+                } else {
+                    if ($('.index_audio')[0].paused) {
+                        if (window.WeixinJSBridge) {
+                            WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                $('.index_audio')[0].play();
+                            }, false);
+                        } else {
+                            document.addEventListener("WeixinJSBridgeReady", function () {
+                                WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                    $('.index_audio')[0].play();
+                                });
+                            }, false);
+                        }
+                        $('.index_audio')[0].currentTime = timestamp;
+                        $('.index_audio')[0].play();
+                    }
                 }
             }
             // 随机生成用户的 img
@@ -505,27 +555,7 @@
                 onSlideChangeEnd: function (swiper) {
                     swiperAnimate(swiper);
                     const index = swiper.activeIndex;
-                    if (index === 3) {
-                        $('.index_audio')[0].pause();
-                        timestamp = $('.index_audio')[0].currentTime;
-                        console.log(timestamp);
-                    } else {
-                        if ($('.index_audio')[0].paused) {
-                            if (window.WeixinJSBridge) {
-                                WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
-                                    $('.index_audio')[0].play();
-                                }, false);
-                            } else {
-                                document.addEventListener("WeixinJSBridgeReady", function () {
-                                    WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
-                                        $('.index_audio')[0].play();
-                                    });
-                                }, false);
-                            }
-                            $('.index_audio')[0].currentTime = timestamp;
-                            $('.index_audio')[0].play();
-                        }
-                    }
+                    palyIndexAudio(index);
                 }
             });
             var swiperH = new Swiper('#swiperH', {

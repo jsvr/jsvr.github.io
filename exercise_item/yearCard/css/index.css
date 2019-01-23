@@ -132,7 +132,20 @@ body {
 body {
     font-family: "Microsoft YaHei";
 }
-
+.loading{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    background-color: #cccccc;
+    opacity: .6;
+}
+.index_audio{
+    position: fixed;
+    z-index: 9999;
+}
 .swiper-container {
     /*  width: 320px;
     height: 480px;*/
