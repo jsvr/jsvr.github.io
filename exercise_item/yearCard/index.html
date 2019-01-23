@@ -74,38 +74,48 @@
     </script>
     <script src="js/zepto.min.js"></script>
     <script src="js/zepto.fx.js"></script>
+    <script src="js/zepto.touch.js"></script>
 </head>
 
 <body>
     <div class="loading J-loading">
-        loading动画
+        <div class="img_gif">loading动画</div>
     </div>
     <audio class="index_audio" preload="auto" loop=true>
         <source src="assets/audio/index_audio.mp3">
     </audio>
+    <!-- 活动详情弹框 -->
+    <div class="details_popup j-detailsPopup">
+            <div class="content">
+                <div class="close_btn J-closeBtn"></div>
+                <div class="content_box">
+                    <img class="J-detailsImg" src="./assets/images/page05_activity_img01.jpg" alt="">
+                </div>
+            </div>
+        </div>
     <div class="swiper-container" id="swiperV">
         <div class="swiper-wrapper">
             <!-------------slide1----------------->
             <div class="swiper-slide">
-                <div class="page page1">
+                <div class="page page1 J-loadImg">
                     <!-- 新年快乐 icon -->
                     <div class="icon icon1"></div>
                     <div class="icon icon2"></div>
                     <div class="icon icon3"></div>
                     <div class="icon icon4"></div>
-                    <div class="top_tit"></div>
-                    <div class="mid_img"></div>
-                    <div class="btm_logo"></div>
+                    <div class="top_tit J-loadImg"></div>
+                    <div class="mid_img J-loadImg"></div>
+                    <div class="btm_logo J-loadImg"></div>
                 </div>
             </div>
             <!---------------slide2-------------->
             <div class="swiper-slide">
-                <div class="page page2">
+                <div class="page page2 J-loadImg">
                     <div class="top_content">
                         <!-- 唱片 -->
-                        <div class="disc"></div>
+                        <div class="disc J-loadImg"></div>
                         <!-- 唱针 -->
-                        <div class="styli"></div>
+                        <div class="styli J-loadImg"></div>
                     </div>
                     <div class="bottom_content">
                         <div class="text_box clearx">
@@ -119,7 +129,7 @@
             </div>
             <!----------------slide3-------------->
             <div class="swiper-slide">
-                <div class="page page3">
+                <div class="page page3 J-loadImg">
                     <div class="swiper-container" id="swiperH">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -130,16 +140,16 @@
                                     <!-- 唱片内容 -->
                                     <div class="top_content">
                                         <!-- 唱针 -->
-                                        <div class="styli J-styli"></div>
+                                        <div class="styli J-styli J-loadImg"></div>
                                         <!-- 唱片 -->
-                                        <div class="disc J-disc"></div>
+                                        <div class="disc J-disc J-loadImg"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -154,12 +164,12 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -174,12 +184,12 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -194,12 +204,12 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -214,12 +224,12 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -234,12 +244,12 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -254,12 +264,12 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换唱片</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -274,7 +284,7 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
@@ -294,7 +304,7 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
@@ -314,7 +324,7 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
@@ -334,7 +344,7 @@
                                         <!-- 唱片 -->
                                         <div class="disc J-disc"></div>
                                         <!-- 专辑封面  -->
-                                        <div class="album_art J-albumArt"></div>
+                                        <div class="album_art J-albumArt J-loadImg"></div>
                                     </div>
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
@@ -348,7 +358,7 @@
             </div>
             <!-------------slide4----------------->
             <div class="swiper-slide">
-                <div class="page page4">
+                <div class="page page4 J-loadImg">
                     <div class="text_box clearx">
                         <div class="text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.1s">岁月歌声皆如水,</div>
                         <div class="text2 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.2s">唤起几许心绪的映照,</div>
@@ -358,24 +368,39 @@
             </div>
             <!-------------slide5----------------->
             <div class="swiper-slide">
-                <div class="page page5">
+                <div class="page page5 J-loadImg">
                     <div class="top_tit"></div>
                     <div class="mid_detail">
-                        <div class="swiper-container" id="swiperDetail">
+                        <!-- <div class="swiper-container" id="swiperDetail">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide item1">1</div>
                                 <div class="swiper-slide item2">2</div>
                                 <div class="swiper-slide item3">3</div>
                             </div>
-                        </div>
+                        </div> -->
+                        <div class="img_item img_item1 J-imgItemt J-loadImg"></div>
+                        <div class="img_item img_item2 J-imgItemt J-loadImg"></div>
+                        <div class="img_item img_item3 J-imgItemt J-loadImg"></div>
+                        <div class="img_item img_item4 J-imgItemt J-loadImg"></div>
+                        <div class="img_item img_item5 J-imgItemt J-loadImg"></div>
+                        <div class="img_item img_item6 J-imgItemt J-loadImg"></div>
                     </div>
-                    <div class="btm_text">点击图片查看活动详情</div>
+                    <!-- 活动详情弹框 -->
+                    <!-- <div class="details_popup j-detailsPopup">
+                        <div class="content">
+                            <div class="close_btn J-closeBtn"></div>
+                            <div class="content_box">
+                                <img class="J-detailsImg" src="./assets/images/page05_activity_img01.jpg" alt="">
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="btm_text J-viewDetails">点击图片查看活动详情</div>
                 </div>
             </div>
             <!-------------slide6----------------->
             <div class="swiper-slide">
-                <div class="page page6">
-                    <div class="top_img"></div>
+                <div class="page page6 J-loadImg">
+                    <div class="top_img J-loadImg"></div>
                     <div class="mid_text">
                         <div class="text_box clearx">
                             <div class="text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.1s">一年将近,</div>
@@ -386,7 +411,7 @@
                     </div>
                     <div class="btm_btn J-btmBtn"></div>
                     <!-- 生成用户的专属图片 -->
-                    <div class="user_img J-userImg">
+                    <div class="user_img J-userImg J-loadImg">
                         <!-- 截图的内容 -->
                         <div class="user_img_content J-userImgContent">
                             <div class="top_tit">
@@ -417,40 +442,51 @@
     <script src="js/swiper.animate.min.js"></script>
     <script>
         $(function () {
+            // 判断图片是否加载完成
             loadDefault();
+            // 给iphoneX 的长屏分辨率手机设置css样式
             setCss();
+            // 用户的id
             var userName = '浪子回头天宝';
+            // 首页背景音乐的播放时间位置 s
             var timestamp = 0;
-            var loadingflag;
+            // logding 标记初始值, 用来判断是否加载完成
+            var loadingflag = 0;
+            // page5 img_item 的index
+            var imgItemIndex = 0;
             // 判断背景图片是否加载完成
             function loadDefault(){
-                var avatar=$(".album_art").eq(0).css("background-image");
-                var imgUrl=avatar.match(/url\("(\S*)"\)/)[1];
-                console.log(imgUrl);
-                var img=new Image();
-                img.src=imgUrl;
-                console.log(img);
-                console.log(img.width);
-                img.onload = function () { 
-                　　 console.log(img.width);
-                    if(img.width==0){
-                        // 显示loading 动画页面
-                        $('.J-loading').show();
-                    }else{
-                        // 隐藏loading 动画页面
-                        $('.J-loading').hide();
-                        const index = swiperV.activeIndex;
-                        palyIndexAudio(index);
+                let imgUrlArr = [];
+                let imgObj = [];
+                let imgArrLength = $('.J-loadImg').length;
+                $.each($('.J-loadImg'), function(index, item) {
+                    console.log($('.J-loadImg').length);
+                    imgUrlArr.push($('.J-loadImg').eq([index]).css('background-image').match(/url\("(\S*)"\)/)[1]);
+                    const img = new Image();
+                    img.src = $('.J-loadImg').eq([index]).css('background-image').match(/url\("(\S*)"\)/)[1];
+                    imgObj.push(img);
+                    img.onload = function() {
+                        loadingflag ++;
+                        if(loadingflag === imgArrLength) {
+                            console.log('全部加载完毕!');
+                            // 隐藏loading 动画页面
+                            $('.J-loading').hide();
+                            const index = swiperV.activeIndex;
+                            palyIndexAudio(index);
+                        } else {
+                            // 显示loading 动画页面
+                            $('.J-loading').show();
+                        }
                     }
-                }
+                });
             }
             // 给大屏设置css 
             function setCss() {
                 if (window.innerHeight > 1334) {
                     $('.page3 .mid_content').css({ 'bottom': '24%' });
                     $('.page3 .bottom_content').css({ 'bottom': '13%' });
-                    $('.page1>.icon1, .page1>.icon2').css({ 'top': '50px' });
-                    $('.page1>.icon4, .page1>.icon3').css({ 'bottom': '48px' });
+                    // $('.page1>.icon1, .page1>.icon2').css({ 'top': '50px' });
+                    // $('.page1>.icon4, .page1>.icon3').css({ 'bottom': '48px' });
                 }
             }
             // 设置page3动画
@@ -498,7 +534,7 @@
                 }
             }
             // 暂停page3 audio
-            function pauseAudio() {
+            function pausePage3Audio() {
                 const audioArr = $('.card_audio');
                 const audioLength = audioArr.length - 1;
                 for (let index = 0; index < audioLength; index++) {
@@ -512,18 +548,26 @@
                     timestamp = $('.index_audio')[0].currentTime;
                     console.log(timestamp);
                 } else {
+                    // 移除page3 的动画
+                    removeAnimate();
                     if ($('.index_audio')[0].paused) {
                         if (window.WeixinJSBridge) {
                             WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                // 关闭page3 的音乐
+                                pausePage3Audio();
                                 $('.index_audio')[0].play();
                             }, false);
                         } else {
                             document.addEventListener("WeixinJSBridgeReady", function () {
                                 WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                    // 关闭page3 的音乐
+                                    pausePage3Audio();
                                     $('.index_audio')[0].play();
                                 });
                             }, false);
                         }
+                        // 关闭page3 的音乐
+                        pausePage3Audio();
                         $('.index_audio')[0].currentTime = timestamp;
                         $('.index_audio')[0].play();
                     }
@@ -555,6 +599,7 @@
                 onSlideChangeEnd: function (swiper) {
                     swiperAnimate(swiper);
                     const index = swiper.activeIndex;
+                    // 播放首页音乐
                     palyIndexAudio(index);
                 }
             });
@@ -570,7 +615,7 @@
                     // 取消动画
                     removeAnimate();
                     // 暂停所有播放
-                    pauseAudio();
+                    pausePage3Audio();
                 },
             });
             var swiperDetail = new Swiper('#swiperDetail', {
@@ -600,10 +645,49 @@
                 $('.J-userImg').show(400);
                 // adaptive(window, document);
                 $('.J-userName').text(userName);
-            })
+            });
             // 点击生成截图
             $('.J-userImgContent').on('click', function () {
                 generateScreenshot();
+            });
+            // page5 图片滑动
+            $('.J-imgItemt').swipeLeft(function() {
+                const _this = $(this);
+                imgItemIndex = $(this).index();
+                console.log(imgItemIndex);
+                if(imgItemIndex>0){
+                    _this.animate({
+                        'transform': ' rotate(60deg)',
+                        'transform-origin': 'top left'
+                    }, 1000, 'ease-out', function () {
+                        _this.animate({
+                            'top': '58%'
+                        }, 500, 'ease-in', function() {
+                            _this.animate({
+                                'display': 'none'
+                            }, 500, 'ease-in');
+                        });
+                    });
+                }
+                
+            });
+            // page5 点击查看详情页 弹出弹框
+            $('.J-viewDetails').on('click', function() {
+                console.log(imgItemIndex);
+                const imgArr = [
+                    './assets/images/page05_activity_img01.jpg',
+                    './assets/images/page05_activity_img02.jpg',
+                    './assets/images/page05_activity_img03.jpg',
+                    './assets/images/page05_activity_img04.jpg',
+                    './assets/images/page05_activity_img05.jpg',
+                    './assets/images/page05_activity_img06.jpg',
+                ];
+                $('.J-detailsImg').attr('src', imgArr[imgItemIndex]);
+                $('.j-detailsPopup').show();
+            });
+            // page5 popup 关闭
+            $('.J-closeBtn').on('click', function() {
+                $('.j-detailsPopup').hide();
             })
         });
     </script>

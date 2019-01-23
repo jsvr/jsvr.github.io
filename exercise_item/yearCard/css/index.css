@@ -139,8 +139,17 @@ body {
     top: 0;
     position: fixed;
     z-index: 999;
-    background-color: #cccccc;
-    opacity: .6;
+    background-color: #fff;
+}
+.loading .img_gif{
+    width: 400px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    margin-left: -200px;
+    margin-top: -50px;
+    position: absolute;
 }
 .index_audio{
     position: fixed;
@@ -161,9 +170,9 @@ body {
 
 .page {
     /* width: 750px; */
-    height: 1206px;
+    /* height: 1206px; */
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     background-size: 100% 100%;
 }
 
@@ -494,6 +503,40 @@ body {
     background: url(../assets/images/page05_img1.png) no-repeat 0 0;
     background-size: 100% 100%;
 }
+.page5>.mid_detail .img_item{
+    position: absolute;
+    width: 544px;
+    height: 751px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -271px;
+    margin-top: -375px;
+}
+.page5>.mid_detail .img_item1{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .img_item2{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .img_item3{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .img_item4{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .img_item5{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.page5>.mid_detail .img_item6{
+    background: url(../assets/images/page05_img1.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
 .page5>.btm_text{
     width: 100%;
     position: absolute;
@@ -501,6 +544,49 @@ body {
     font: 26px/26px "Microsoft YaHei";
     text-align: center;
     color: #a07e36;
+}
+.details_popup{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background: rgb(0, 0, 0, .6);
+    display: none;
+}
+.details_popup>.content{
+    width: 560px;
+    height: 760px;
+    /* overflow: hidden; */
+    top: 17%;
+    left: 50%;
+    margin-left: -280px;
+    position: relative;
+    background-color: #fff;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+.details_popup>.content>.content_box{
+    width: 560px;
+    height: 740px;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.details_popup>.content>.close_btn{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: url(../assets/images/page05_close_btn.png) no-repeat 0 0;
+    background-size: 100% 100%;
 }
 .page6{
     background: url(../assets/images/page06_bg.jpg) no-repeat 0 0;
@@ -648,3 +734,33 @@ body {
         transform: rotate(360deg);
     }
 }
+.rows {
+    height: 230px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  .rows::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0);
+    border-left: 1px solid rgba(0, 0, 0, 0);
+  }
+  .rows::-webkit-scrollbar {
+    width: 5px;
+    height: 13px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .rows::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    min-height: 28px;
+  }
+  .rows::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
