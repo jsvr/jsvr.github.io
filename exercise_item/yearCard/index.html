@@ -653,9 +653,8 @@
             // page5 图片滑动
             $('.J-imgItemt').swipeLeft(function() {
                 const _this = $(this);
-                imgItemIndex = $(this).index();
-                console.log(imgItemIndex);
-                if(imgItemIndex<5){
+                const index = _this.index();
+                if(index<5){
                     _this.animate({
                         'transform': ' rotate(60deg)',
                         'transform-origin': 'top left'
@@ -672,8 +671,8 @@
                 
             });
             // page5 点击查看详情页 弹出弹框
-            $('.J-viewDetails').on('click', function() {
-                console.log(imgItemIndex);
+            $('.J-imgItemt').on('click', function() {
+                const index = $(this).index();
                 const imgArr = [
                     './assets/images/page05_activity_img01.jpg',
                     './assets/images/page05_activity_img02.jpg',
@@ -682,7 +681,7 @@
                     './assets/images/page05_activity_img05.jpg',
                     './assets/images/page05_activity_img06.jpg',
                 ];
-                $('.J-detailsImg').attr('src', imgArr[imgItemIndex]);
+                $('.J-detailsImg').attr('src', imgArr[index]);
                 $('.j-detailsPopup').show();
             });
             // page5 popup 关闭
