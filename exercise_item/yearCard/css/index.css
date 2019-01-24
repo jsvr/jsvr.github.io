@@ -597,7 +597,7 @@ body {
     width: 100%;
     position: absolute;
     bottom: 10%;
-    font: 26px/26px "Microsoft YaHei";
+    font: 26px/42px "Microsoft YaHei";
     text-align: center;
     color: #a07e36;
 }
@@ -608,16 +608,17 @@ body {
     top: 0;
     left: 0;
     z-index: 9;
-    background: rgb(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     display: none;
 }
 .details_popup>.content{
     width: 560px;
     height: 760px;
     /* overflow: hidden; */
-    top: 17%;
+    top: 50%;
     left: 50%;
     margin-left: -280px;
+    margin-top: -380px;
     position: relative;
     background-color: #fff;
     background-size: 100% 100%;

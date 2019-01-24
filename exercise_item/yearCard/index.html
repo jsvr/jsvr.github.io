@@ -394,7 +394,7 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="btm_text J-viewDetails">点击图片查看活动详情</div>
+                    <div class="btm_text J-viewDetails">左右滑动查看更多活动<br />点击图片查看活动详情</div>
                 </div>
             </div>
             <!-------------slide6----------------->
@@ -668,7 +668,27 @@
                         });
                     });
                 }
-                
+            });
+            
+            
+            $('.J-imgItemt').swipeRight(function() {
+                const _this = $(this);
+                const index = _this.index();
+                console.log(index);
+                if(index<6){
+                    $('.J-imgItemt').eq(index-1).animate({
+                        'display': 'block',
+                    }, 100, 'ease-out', function() {
+                        $('.J-imgItemt').eq(index-1).animate({
+                            'top': '50%'
+                        }, 500, 'ease-out-in',function() {
+                            $('.J-imgItemt').eq(index-1).animate({
+                                'transform': ' rotate(0deg)',
+                                'transform-origin': 'top left'
+                            },1000, 'ease-out-in');
+                        });
+                    });
+                }
             });
             // page5 点击查看详情页 弹出弹框
             $('.J-imgItemt').on('click', function() {
