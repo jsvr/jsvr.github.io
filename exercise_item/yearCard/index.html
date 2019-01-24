@@ -405,8 +405,8 @@
                         <div class="text_box clearx">
                             <div class="text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.1s">一年将近,</div>
                             <div class="text2 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.2s">此时爆竹与歌吹同渲沸</div>
-                            <div class="text3 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.3s">来日方长</div>
-                            <div class="text3 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.4s">愿你欢喜与深情共丰盈</div>
+                            <div class="text3 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.3s">来日方长,</div>
+                            <div class="text4 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.4s">愿你欢喜与深情共丰盈</div>
                         </div>
                     </div>
                     <div class="btm_btn J-btmBtn"></div>
@@ -600,7 +600,7 @@
                     swiperAnimate(swiper);
                     const index = swiper.activeIndex;
                     // 播放首页音乐
-                    palyIndexAudio(index);
+                    // palyIndexAudio(index);
                 }
             });
             var swiperH = new Swiper('#swiperH', {
@@ -655,7 +655,7 @@
                 const _this = $(this);
                 imgItemIndex = $(this).index();
                 console.log(imgItemIndex);
-                if(imgItemIndex>0){
+                if(imgItemIndex<5){
                     _this.animate({
                         'transform': ' rotate(60deg)',
                         'transform-origin': 'top left'
