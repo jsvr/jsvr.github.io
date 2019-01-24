@@ -141,7 +141,6 @@ body {
     left: 0;
     top: 0;
     position: fixed;
-    display: none;
     z-index: 999;
     background-color: #aa2200;
 }
