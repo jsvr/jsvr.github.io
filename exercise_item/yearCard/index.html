@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <!-- 视图窗口，移动端特属的标签。 -->
@@ -33,11 +32,11 @@
     <meta name="x5-page-mode" content="app">
     <!-- windows phone 点击无高光 -->
     <meta name="msapplication-tap-highlight" content="no">
-    <title>Year Card</title>
+    <title>岁时有声‖定制你的音乐气质</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/index.css?v=001">
+    <link rel="stylesheet" href="css/index.css?v=002">
     <script>
         /**
          * [移动端适配]
@@ -79,7 +78,10 @@
 
 <body>
     <div class="loading J-loading">
-        <div class="img_gif">loading动画</div>
+        <div class="img_gif_box">
+            <img src="assets/images/loading.gif" alt="">
+            <p>Loading</p>
+        </div>
     </div>
     <audio class="index_audio" preload="auto" loop=true>
         <source src="assets/audio/index_audio.mp3">
@@ -89,7 +91,7 @@
             <div class="content">
                 <div class="close_btn J-closeBtn"></div>
                 <div class="content_box">
-                    <img class="J-detailsImg" src="./assets/images/page05_activity_img01.jpg" alt="">
+                    <img class="J-detailsImg" src="assets/images/page05_activity_img01.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -390,7 +392,7 @@
                         <div class="content">
                             <div class="close_btn J-closeBtn"></div>
                             <div class="content_box">
-                                <img class="J-detailsImg" src="./assets/images/page05_activity_img01.jpg" alt="">
+                                <img class="J-detailsImg" src="assets/images/page05_activity_img01.jpg" alt="">
                             </div>
                         </div>
                     </div> -->
@@ -416,12 +418,12 @@
                         <div class="user_img_content J-userImgContent">
                             <div class="top_tit">
                                 <div class="top_tit_bg">
-                                    <img src="./assets/images/page07_title_bg.png" alt="">
+                                    <img src="assets/images/page07_title_bg.png" alt="">
                                 </div>
                                 <div class="top_tit_name J-userName">浪子回头天宝</div>
                             </div>
                             <div class="mid_img">
-                                <img class="j-useRexclusiveImg" src="./assets/images/page07_user_kuaile.png" alt="kuaile">
+                                <img class="j-useRexclusiveImg" src="assets/images/page07_user_kuaile.png" alt="kuaile">
                             </div>
                         </div>
                         <!-- 截图描述 -->
@@ -443,7 +445,7 @@
     <script>
         $(function () {
             // 判断图片是否加载完成
-            // loadDefault();
+            loadDefault();
             // 给iphoneX 的长屏分辨率手机设置css样式
             setCss();
             // 用户的id
@@ -576,14 +578,14 @@
             // 随机生成用户的 img
             function randomUserImg() {
                 const imgArr = [
-                    './assets/images/page07_user_kuaile.png',
-                    './assets/images/page07_user_youya.png',
-                    './assets/images/page07_user_youya.png',
-                    './assets/images/page07_user_youya.png',
-                    './assets/images/page07_user_youya.png',
-                    './assets/images/page07_user_youya.png',
-                    './assets/images/page07_user_youya.png',
-                    './assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_kuaile.png',
+                    'assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_youya.png',
+                    'assets/images/page07_user_youya.png',
                 ];
                 let markNum = Math.floor(Math.random() * 8);
                 console.log(markNum);
@@ -599,8 +601,11 @@
                 onSlideChangeEnd: function (swiper) {
                     swiperAnimate(swiper);
                     const index = swiper.activeIndex;
+                    console.log(index);
                     // 播放首页音乐
-                    // palyIndexAudio(index);
+                    if(index!==1){
+                        palyIndexAudio(index);
+                    }
                 }
             });
             var swiperH = new Swiper('#swiperH', {
@@ -694,12 +699,12 @@
             $('.J-imgItemt').on('click', function() {
                 const index = $(this).index();
                 const imgArr = [
-                    './assets/images/page05_activity_img01.jpg',
-                    './assets/images/page05_activity_img02.jpg',
-                    './assets/images/page05_activity_img03.jpg',
-                    './assets/images/page05_activity_img04.jpg',
-                    './assets/images/page05_activity_img05.jpg',
-                    './assets/images/page05_activity_img06.jpg',
+                    'assets/images/page05_activity_img01.jpg',
+                    'assets/images/page05_activity_img02.jpg',
+                    'assets/images/page05_activity_img03.jpg',
+                    'assets/images/page05_activity_img04.jpg',
+                    'assets/images/page05_activity_img05.jpg',
+                    'assets/images/page05_activity_img06.jpg',
                 ];
                 $('.J-detailsImg').attr('src', imgArr[index]);
                 $('.j-detailsPopup').show();

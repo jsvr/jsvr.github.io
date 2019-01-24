@@ -143,17 +143,21 @@ body {
     position: fixed;
     display: none;
     z-index: 999;
-    background-color: #fff;
+    background-color: #aa2200;
 }
-.loading .img_gif{
+.loading .img_gif_box{
     width: 400px;
-    height: 100px;
+    height: 170px;
     top: 50%;
     left: 50%;
     text-align: center;
     margin-left: -200px;
-    margin-top: -50px;
+    margin-top: -85px;
     position: absolute;
+}
+.loading .img_gif_box > p{
+    font: 26px/30px "Microsoft YaHei";
+    color: #ffffff;
 }
 .index_audio{
     position: fixed;
