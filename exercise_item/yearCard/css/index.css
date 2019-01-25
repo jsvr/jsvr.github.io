@@ -746,14 +746,14 @@ body {
 }
 .page6>.user_img .user_img_content{
     width: 531px;
-    height: 1016px;
-    position: absolute;
-    top: 2px;
+    height: 100%;
+    position: relative;
+    top: 2%;
     left: 50%;
     margin-left: -255px;
 }
 .page6>.user_img .top_tit{
-    position: relative;
+    position: absolute;
     top: 1%;
 }
 .page6>.user_img .top_tit .top_tit_bg img{
@@ -778,6 +778,13 @@ body {
     font-size: 26px;
     font-weight: bold;
     font-family: "Microsoft YaHei";
+}
+.page6>.user_img .mid_img{
+    width: 531px;
+    height: 917px;
+    position: absolute;
+    top: 50%;
+    margin-top: -458px;
 }
 .page6>.user_img .mid_img img{
     display: block;

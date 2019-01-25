@@ -36,7 +36,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/index.css?v=003">
+    <link rel="stylesheet" href="css/index.css?v=004">
     <script>
         /**
          * [移动端适配]
@@ -445,7 +445,7 @@
     <script>
         $(function () {
             // 判断图片是否加载完成
-            loadDefault();
+            // loadDefault();
             // 给iphoneX 的长屏分辨率手机设置css样式
             setCss();
             // 用户的id
@@ -457,6 +457,15 @@
             // page5 img_item 的index
             var imgItemIndex = 0;
             // 判断背景图片是否加载完成
+            document.onreadystatechange = function () {//即在加载的过程中执行下面的代码
+                if(document.readyState=="complete"){//complete加载完成
+                    console.log('全部加载完毕!');
+                    // 隐藏loading 动画页面
+                    $('.J-loading').hide();
+                    const index = swiperV.activeIndex;
+                    palyIndexAudio(index);
+                }
+            }
             function loadDefault(){
                 let imgUrlArr = [];
                 let imgObj = [];
