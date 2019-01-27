@@ -158,38 +158,6 @@ body {
     font: 26px/30px "Microsoft YaHei";
     color: #ffffff;
 }
-.index_close_btn{
-    width: 60px;
-    height: 60px;
-    position: fixed;
-    z-index: 9999;
-    top: 20px;
-    right: 20px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    color: #fff;
-}
-.index_close_btn>.show,
-.index_close_btn>.hide{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    text-align: center
-}
-.index_close_btn>.show{
-    background: rgb(226, 172, 172);
-}
-.index_close_btn>.hide{
-    background: rgb(54, 44, 44);
-    display: none;
-}
 .index_audio{
     position: fixed;
     z-index: 9999;
@@ -494,15 +462,15 @@ body {
     position: absolute;
     left: 50%;
     margin-left: -334px;
-    bottom: 12%;
+    bottom: 11%;
     background-size: 100% 100%;
 }
 .page3 .swiper-slide .bottom_content{
     width: 100%;
     position: absolute;
-    bottom: 6%;
+    bottom: 8%;
     text-align: center;
-    font: 22px/32px 'Microsoft YaHei';
+    font: 22px/22px 'Microsoft YaHei';
     color: #a07e36;
 }
 .page4 {
