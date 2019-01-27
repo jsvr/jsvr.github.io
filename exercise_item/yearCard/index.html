@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <!-- 视图窗口，移动端特属的标签。 -->
@@ -36,15 +37,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/index.css?v=005">
+    <link rel="stylesheet" href="css/index.css?v=008">
     <script>
-        /**
-         * [移动端适配]
-         * 宽度固定，viewport 缩放
-         * width 设计稿宽度
-         */
-        function adaptive(win, doc) {
-            console.log(win.innerHeight);
+        (function (win, doc) {
             var metaViewport = doc.querySelector('meta[name="viewport"]');
             var width = 750;
             var iw = win.innerWidth || width;
@@ -55,21 +50,7 @@
             var scale = minWidth / width;
             metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
                 ',minimum-scale=' + scale + ',user-scalable=no';
-        }
-        adaptive(window, document);
-        // (function (win, doc) {
-        //     var metaViewport = doc.querySelector('meta[name="viewport"]');
-        //     var width = 750;
-        //     var iw = win.innerWidth || width;
-        //     var ow = win.outerWidth || iw;
-        //     var sw = win.screen.width || iw;
-        //     var saw = win.screen.availWidth || iw;
-        //     var minWidth = Math.min(width, iw, ow, sw, saw);
-        //     var scale = minWidth / width;
-        //     metaViewport.content = 'width=' + width + ',initial-scale=' + scale + ',maximum-scale=' + scale +
-        //         ',minimum-scale=' + scale + ',user-scalable=no';
-        // }(window, document));
-        // window.onload = function () {adaptive(window, document);}
+        }(window, document));
     </script>
     <script src="js/zepto.min.js"></script>
     <script src="js/zepto.fx.js"></script>
@@ -77,24 +58,31 @@
 </head>
 
 <body>
+    <!-- loading动画 -->
     <div class="loading J-loading">
         <div class="img_gif_box">
             <img src="assets/images/loading.gif" alt="">
             <p>Loading <i class="J-loadingNum"></i></p>
         </div>
     </div>
+    <!-- 首页音乐关闭按钮 -->
+    <div class="index_close_btn J-indexAudioBtnBox">
+        <div class="show J-indexAudioShow Rotation">开</div>
+        <div class="hide J-indexAudioHide">关</div>
+    </div>
+    <!-- 首页音乐 -->
     <audio class="index_audio" preload="auto" loop=true>
         <source src="assets/audio/index_audio.mp3">
     </audio>
     <!-- 活动详情弹框 -->
     <div class="details_popup j-detailsPopup">
-            <div class="content">
-                <div class="close_btn J-closeBtn"></div>
-                <div class="content_box">
-                    <img class="J-detailsImg" src="assets/images/page05_activity_img01.jpg" alt="">
-                </div>
+        <div class="content">
+            <div class="close_btn J-closeBtn"></div>
+            <div class="content_box">
+                <img class="J-detailsImg" src="assets/images/page05_activity_img01.jpg" alt="">
             </div>
         </div>
+    </div>
     <div class="swiper-container" id="swiperV">
         <div class="swiper-wrapper">
             <!-------------slide1----------------->
@@ -151,7 +139,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -171,7 +159,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -191,7 +179,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -211,7 +199,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -231,7 +219,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -251,7 +239,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -271,7 +259,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换唱片</div>
+                                    <div class="bottom_content">左右滑动更换唱片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -291,7 +279,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换照片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -311,7 +299,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换照片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -331,7 +319,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换照片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -351,7 +339,7 @@
                                     <!-- 歌手介绍 -->
                                     <div class="mid_content"></div>
                                     <!-- 提示滑动 -->
-                                    <div class="bottom_content">左右滑动更换照片</div>
+                                    <div class="bottom_content">左右滑动更换照片<br />点击唱片封面试听专辑歌曲</div>
                                 </div>
                             </div>
                         </div>
@@ -405,7 +393,7 @@
                     <div class="top_img J-loadImg"></div>
                     <div class="mid_text">
                         <div class="text_box clearx">
-                            <div class="text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.1s">一年将近,</div>
+                            <div class="text1 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.1s">一年将尽,</div>
                             <div class="text2 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.2s">此时爆竹与歌吹同渲沸</div>
                             <div class="text3 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.3s">来日方长,</div>
                             <div class="text4 ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.6" swiper-animate-delay="0.4s">愿你欢喜与深情共丰盈</div>
@@ -445,7 +433,7 @@
     <script>
         $(function () {
             // 判断图片是否加载完成
-            loadDefault();
+            // loadDefault();
             // 给iphoneX 的长屏分辨率手机设置css样式
             setCss();
             // 用户的id
@@ -457,31 +445,32 @@
             // page5 img_item 的index
             var imgItemIndex = 0;
             // 判断背景图片是否加载完成
-            // document.onreadystatechange = function () {//即在加载的过程中执行下面的代码
-            //     if(document.readyState=="complete"){//complete加载完成
-            //         console.log('全部加载完毕!');
-            //         // 隐藏loading 动画页面
-            //         $('.J-loading').hide();
-            //         const index = swiperV.activeIndex;
-            //         palyIndexAudio(index);
-            //     }
-            // }
-            function loadDefault(){
+            document.onreadystatechange = function () { 
+                //即在加载的过程中执行下面的代码
+                if (document.readyState == "complete") { 
+                    //complete加载完成
+                    // 隐藏loading 动画页面
+                    $('.J-loading').hide();
+                    // 显示首页播放按钮
+                    $('.J-indexAudioBtnBox').show();
+                    const index = swiperV.activeIndex;
+                    palyIndexAudio(index);
+                }
+            }
+
+            function loadDefault() {
                 let imgUrlArr = [];
                 let imgObj = [];
                 let imgArrLength = $('.J-loadImg').length;
-                $.each($('.J-loadImg'), function(index, item) {
-                    console.log($('.J-loadImg').length);
+                $.each($('.J-loadImg'), function (index, item) {
                     imgUrlArr.push($('.J-loadImg').eq([index]).css('background-image').match(/url\("(\S*)"\)/)[1]);
                     const img = new Image();
                     img.src = $('.J-loadImg').eq([index]).css('background-image').match(/url\("(\S*)"\)/)[1];
                     imgObj.push(img);
-                    img.onload = function() {
-                        console.log(parseInt(loadingflag/imgArrLength*100)+"%");
-                        loadingflag ++;
-                        $('.J-loadingNum').html(parseInt(loadingflag/imgArrLength*100)+"%");
-                        if(loadingflag >= imgArrLength) {
-                            console.log('全部加载完毕!');
+                    img.onload = function () {
+                        loadingflag++;
+                        $('.J-loadingNum').html(parseInt(loadingflag / imgArrLength * 100) + "%");
+                        if (loadingflag >= imgArrLength) {
                             // 隐藏loading 动画页面
                             $('.J-loading').hide();
                             const index = swiperV.activeIndex;
@@ -509,7 +498,6 @@
                         'transform-origin': 'top left'
                     }, 1000, 'ease-out', function () {
                         $('.J-disc').eq(index).addClass('Rotation');
-                        console.log(index);
                         palyPage3Audio(index);
                     });
                 });
@@ -525,7 +513,6 @@
             }
             // 播放page3 audio
             function palyPage3Audio(index) {
-                console.log(index);
                 const audioLength = $('.card_audio').length - 1;
                 if ($('.card_audio')[index].paused) {
                     if (window.WeixinJSBridge) {
@@ -551,13 +538,21 @@
                     audioArr[index].pause();
                 }
             }
-            // 播放index audio
+            // 播放或暂停 index audio
             function palyIndexAudio(index) {
+                const hideFlag = $('.J-indexAudioHide').css('display');
+                console.log(hideFlag);
+                // 暂停
                 if (index === 3) {
+                    // 隐藏首页播放按钮
+                    $('.J-indexAudioBtnBox').hide();
+                    // 暂停首页音乐
                     $('.index_audio')[0].pause();
                     timestamp = $('.index_audio')[0].currentTime;
-                    console.log(timestamp);
                 } else {
+                    // 显示首页播放按钮
+                    $('.J-indexAudioBtnBox').show();
+                    // 播放
                     // 移除page3 的动画
                     removeAnimate();
                     if ($('.index_audio')[0].paused) {
@@ -565,21 +560,27 @@
                             WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
                                 // 关闭page3 的音乐
                                 pausePage3Audio();
-                                $('.index_audio')[0].play();
+                                if(hideFlag == 'none'){
+                                    $('.index_audio')[0].play();
+                                }
                             }, false);
                         } else {
                             document.addEventListener("WeixinJSBridgeReady", function () {
                                 WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
                                     // 关闭page3 的音乐
                                     pausePage3Audio();
-                                    $('.index_audio')[0].play();
+                                    if(hideFlag == 'none'){
+                                        $('.index_audio')[0].play();
+                                    }
                                 });
                             }, false);
                         }
                         // 关闭page3 的音乐
                         pausePage3Audio();
                         $('.index_audio')[0].currentTime = timestamp;
-                        $('.index_audio')[0].play();
+                        if(hideFlag == 'none'){
+                            $('.index_audio')[0].play();
+                        }
                     }
                 }
             }
@@ -596,7 +597,6 @@
                     'assets/images/page07_user_youya.png',
                 ];
                 let markNum = Math.floor(Math.random() * 8);
-                console.log(markNum);
                 $('.j-useRexclusiveImg').attr('src', imgArr[markNum]);
             }
             var swiperV = new Swiper('#swiperV', {
@@ -609,9 +609,8 @@
                 onSlideChangeEnd: function (swiper) {
                     swiperAnimate(swiper);
                     const index = swiper.activeIndex;
-                    console.log(index);
                     // 播放首页音乐
-                    if(index!==1){
+                    if (index !== 1) {
                         palyIndexAudio(index);
                     }
                 }
@@ -642,7 +641,6 @@
                     swiperAnimate(swiper);
                 },
                 onClick: function (swiper) {
-                    console.log('detail点击了!');
                 }
             });
             // page3 点击执行动画
@@ -664,17 +662,17 @@
                 generateScreenshot();
             });
             // page5 图片滑动
-            $('.J-imgItemt').swipeLeft(function() {
+            $('.J-imgItemt').swipeLeft(function () {
                 const _this = $(this);
                 const index = _this.index();
-                if(index<5){
+                if (index < 5) {
                     _this.animate({
                         'transform': ' rotate(60deg)',
                         'transform-origin': 'top left'
                     }, 1000, 'ease-out', function () {
                         _this.animate({
                             'top': '58%'
-                        }, 500, 'ease-in', function() {
+                        }, 500, 'ease-in', function () {
                             _this.animate({
                                 'display': 'none'
                             }, 500, 'ease-in');
@@ -682,29 +680,28 @@
                     });
                 }
             });
-            
-            
-            $('.J-imgItemt').swipeRight(function() {
+
+
+            $('.J-imgItemt').swipeRight(function () {
                 const _this = $(this);
                 const index = _this.index();
-                console.log(index);
-                if(index<6){
-                    $('.J-imgItemt').eq(index-1).animate({
+                if (index < 6) {
+                    $('.J-imgItemt').eq(index - 1).animate({
                         'display': 'block',
-                    }, 100, 'ease-out', function() {
-                        $('.J-imgItemt').eq(index-1).animate({
+                    }, 100, 'ease-out', function () {
+                        $('.J-imgItemt').eq(index - 1).animate({
                             'top': '50%'
-                        }, 500, 'ease-out-in',function() {
-                            $('.J-imgItemt').eq(index-1).animate({
+                        }, 500, 'ease-out-in', function () {
+                            $('.J-imgItemt').eq(index - 1).animate({
                                 'transform': ' rotate(0deg)',
                                 'transform-origin': 'top left'
-                            },1000, 'ease-out-in');
+                            }, 1000, 'ease-out-in');
                         });
                     });
                 }
             });
             // page5 点击查看详情页 弹出弹框
-            $('.J-imgItemt').on('click', function() {
+            $('.J-imgItemt').on('click', function () {
                 const index = $(this).index();
                 const imgArr = [
                     'assets/images/page05_activity_img01.jpg',
@@ -718,9 +715,41 @@
                 $('.j-detailsPopup').show();
             });
             // page5 popup 关闭
-            $('.J-closeBtn').on('click', function() {
+            $('.J-closeBtn').on('click', function () {
                 $('.j-detailsPopup').hide();
-            })
+            });
+            // 点击切换首页播放按钮开关
+            $('.J-indexAudioBtnBox > div').on('click', function () {
+                const index = $(this).index();
+                if (index == 0) {
+                    // 显示静音按钮
+                    $('.J-indexAudioHide').show();
+                    $('.J-indexAudioShow').hide();
+                    $('.J-indexAudioShow').removeClass('Rotation');
+                    $('.index_audio')[0].pause();
+                    timestamp = $('.index_audio')[0].currentTime;
+                } else {
+                    // 显示播放按钮
+                    $('.J-indexAudioShow').show();
+                    $('.J-indexAudioHide').hide();
+                    $('.J-indexAudioShow').addClass('Rotation');
+                    if ($('.index_audio')[0].paused) {
+                        if (window.WeixinJSBridge) {
+                            WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                $('.index_audio')[0].play();
+                            }, false);
+                        } else {
+                            document.addEventListener("WeixinJSBridgeReady", function () {
+                                WeixinJSBridge.invoke('getNetworkType', {}, function (e) {
+                                    $('.index_audio')[0].play();
+                                });
+                            }, false);
+                        }
+                        $('.index_audio')[0].currentTime = timestamp;
+                        $('.index_audio')[0].play();
+                    }
+                }
+            });
         });
     </script>
 </body>
