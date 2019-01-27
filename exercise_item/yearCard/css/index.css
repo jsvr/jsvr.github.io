@@ -141,7 +141,7 @@ body {
     left: 0;
     top: 0;
     position: fixed;
-    z-index: 999;
+    z-index: 99999;
     background-color: #aa2200;
 }
 .loading .img_gif_box{
