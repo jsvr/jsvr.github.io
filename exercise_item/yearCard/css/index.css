@@ -462,7 +462,7 @@ body {
     position: absolute;
     left: 50%;
     margin-left: -334px;
-    bottom: 11%;
+    bottom: 15%;
     background-size: 100% 100%;
 }
 .page3 .swiper-slide .bottom_content{
@@ -470,7 +470,7 @@ body {
     position: absolute;
     bottom: 8%;
     text-align: center;
-    font: 22px/22px 'Microsoft YaHei';
+    font: 22px/32px 'Microsoft YaHei';
     color: #a07e36;
 }
 .page4 {
