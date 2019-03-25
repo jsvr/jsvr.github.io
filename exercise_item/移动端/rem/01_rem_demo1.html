@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-
     <title></title>
     <script>
         /*
         * 运行到这个标签的时候
         * 1，获取屏幕的宽度
-        * 2.计算当前屏幕宽度和  640  的关系  比例
+        * 2.设定最大屏幕640(最大的时候为100px，也就是设计稿的宽，设计稿以前按640，现在750iphone6)，
+        *   计算当前屏幕宽度和640的关系比例，也就是640(当前屏幕)/640 = fontsize / 100
         * 3.计算出font-size的大小
         * 4.改变html的font-size
-        * 5.1rem = 1fontSize, 640的屏幕1rem = 100px;(1比100的关系,所以所有的尺寸在px的基础上除以100就是rem尺寸,好算)
-        * 6. 公式 就是 xpx = (x/fontSize) + rem;
+        * 5.1rem = 100px;
         * */
         var html = document.getElementsByTagName('html')[0];
         console.log(html);
         if(html){
+            // 1fontsize/100 = 当前屏幕/640(定的最大屏幕)g
             var w = window.innerWidth;
             var fontSize = (w>640?640:w)/640*100;
             html.style.fontSize = fontSize + 'px';
